@@ -132,6 +132,9 @@ nav ul li .button a {
   text-align: right;
   box-shadow: 2px 2px black;
   font-size: 1.5em;
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: darkorange;
 }
 
 nav ul li .button a:focus {
