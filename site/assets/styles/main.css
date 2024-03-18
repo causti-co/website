@@ -124,7 +124,6 @@ nav ul li .button a:focus {
 }
 
 nav ul li .button a:active {
-  outline: none;
   color: white;
   background-color: gray;
 }
