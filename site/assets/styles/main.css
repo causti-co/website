@@ -38,6 +38,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   background-color: silver;
+  overscroll-behavior-y: none;
 }
 
 header {
