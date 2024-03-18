@@ -113,19 +113,9 @@ nav ul li:last-of-type {
   margin-bottom: 0;
 }
 
-nav ul li .button {
-  cursor: pointer;
-}
-
-nav ul li .button:hover a {
-  position: relative;
-  top: -4px;
-  left: -4px;
-  box-shadow: 6px 6px black;
-}
-
 nav ul li .button a {
   display: block;
+  position: relative;
   padding: 2px 16px 2px 32px;
   background-color: white;
   border: 1px solid black;
@@ -135,6 +125,26 @@ nav ul li .button a {
   color: black;
   text-decoration: underline;
   text-decoration-color: darkorange;
+}
+
+nav ul li .button:hover a {
+  top: -4px;
+  left: -4px;
+  box-shadow: 6px 6px black;
+}
+
+nav ul li .button.here a {
+  color: white;
+  background-color: gray;
+  top: 2px;
+  left: 2px;
+  box-shadow: -2px -2px black;
+}
+
+nav ul li .button.here:hover a {
+  top: 6px;
+  left: 6px;
+  box-shadow: -6px -6px black;
 }
 
 nav ul li .button a:focus {
