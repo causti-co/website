@@ -52,6 +52,23 @@ header h1 {
   text-transform: uppercase;
 }
 
+header h1 .dot {
+  height: 24px;
+  vertical-align: middle;
+  margin-top: -10px;
+  animation: rotation 4s infinite reverse linear;
+  cursor: help;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 main {
   flex-grow: 1;
   position: relative;
