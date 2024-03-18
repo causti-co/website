@@ -68,7 +68,6 @@ nav {
   background-color: lightgray;
   border: solid black;
   border-width: 2px 2px 0;
-  font-size: 2em;
 }
 
 nav ul {
@@ -99,11 +98,12 @@ nav ul li .button:hover a {
 
 nav ul li .button a {
   display: block;
-  padding: 4px 16px;
+  padding: 2px 16px 2px 32px;
   background-color: white;
   border: 1px solid black;
   text-align: right;
   box-shadow: 2px 2px black;
+  font-size: 1.5em;
 }
 
 nav ul li .button a:focus {
