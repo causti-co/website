@@ -14,14 +14,13 @@
 html {
   font-family: "Berkeley Mono", monospace;
   background-color: gainsboro;
-  height: 100%;
   padding: 8px;
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  height: 100%;
+  min-height: calc(100vh - 16px);
   border: 2px solid black;
   box-sizing: border-box;
   display: flex;
@@ -44,15 +43,31 @@ main {
   position: relative;
   border: solid black;
   border-width: 2px 0;
+  padding-right: 180px;
+  padding-bottom: 32px;
+}
+
+main p {
+  font-size: 2em;
+
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 8px;
+  height: 36px;
+  width: calc(100% - 16px);
+  background-color: gainsboro;
 }
 
 nav {
   position: absolute;
-  bottom: 0;
+  bottom: 100%;
   right: 0;
   background-color: lightgray;
   border: solid black;
-  border-width: 2px 0 0 2px;
+  border-width: 2px 2px 0;
   font-size: 2em;
 }
 
@@ -103,11 +118,13 @@ nav ul li .button a:active {
   background-color: gray;
 }
 
-footer {
+footer .footer {
   background-color: whitesmoke;
   text-align: center;
   font-size: 0.75em;
   padding: 4px;
+  height: 16px;
+  border: 2px solid black;
 }
 
 footer p {
