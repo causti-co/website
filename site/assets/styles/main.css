@@ -74,11 +74,25 @@ main {
   position: relative;
   border: solid black;
   border-width: 2px 0;
-  padding: 8px 180px 32px 8px;
+  padding: 16px 180px 32px 8px;
 }
 
 main p {
   font-size: 2em;
+}
+
+main article {
+  padding-left: 160px;
+}
+
+main article h1 {
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  font-size: 4em;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  left: 8px;
 }
 
 footer {
