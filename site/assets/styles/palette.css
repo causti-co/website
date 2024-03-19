@@ -53,6 +53,7 @@
 /* IE11 doesn't support :has, so we have a manual fallback */
 #palette ul li:has(+ .break), #palette ul li.black {
   border-bottom-width: 2px;
+  height: 34px;
 }
 
 #palette ul li:last-of-type {
