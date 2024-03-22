@@ -35,6 +35,8 @@ a whiteboard and a dream
 how to be good at things
   presentations, writing
     cooking-show technique
+    script, what are slides for
+    my writing techniques, skeleton and meat, paragraph iteration
 how to program
   how do i approach a problem
 no robots allowed
@@ -163,6 +165,7 @@ ab initio methods
 surrounded by alcoholics
 silence
 log2 scale for aging
+"grass is always greener", why do you get sad if someone makes more than you?
 
 https://twitter.com/search?q=from%3Amvaldesdeleon%20until%3A2023-06-22&src=typed_query&f=live
 
