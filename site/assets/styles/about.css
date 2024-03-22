@@ -1,0 +1,35 @@
+main article.about {
+  padding-left: 160px;
+}
+
+main article.about h1 {
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  font-size: 4em;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  left: 8px;
+}
+
+main article.about p {
+  font-size: 1.5em;
+}
+
+main article.about p b {
+  color: whitesmoke;
+  background-color: black;
+  padding: 4px 6px;
+  font-weight: normal;
+  font-size: 1.1em;
+}
+
+main article.about p u {
+  text-decoration-style: wavy;
+  text-decoration-color: tomato;
+}
+
+main article.about p .large {
+  font-size: 1.2em;
+  color: black;
+}

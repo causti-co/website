@@ -1,0 +1,20 @@
+:link {
+  color: darkorange;
+}
+
+:visited {
+  color: inherit;
+  text-decoration-color: darkorange;
+}
+
+:focus {
+  outline: none;
+  color: white;
+  background-color: darkorange;
+}
+
+:visited:focus {
+  outline: none;
+  color: inherit;
+  background-color: darkorange;
+}

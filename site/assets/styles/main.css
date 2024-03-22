@@ -1,27 +1,10 @@
 @charset "utf-8";
 @import url("/assets/styles/fonts.css");
+@import url("/assets/styles/links.css");
 @import url("/assets/styles/palette.css");
-
-:link {
-  color: darkorange;
-}
-
-:visited {
-  color: inherit;
-  text-decoration-color: darkorange;
-}
-
-:focus {
-  outline: none;
-  color: white;
-  background-color: darkorange;
-}
-
-:visited:focus {
-  outline: none;
-  color: inherit;
-  background-color: darkorange;
-}
+@import url("/assets/styles/about.css");
+@import url("/assets/styles/header.css");
+@import url("/assets/styles/footer.css");
 
 html {
   font-family: "Berkeley Mono", monospace;
@@ -42,31 +25,7 @@ body {
 }
 
 header {
-  padding: 16px;
   height: 72px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 4em;
-  text-transform: uppercase;
-}
-
-header h1 .dot {
-  height: 24px;
-  vertical-align: middle;
-  margin-top: -10px;
-  animation: rotation 4s infinite reverse linear;
-  cursor: help;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
 }
 
 main {
@@ -77,24 +36,6 @@ main {
   padding: 16px 180px 32px 8px;
 }
 
-main p {
-  font-size: 2em;
-}
-
-main article {
-  padding-left: 160px;
-}
-
-main article h1 {
-  writing-mode: vertical-rl;
-  transform: rotate(-180deg);
-  font-size: 4em;
-  line-height: 1em;
-  margin: 0;
-  position: absolute;
-  left: 8px;
-}
-
 footer {
   position: fixed;
   bottom: 0;
@@ -103,94 +44,3 @@ footer {
   background-color: gainsboro;
 }
 
-nav {
-  position: absolute;
-  bottom: 100%;
-  right: 0;
-  background-color: lightgray;
-  border: solid black;
-  border-width: 2px 2px 0;
-}
-
-nav ul {
-  margin: 0;
-  padding: 16px;
-  list-style: none;
-}
-
-nav ul li {
-  padding: 0;
-  margin-bottom: 16px;
-}
-
-nav ul li:last-of-type {
-  margin-bottom: 0;
-}
-
-nav ul li .button a {
-  display: block;
-  position: relative;
-  padding: 2px 16px 2px 32px;
-  background-color: white;
-  border: 1px solid black;
-  text-align: right;
-  box-shadow: 2px 2px black;
-  font-size: 1.5em;
-  color: black;
-  text-decoration: underline;
-  text-decoration-color: darkorange;
-}
-
-nav ul li .button:hover a {
-  top: -4px;
-  left: -4px;
-  box-shadow: 6px 6px black;
-}
-
-nav ul li .button.here a {
-  color: white;
-  background-color: gray;
-  top: 2px;
-  left: 2px;
-  box-shadow: -2px -2px black;
-}
-
-nav ul li .button.here:hover a {
-  top: 6px;
-  left: 6px;
-  box-shadow: -6px -6px black;
-}
-
-nav ul li .button a:focus {
-  outline: none;
-  color: white;
-  background-color: darkgray;
-}
-
-nav ul li .button a:active {
-  color: white;
-  background-color: gray;
-}
-
-footer .footer {
-  background-color: whitesmoke;
-  text-align: center;
-  font-size: 0.75em;
-  padding: 4px;
-  border: 2px solid black;
-  margin-bottom: 8px;
-}
-
-footer p {
-  margin: 0;
-}
-
-footer .cc .icon {
-  height: 16px;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-
-footer .cc .icon:first-of-type {
-  margin-left: 8px;
-}
