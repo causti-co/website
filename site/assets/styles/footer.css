@@ -22,11 +22,11 @@ footer nav > ul > li:last-of-type {
   margin-bottom: 0;
 }
 
-footer nav > ul > li .button a {
+footer nav > ul > li .button > a {
   display: block;
   position: relative;
   padding: 2px 16px 2px 32px;
-  background-color: white;
+  background-color: whitesmoke;
   border: 1px solid black;
   text-align: right;
   box-shadow: 2px 2px black;
@@ -36,13 +36,13 @@ footer nav > ul > li .button a {
   text-decoration-color: darkorange;
 }
 
-footer nav > ul > li .button:hover a {
+footer nav > ul > li .button:hover > a {
   top: -4px;
   left: -4px;
   box-shadow: 6px 6px black;
 }
 
-footer nav > ul > li .button.here a {
+footer nav > ul > li .button.here > a {
   color: white;
   background-color: gray;
   top: 2px;
@@ -50,21 +50,25 @@ footer nav > ul > li .button.here a {
   box-shadow: -2px -2px black;
 }
 
-footer nav > ul > li .button.here:hover a {
+footer nav > ul > li .button.here:hover > a {
   top: 6px;
   left: 6px;
   box-shadow: -6px -6px black;
 }
 
-footer nav > ul > li .button a:focus {
-  outline: none;
+footer nav > ul > li .button > a:focus {
   color: white;
   background-color: darkgray;
+  text-decoration-color: darkorange;
 }
 
-footer nav > ul > li .button a:active {
+footer nav > ul > li .button > a:active {
   color: white;
   background-color: gray;
+  text-decoration-color: darkorange;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 2px black;
 }
 
 footer > .content {
