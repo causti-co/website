@@ -1,13 +1,17 @@
 main > article.photo > .content {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
   gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+main > article.photo > .content > .photo .button {
+  height: 100%;
 }
 
 main > article.photo > .content > .photo .button > a {
   display: block;
   position: relative;
-  width: 240px ;
+  height: 100%;
   color: black;
   background-color: whitesmoke;
   border: 2px solid black;
@@ -37,10 +41,11 @@ main > article.photo > .content > .photo .button > a:active {
 
 main > article.photo > .content > .photo .button > a > img {
   display: block;
-  width: 240px;
+  width: 100%;
   height: 240px;
   border-bottom: 6px double black;
   background-color: whitesmoke;
+  object-fit: cover;
 }
 
 main > article.photo > .content > .photo .button > a > h1 {
