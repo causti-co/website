@@ -1,0 +1,62 @@
+main > article.photo > .content {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 32px;
+}
+
+main > article.photo > .content > .photo .button > a {
+  display: block;
+  position: relative;
+  width: 240px ;
+  color: black;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  text-decoration: underline;
+  text-decoration-color: darkorange;
+}
+
+main > article.photo > .content > .photo .button:hover > a {
+  top: -4px;
+  left: -4px;
+  box-shadow: 6px 6px black;
+}
+
+main > article.photo > .content > .photo .button > a:focus {
+  background-color: orange;
+  text-decoration-color: white;
+}
+
+main > article.photo > .content > .photo .button > a:active {
+  text-decoration-color: white;
+  background-color: darkorange;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 2px black;
+}
+
+main > article.photo > .content > .photo .button > a > img {
+  display: block;
+  width: 240px;
+  height: 240px;
+  border-bottom: 6px double black;
+  background-color: whitesmoke;
+}
+
+main > article.photo > .content > .photo .button > a > h1 {
+  margin: 0 4px 32px;
+  font-weight: normal;
+}
+
+main > article.photo > .content > .photo .button > a > .number {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  font-weight: bold;
+}
+
+main > article.photo > .content > .photo .button > a > .date {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+}
