@@ -4,6 +4,7 @@
   position: fixed;
   top: 130px;
   right: 24px;
+  display: none;
 }
 
 #palette > ul {
