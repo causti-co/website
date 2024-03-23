@@ -53,6 +53,15 @@ main > article > h1 {
   transform: rotate(-180deg);
 }
 
+main > article > h1 .small {
+  font-size: 0.5em;
+  line-height: 0.5em;
+  vertical-align: bottom;
+  display: inline-block;
+  position: relative;
+  left: 8px;
+}
+
 footer {
   position: fixed;
   bottom: 0;
