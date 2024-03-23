@@ -3,6 +3,7 @@
 @import url("/assets/styles/links.css");
 @import url("/assets/styles/palette.css");
 @import url("/assets/styles/about.css");
+@import url("/assets/styles/text.css");
 @import url("/assets/styles/header.css");
 @import url("/assets/styles/footer.css");
 
@@ -34,6 +35,20 @@ main {
   border: solid black;
   border-width: 2px 0;
   padding: 16px 180px 32px 8px;
+}
+
+main article {
+  padding-left: 160px;
+}
+
+main article h1 {
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  font-size: 4em;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  left: 8px;
 }
 
 footer {
