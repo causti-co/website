@@ -56,9 +56,13 @@ main > article.photo.list > .content > .photo .button > a:active {
 main > article.photo > .content > .photo .button > a > img {
   display: block;
   width: 100%;
-  border-bottom: 6px double black;
   background-color: whitesmoke;
   object-fit: cover;
+}
+
+main > article.photo.single > .content > .photo .button > a > img {
+  background-color: dimgray;
+  object-fit: contain;
 }
 
 main > article.photo.single > .content > .photo .button > a > img {
@@ -72,14 +76,17 @@ main > article.photo.list > .content > .photo .button > a > img {
 }
 
 main > article.photo > .content > .photo .button > a > h1 {
-  margin: 0 4px 32px;
+  border-top: 6px double black;
+  margin: 0 0 32px;
+  padding: 0 4px;
   font-weight: normal;
 }
 
 main > article.photo.single > .content > .photo .button > a > h1 {
   font-weight: bold;
   font-size: 1.2em;
-  margin: 4px 4px 48px;
+  padding-top: 4px;
+  margin-bottom: 48px;
 }
 
 main > article.photo.list > .content > .photo .button > a > .number,
