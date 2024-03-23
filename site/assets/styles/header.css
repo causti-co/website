@@ -8,7 +8,7 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 .dot {
+header h1 > .dot {
   height: 24px;
   vertical-align: middle;
   margin-top: -10px;

@@ -6,7 +6,7 @@
   right: 24px;
 }
 
-#palette ul {
+#palette > ul {
   display: flex;
   flex-flow: column wrap-reverse;
   margin: 0;
@@ -14,7 +14,7 @@
   height: 320px;
 }
 
-#palette ul li {
+#palette > ul > li {
   display: block;
   box-sizing: border-box;
   border: solid black;
@@ -24,7 +24,7 @@
   position: relative;
 }
 
-#palette ul li::after {
+#palette > ul > li::after {
   position: absolute;
   top: 4px;
   right: 72px;
@@ -32,31 +32,31 @@
   content: attr(class);
 }
 
-#palette ul li:hover::after {
+#palette > ul > li:hover::after {
   display: block;
 }
 
-#palette ul li.break {
+#palette > ul > li.break {
   flex-basis: 100%;
   width: 0;
   border: none;
 }
 
-#palette ul li.break ~ li {
+#palette > ul > li.break ~ li {
   border-left-width: 2px;
 }
 
-#palette ul li.break ~ li::after {
+#palette > ul > li.break ~ li::after {
   right: 40px;
 }
 
 /* IE11 doesn't support :has, so we have a manual fallback */
-#palette ul li:has(+ .break), #palette ul li.black {
+#palette > ul > li:has(+ .break), #palette > ul > li.black {
   border-bottom-width: 2px;
   height: 34px;
 }
 
-#palette ul li:last-of-type {
+#palette > ul > li:last-of-type {
   border-bottom-width: 2px;
 }
 

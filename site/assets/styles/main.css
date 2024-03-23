@@ -37,18 +37,20 @@ main {
   padding: 16px 180px 32px 8px;
 }
 
-main article {
+main > article {
   padding-left: 160px;
 }
 
-main article h1 {
-  writing-mode: vertical-rl;
-  transform: rotate(-180deg);
-  font-size: 4em;
-  line-height: 1em;
-  margin: 0;
+main > article > h1 {
   position: absolute;
   left: 8px;
+  top: 32px;
+  margin: 0;
+  font-size: 4em;
+  line-height: 1em;
+  text-align: right;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
 }
 
 footer {

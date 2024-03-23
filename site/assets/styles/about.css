@@ -1,8 +1,8 @@
-main article.about p {
+main > article.about > .content p {
   font-size: 1.5em;
 }
 
-main article.about p b {
+main > article.about > .content p b {
   color: whitesmoke;
   background-color: black;
   padding: 4px 6px;
@@ -10,12 +10,12 @@ main article.about p b {
   font-size: 1.1em;
 }
 
-main article.about p u {
+main > article.about > .content p u {
   text-decoration-style: wavy;
   text-decoration-color: tomato;
 }
 
-main article.about p .large {
+main > article.about > .content p .large {
   font-size: 1.2em;
   color: black;
 }

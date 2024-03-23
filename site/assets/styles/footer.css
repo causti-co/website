@@ -7,22 +7,22 @@ footer nav {
   border-width: 2px 2px 0;
 }
 
-footer nav ul {
+footer nav > ul {
   margin: 0;
   padding: 16px;
   list-style: none;
 }
 
-footer nav ul li {
+footer nav > ul > li {
   padding: 0;
   margin-bottom: 16px;
 }
 
-footer nav ul li:last-of-type {
+footer nav > ul > li:last-of-type {
   margin-bottom: 0;
 }
 
-footer nav ul li .button a {
+footer nav > ul > li .button a {
   display: block;
   position: relative;
   padding: 2px 16px 2px 32px;
@@ -36,13 +36,13 @@ footer nav ul li .button a {
   text-decoration-color: darkorange;
 }
 
-footer nav ul li .button:hover a {
+footer nav > ul > li .button:hover a {
   top: -4px;
   left: -4px;
   box-shadow: 6px 6px black;
 }
 
-footer nav ul li .button.here a {
+footer nav > ul > li .button.here a {
   color: white;
   background-color: gray;
   top: 2px;
@@ -50,24 +50,24 @@ footer nav ul li .button.here a {
   box-shadow: -2px -2px black;
 }
 
-footer nav ul li .button.here:hover a {
+footer nav > ul > li .button.here:hover a {
   top: 6px;
   left: 6px;
   box-shadow: -6px -6px black;
 }
 
-footer nav ul li .button a:focus {
+footer nav > ul > li .button a:focus {
   outline: none;
   color: white;
   background-color: darkgray;
 }
 
-footer nav ul li .button a:active {
+footer nav > ul > li .button a:active {
   color: white;
   background-color: gray;
 }
 
-footer .content {
+footer > .content {
   background-color: whitesmoke;
   text-align: center;
   font-size: 0.75em;
@@ -76,16 +76,16 @@ footer .content {
   margin-bottom: 8px;
 }
 
-footer p {
+footer > .content p {
   margin: 0;
 }
 
-footer .cc .icon {
+footer > .content .cc .icon {
   height: 16px;
   margin-left: 4px;
   vertical-align: middle;
 }
 
-footer .cc .icon:first-of-type {
+footer > .content .cc .icon:first-of-type {
   margin-left: 8px;
 }
