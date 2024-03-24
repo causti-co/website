@@ -28,7 +28,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
 
   // Copy content images
-  eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photos"});
+  eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photo"});
   eleventyConfig.addPassthroughCopy("src/recs/*.jpg");
 
   // Get exif data from jpg files
