@@ -9,7 +9,7 @@ title: photo
     <article class="photo">
       <div class="button">
         <a href="{{ photo.page.url }}">
-          <img src="/assets/images/placeholder.svg" alt="{{ photo.data.alt }}" />
+          <img src="{{ photo.data.imageUrl }}" alt="{{ photo.data.alt }}" />
           <h1>{{ photo.data.title }}</h1>
           <span class="number">{{ photo.data.number | shortNumber }}</span><span class="date">{{ photo.page.date | shortDate }}</span>
         </a>

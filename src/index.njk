@@ -1,9 +1,10 @@
 ---
 layout: index.njk
 ---
+{% set photo = collections.photo | last %}
 <article class="home">
   <h1>ho<br/>me&nbsp;</h1>
   <section class="content">
-    <img src="/assets/images/placeholder.svg" alt="" />
+    <img src="{{ photo.data.imageUrl }}" alt="{{ photo.data.alt }}" />
   </section>
 </article>
