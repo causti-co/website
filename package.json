@@ -5,6 +5,7 @@
   "homepage": "https://causti.co/",
   "main": "dist/index.html",
   "scripts": {
+    "clean": "rimraf dist",
     "build": "npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch --incremental",
     "serve": "npx @11ty/eleventy --serve --incremental"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "exifreader": "^4.21.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "rimraf": "^5.0.5"
   }
 }
