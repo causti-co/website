@@ -7,4 +7,6 @@ main > article.home > .content img {
   width: 100%;
   object-fit: cover;
   border: 2px solid black;
+  box-sizing: border-box;
+  box-shadow: 4px 4px hotpink;
 }
