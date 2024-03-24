@@ -1,0 +1,21 @@
+---
+layout: index.njk
+title: recs
+permalink: recs/
+override:tags: []
+---
+<article class="text list">
+  <h1>re<br/>cs&nbsp;</h1>
+  <section class="content">
+  {%- for month, recs in collections.recsByMonth -%}
+    <section class="month">
+      <h2>{{ month }}</h2>
+      <ul>
+      {%- for rec in recs -%}
+        <li><span class="number">{{ rec.data.number | shortNumber }}</span><a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer">{{ rec.data.title }}</a></li>
+      {%- endfor -%}
+      </ul>
+    </section>
+  {%- endfor -%}
+  </section>
+</article>

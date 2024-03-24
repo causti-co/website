@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/styles/**"); // Eventually needs to be replaced w/ bundling or sass
 
   eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photos"});
+  eleventyConfig.addPassthroughCopy("src/recs/*.jpg");
 
   eleventyConfig.addDataExtension("jpg", {
     parser: async file => {
@@ -67,6 +68,20 @@ module.exports = function(eleventyConfig) {
     return _.chain(collection.getFilteredByTag("text").reverse())
       .groupBy(text => {
         let date = text.page.date;
+  
+        return `${month[date.getUTCMonth()]}${pad(date.getFullYear())}`
+      })
+      .toPairs()
+      .value();
+  });
+
+  eleventyConfig.addCollection("recsByMonth", (collection) => {
+    const pad = number => ("0" + number.toString()).slice(-2);
+    const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+    return _.chain(collection.getFilteredByTag("recs").reverse())
+      .groupBy(rec => {
+        let date = rec.page.date;
   
         return `${month[date.getUTCMonth()]}${pad(date.getFullYear())}`
       })
