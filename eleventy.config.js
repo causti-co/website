@@ -8,7 +8,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**");
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
-  eleventyConfig.addPassthroughCopy("src/assets/styles/**"); // Eventually needs to be replaced w/ bundling or sass
 
   eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photos"});
   eleventyConfig.addPassthroughCopy("src/recs/*.jpg");

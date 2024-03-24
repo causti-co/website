@@ -1,14 +1,16 @@
+---
+permalink: assets/styles/main.css
+---
 @charset "utf-8";
-@import url("/assets/styles/fonts.css");
-@import url("/assets/styles/links.css");
-@import url("/assets/styles/palette.css");
-@import url("/assets/styles/home.css");
-@import url("/assets/styles/text.css");
-@import url("/assets/styles/photo.css");
-@import url("/assets/styles/recs.css");
-@import url("/assets/styles/about.css");
-@import url("/assets/styles/header.css");
-@import url("/assets/styles/footer.css");
+{% include "./fonts.css" %}
+{% include "./links.css" %}
+{% include "./home.css" %}
+{% include "./text.css" %}
+{% include "./photo.css" %}
+{% include "./recs.css" %}
+{% include "./about.css" %}
+{% include "./header.css" %}
+{% include "./footer.css" %}
 
 html {
   font-family: "Berkeley Mono", monospace;
