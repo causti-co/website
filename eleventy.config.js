@@ -1,17 +1,37 @@
 const _ = require("lodash");
 const ExifReader = require("exifreader");
 
+const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
+
+const groupByMonth = tag => collection => {
+  const pad2 = pad(2);
+  const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+  return _.chain(collection.getFilteredByTag(tag).reverse())
+    .groupBy(item => {
+      let date = item.page.date;
+
+      return `${month[date.getUTCMonth()]}${pad2(date.getFullYear())}`
+    })
+    .toPairs()
+    .value();
+};
+
 module.exports = function(eleventyConfig) {
+  // Ignore `_drafts`
   eleventyConfig.ignores.add("**/_drafts/**");
 
+  // Copy static assets
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**");
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
 
+  // Copy content images
   eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photos"});
   eleventyConfig.addPassthroughCopy("src/recs/*.jpg");
 
+  // Get exif data from jpg files
   eleventyConfig.addDataExtension("jpg", {
     parser: async file => {
       const tags = await ExifReader.load(file);
@@ -33,8 +53,9 @@ module.exports = function(eleventyConfig) {
       if (exif.model && exif.make && exif.model.startsWith(exif.make))
         exif.model = exif.model.slice(exif.make.length + 1);
       
+      // Remove trailing `f/` to get fstop value
       if (exif.aperture)
-        exif.fstop = exif.aperture.slice(2);
+        exif.fstop = exif.aperture.slice("f/".length);
       else
         exif.fstop = undefined;
 
@@ -42,51 +63,27 @@ module.exports = function(eleventyConfig) {
         exif
       };
     },
+    // Pass file path to `parser` rather than file contents
     read: false
   });
   
   eleventyConfig.addFilter("shortDate", value => {
-    const pad = number => ("0" + number.toString()).slice(-2);
+    const pad2 = pad(2);
 
     if (value instanceof Date)
-      return `${pad(value.getUTCDate())}.${pad(value.getUTCMonth() + 1)}.${pad(value.getUTCFullYear())}`;
+      return `${pad2(value.getUTCDate())}.${pad2(value.getUTCMonth() + 1)}.${pad2(value.getUTCFullYear())}`;
     else
       return value;
   });
 
   eleventyConfig.addFilter("shortNumber", value => {
-    const pad = number => ("00" + number.toString()).slice(-3);
+    const pad3 = pad(3);
 
-    return `#${pad(value)}`;
+    return `#${pad3(value)}`;
   });
 
-  eleventyConfig.addCollection("textByMonth", (collection) => {
-    const pad = number => ("0" + number.toString()).slice(-2);
-    const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-    return _.chain(collection.getFilteredByTag("text").reverse())
-      .groupBy(text => {
-        let date = text.page.date;
-  
-        return `${month[date.getUTCMonth()]}${pad(date.getFullYear())}`
-      })
-      .toPairs()
-      .value();
-  });
-
-  eleventyConfig.addCollection("recsByMonth", (collection) => {
-    const pad = number => ("0" + number.toString()).slice(-2);
-    const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-    return _.chain(collection.getFilteredByTag("recs").reverse())
-      .groupBy(rec => {
-        let date = rec.page.date;
-  
-        return `${month[date.getUTCMonth()]}${pad(date.getFullYear())}`
-      })
-      .toPairs()
-      .value();
-  });
+  eleventyConfig.addCollection("textByMonth", groupByMonth("text"));
+  eleventyConfig.addCollection("recsByMonth", groupByMonth("recs"));
 
   return {
     dir: {
