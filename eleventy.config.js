@@ -9,7 +9,7 @@ module.exports = function(eleventyConfig) {
     const pad = number => ("0" + number.toString()).slice(-2);
 
     if (value instanceof Date)
-      return `${pad(value.getUTCDate())}/${pad(value.getUTCMonth() + 1)}/${pad(value.getUTCFullYear())}`;
+      return `${pad(value.getUTCDate())}.${pad(value.getUTCMonth() + 1)}.${pad(value.getUTCFullYear())}`;
     else
       return value;
   });
