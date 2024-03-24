@@ -1,0 +1,95 @@
+footer nav {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: lightgray;
+  border: solid black;
+  border-width: 2px 2px 0;
+}
+
+footer nav > ul {
+  margin: 0;
+  padding: 16px;
+  list-style: none;
+}
+
+footer nav > ul > li {
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+footer nav > ul > li:last-of-type {
+  margin-bottom: 0;
+}
+
+footer nav > ul > li .button > a {
+  display: block;
+  position: relative;
+  padding: 2px 16px 2px 32px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  text-align: right;
+  box-shadow: 2px 2px black;
+  font-size: 1.5em;
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: darkorange;
+}
+
+footer nav > ul > li .button:hover > a {
+  top: -4px;
+  left: -4px;
+  box-shadow: 6px 6px black;
+}
+
+footer nav > ul > li .button.here > a {
+  color: white;
+  background-color: gray;
+  top: 2px;
+  left: 2px;
+  box-shadow: -2px -2px black;
+}
+
+footer nav > ul > li .button.here:hover > a {
+  top: 6px;
+  left: 6px;
+  box-shadow: -6px -6px black;
+}
+
+footer nav > ul > li .button > a:focus {
+  color: white;
+  background-color: darkgray;
+  text-decoration-color: darkorange;
+}
+
+footer nav > ul > li .button > a:active {
+  color: white;
+  background-color: gray;
+  text-decoration-color: darkorange;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 2px black;
+}
+
+footer > .content {
+  background-color: whitesmoke;
+  text-align: center;
+  font-size: 0.75em;
+  padding: 4px;
+  border: 2px solid black;
+  margin-bottom: 8px;
+}
+
+footer > .content p {
+  margin: 0;
+}
+
+footer > .content .cc .icon {
+  height: 16px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+footer > .content .cc .icon:first-of-type {
+  margin-left: 8px;
+}

@@ -1,0 +1,73 @@
+@charset "utf-8";
+@import url("/assets/styles/fonts.css");
+@import url("/assets/styles/links.css");
+@import url("/assets/styles/palette.css");
+@import url("/assets/styles/home.css");
+@import url("/assets/styles/text.css");
+@import url("/assets/styles/photo.css");
+@import url("/assets/styles/about.css");
+@import url("/assets/styles/header.css");
+@import url("/assets/styles/footer.css");
+
+html {
+  font-family: "Berkeley Mono", monospace;
+  background-color: gainsboro;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: calc(100vh - 16px);
+  border: 2px solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: silver;
+  overscroll-behavior: none;
+}
+
+header {
+  height: 72px;
+}
+
+main {
+  flex-grow: 1;
+  position: relative;
+  border: solid black;
+  border-width: 2px 0;
+  padding: 16px 180px 32px 8px;
+}
+
+main > article {
+  padding-left: 160px;
+}
+
+main > article > h1 {
+  position: absolute;
+  left: 8px;
+  top: 32px;
+  margin: 0;
+  font-size: 4em;
+  line-height: 1em;
+  text-align: right;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+}
+
+main > article > h1 .small {
+  font-size: 0.5em;
+  line-height: 0.5em;
+  vertical-align: bottom;
+  display: inline-block;
+  position: relative;
+  left: 8px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 8px;
+  width: calc(100% - 16px);
+  background-color: gainsboro;
+}
