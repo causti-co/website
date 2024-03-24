@@ -1,11 +1,49 @@
 const _ = require("lodash");
+const ExifReader = require("exifreader");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.ignores.add("**/_drafts/**");
+
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**");
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
   eleventyConfig.addPassthroughCopy("src/assets/styles/**"); // Eventually needs to be replaced w/ bundling or sass
+
+  // eleventyConfig.addPassthroughCopy("src/photo/*.jpg");
+
+  eleventyConfig.addDataExtension("jpg", {
+    parser: async file => {
+      const tags = await ExifReader.load(file);
+      const config = {
+        "height": "Image Height.value",
+        "width": "Image Width.value",
+        "make": "Make.description",
+        "model": "Model.description",
+        "exposure": "ExposureTime.description",
+        "aperture": "FNumber.description",
+        "iso": "ISOSpeedRatings.value",
+        "focalLength": "FocalLength.description",
+        "lens": "Lens.description"
+      };
+
+      let exif = _.mapValues(config, tag => _.get(tags, tag));
+
+      // Canon repeats the Make in the Model
+      if (exif.model && exif.make && exif.model.startsWith(exif.make))
+        exif.model = exif.model.slice(exif.make.length + 1);
+      
+      if (exif.aperture)
+        exif.fstop = exif.aperture.slice(2);
+      else
+        exif.fstop = undefined;
+
+      return {
+        exif
+      };
+    },
+    read: false
+  });
   
   eleventyConfig.addFilter("shortDate", value => {
     const pad = number => ("0" + number.toString()).slice(-2);

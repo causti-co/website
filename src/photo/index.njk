@@ -1,0 +1,20 @@
+---
+layout: index.njk
+title: photo
+---
+<article class="photo list">
+  <h1>pho<br/>to</h1>
+  <section class="content">
+  {%- for photo in collections.photo | reverse -%}
+    <article class="photo">
+      <div class="button">
+        <a href="{{ photo.page.url }}">
+          <img src="/assets/images/placeholder.svg" alt="{{ photo.data.alt }}" />
+          <h1>{{ photo.data.title }}</h1>
+          <span class="number">{{ photo.data.number | shortNumber }}</span><span class="date">{{ photo.page.date | shortDate }}</span>
+        </a>
+      </div>
+    </article>
+  {%- endfor -%}
+  </section>
+</article>

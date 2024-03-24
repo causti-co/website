@@ -1,0 +1,17 @@
+---
+layout: index.njk
+---
+<article class="photo single">
+  <h1><span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;pho<br/><span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;to</h1>
+  <section class="content">
+    <article class="photo">
+      <div class="button">
+        <a>
+          <img src="/assets/images/placeholder.svg" alt="{{ alt }}" />
+          <h1>{{ title }}</h1>
+          <span class="camera">{{ exif.make }} {{ exif.model }}</span><span class="specs">{{ exif.focalLength }}&nbsp;&nbsp;&nbsp;<i>f</i>/{{ exif.fstop }}&nbsp;&nbsp;&nbsp;{{ exif.exposure }}&nbsp;&nbsp;&nbsp;ISO{{ exif.iso }}</span>
+        </a>
+      </div>
+    </article>
+  </section>
+</article>
