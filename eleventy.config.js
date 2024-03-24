@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**");
@@ -18,6 +20,20 @@ module.exports = function(eleventyConfig) {
     const pad = number => ("00" + number.toString()).slice(-3);
 
     return `#${pad(value)}`;
+  });
+
+  eleventyConfig.addCollection("textByMonth", (collection) => {
+    const pad = number => ("0" + number.toString()).slice(-2);
+    const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+    return _.chain(collection.getFilteredByTag("text").reverse())
+      .groupBy(text => {
+        let date = text.page.date;
+  
+        return `${month[date.getUTCMonth()]}${pad(date.getFullYear())}`
+      })
+      .toPairs()
+      .value();
   });
 
   return {

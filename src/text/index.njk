@@ -1,0 +1,19 @@
+---
+layout: index.njk
+title: text
+---
+<article class="text list">
+  <h1>te&nbsp;<br/>xt</h1>
+  <section class="content">
+  {%- for month, texts in collections.textByMonth -%}
+    <section class="month">
+      <h2>{{ month }}</h2>
+      <ul>
+      {%- for text in texts -%}
+        <li><span class="number">{{ text.data.number | shortNumber }}</span><a href="{{ text.page.url }}">{{ text.data.title }}</a></li>
+      {%- endfor -%}
+      </ul>
+    </section>
+  {%- endfor -%}
+  </section>
+</article>
