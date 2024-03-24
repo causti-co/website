@@ -34,10 +34,14 @@ main > article.text.list > .content .month > ul > li a:focus {
 
 main > article.text.single > .content h1 {
   font-size: 3em;
-  margin-top: 8px;
-  margin-bottom: 16px;
+  margin: 8px 0;
   text-decoration: underline;
   text-decoration-color: darkorange;
+}
+
+main > article.text.single > .content h4 {
+  margin: 0;
+  color: dimgray;
 }
 
 main > article.text.single > .content p {
