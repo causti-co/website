@@ -24,14 +24,11 @@ performance optimization
 
 Easter Eggs...
 
-Hosting
-  And DNS config
-
-Github actions?
-
 Open Graph headers for the different content pages
   Text
   Photo
 
   Also get the Last Photo as the OG photo for non-photos...
   ... and test how this whole thing works, before actually bothering with it, tbh...
+
+consider hosting somewhere else so i can get some non-cookie-requiring statistics?
