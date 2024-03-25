@@ -1,5 +1,7 @@
+const path = require("node:path");
 const _ = require("lodash");
 const ExifReader = require("exifreader");
+const Image = require("@11ty/eleventy-img");
 
 const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
 
@@ -27,13 +29,31 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
 
-  // Copy content images
-  eleventyConfig.addPassthroughCopy({"src/photo/*.jpg": "assets/photo"});
+  // Copy non-optimized content images
   eleventyConfig.addPassthroughCopy("src/recs/*.jpg");
 
   // Get exif data from jpg files
   eleventyConfig.addDataExtension("jpg", {
     parser: async file => {
+      // Generate mobile-optimized images for the photos
+      let responsive = undefined;
+      if (file.startsWith("./src/photo/")) {
+        const stats = await Image(file, {
+          widths: ["320", "640", "1024", "auto"],
+          formats: ["webp"],
+          urlPath: "/assets/photo/",
+          outputDir: "./dist/assets/photo/",
+          filenameFormat: (id, src, width, format) => {
+            const extension = path.extname(src);
+            const name = path.basename(src, extension);
+        
+            return `${name}-${width}w.${format}`;
+          }
+        });
+
+        responsive = stats.webp;
+      }
+
       const tags = await ExifReader.load(file);
       const config = {
         "height": "Image Height.value",
@@ -60,7 +80,8 @@ module.exports = function(eleventyConfig) {
         exif.fstop = undefined;
 
       return {
-        exif
+        exif,
+        responsive
       };
     },
     // Pass file path to `parser` rather than file contents
@@ -80,6 +101,13 @@ module.exports = function(eleventyConfig) {
     const pad3 = pad(3);
 
     return `#${pad3(value)}`;
+  });
+
+  eleventyConfig.addShortcode("image", (responsive, alt, sizes) => {
+    const largest = responsive[responsive.length - 1];
+    const srcset = responsive.map(size => size.srcset).join(", ");
+
+		return `<img src="${largest.url}" srcset="${srcset}" sizes="${sizes}" width="${largest.width}" height="${largest.height}" alt="${alt}" loading="lazy" decoding="async">`;
   });
 
   eleventyConfig.addCollection("textByMonth", groupByMonth("text"));

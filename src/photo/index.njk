@@ -10,7 +10,7 @@ override:tags: []
     <article class="photo">
       <div class="button">
         <a href="{{ photo.page.url }}">
-          <img src="{{ photo.data.imageUrl }}" alt="{{ photo.data.alt }}" />
+          {% image photo.data.responsive, photo.data.alt, "(max-width: 700px) 50vw, 33vw" %}
           <h1>{{ photo.data.title }}</h1>
           <span class="number">{{ photo.data.number | shortNumber }}</span><span class="date">{{ photo.page.date | shortDate }}</span>
         </a>
