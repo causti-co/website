@@ -27,8 +27,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-
+    - uses: actions/checkout@v4
+      with:
+        repository: causti-co/causti-co.github.io
+        ssh-key: '${{ secrets.DEPLOY_KEY }}'
     - uses: actions/download-artifact@v4
       with:
         name: dist-bundle
-    - run: ls -R
+    - run: |
+        git config --global user.name "${{github.event.commits[0].author.name}}"
+        git config --global user.email "${{github.event.commits[0].author.email}}"
+        git add .
+        git commit -am "${{github.event.commits[0].message}}"
+        git push
