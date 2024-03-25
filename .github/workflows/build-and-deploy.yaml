@@ -3,8 +3,8 @@ name: build and deploy
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    paths-ignore:
+    - docs/**
 
 jobs:
   build:
@@ -34,9 +34,10 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: dist-bundle
-    - run: |
+    - name: git config
+      run: |
         git config --global user.name "${{github.event.commits[0].author.name}}"
         git config --global user.email "${{github.event.commits[0].author.email}}"
-        git add .
-        git commit -am "${{github.event.commits[0].message}}"
-        git push
+    - run: git add .
+    - run: git commit -am "${{github.event.commits[0].message}}"
+    - run: git push
