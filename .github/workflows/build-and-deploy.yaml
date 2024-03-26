@@ -36,9 +36,9 @@ jobs:
         name: dist-bundle
     - name: git config
       run: |
-        git config --global user.name "${{github.event.commits[0].author.name}}"
-        git config --global user.email "${{github.event.commits[0].author.email}}"
+        git config --global user.name "${{github.event.head_commit.author.name}}"
+        git config --global user.email "${{github.event.head_commit.author.email}}"
     - run: git add .
-    - run: git commit -am "${{github.event.commits[0].message}}"
+    - run: git commit -am "${{github.event.head_commit.message}}"
       continue-on-error: true
     - run: git push
