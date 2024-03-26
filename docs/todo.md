@@ -14,6 +14,8 @@ Design
 
 Performance
   Minify CSS
+    Or just skip this until we do SASS, since that minifies by itself.
+    Actually, skip it. If we _really_ want to minify CSS just install the SASS plugin and rename the file.
   Revise img `sizes` and webp widths
   
 
@@ -22,4 +24,4 @@ Chores
   Keywords meta-tag?
   sitemap.xml
   RSS feed
-  consider hosting somewhere else so i can get some non-cookie-requiring statistics?
+  Consider hosting somewhere else so i can get some non-cookie-requiring statistics?
