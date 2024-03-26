@@ -40,4 +40,5 @@ jobs:
         git config --global user.email "${{github.event.commits[0].author.email}}"
     - run: git add .
     - run: git commit -am "${{github.event.commits[0].message}}"
+      continue-on-error: true
     - run: git push
