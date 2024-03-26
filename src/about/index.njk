@@ -3,7 +3,7 @@ layout: index.njk
 title: about
 ---
 <article class="about">
-  <h1>ab&nbsp;&nbsp;<br/>out</h1>
+  <h1><span class="small">updated {{ commit.date | shortDate }}&nbsp;&nbsp;</span>ab&nbsp;&nbsp;<br/><span class="small">commit {{ commit.hash }}</span>&nbsp;out</h1>
   <section class="content">
     <p>
       hey, it's a <u class="large">personal website</u>!
