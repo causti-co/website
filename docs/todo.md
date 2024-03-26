@@ -1,10 +1,3 @@
-Open Graph headers for the different content pages
-  Text
-  Photo
-
-  Also get the Last Photo as the OG photo for non-photos...
-  ... and test how this whole thing works, before actually bothering with it, tbh...
-
 Make Photo in Home Page link to the respective photo?
   Eventually redesign home to include a feed/latest updates?
 
