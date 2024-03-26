@@ -1,22 +1,25 @@
-Make Photo in Home Page link to the respective photo?
-  Eventually redesign home to include a feed/latest updates?
-
-performance optimization
-  minify css
-  meta description
-  optimize image breakpoints and sizes logic
+Design
+  Home Page
+    Include latest updates
   
-  mobile
-    restore viewport w/ width=device-width
-    media queries and make it work on small screens.........
-      this would be a legitimate reason to migrate the css to Sass 
-        https://github.com/kentaroi/eleventy-sass
-          rather than
-            https://www.11ty.dev/docs/languages/custom/
+  Migrate font sizes from `em` to `rem`
+  
+  Responsive Design for Mobile
+    Refactor CSS into SASS
+      https://github.com/kentaroi/eleventy-sass
+    Viewport meta-tag
+  
+  Easter Eggs...
 
-Sitemap.xml
-RSS feed
 
-Easter Eggs...
+Performance
+  Minify CSS
+  Revise img `sizes` and webp widths
+  
 
-consider hosting somewhere else so i can get some non-cookie-requiring statistics?
+Chores
+  Description meta-tag
+  Keywords meta-tag?
+  sitemap.xml
+  RSS feed
+  consider hosting somewhere else so i can get some non-cookie-requiring statistics?
