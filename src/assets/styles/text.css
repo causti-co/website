@@ -47,3 +47,28 @@ main > article.text.single > .content h4 {
 main > article.text.single > .content p {
   font-size: 1.2em;
 }
+
+main > article.text.single > .content table {
+  margin: 0 auto;
+  table-layout: fixed;
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  border-collapse: collapse;
+}
+
+main > article.text.single > .content table thead th,
+main > article.text.single > .content table tbody td {
+  padding: 4px 8px;
+}
+
+main > article.text.single > .content table thead th {
+  background-color: gainsboro;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+main > article.text.single > .content table tbody td {
+  border-bottom: 2px dashed black;
+  border-right: 2px solid black;
+}
