@@ -8,7 +8,13 @@ Design
     Refactor CSS into SASS
       https://github.com/kentaroi/eleventy-sass
     Viewport meta-tag
-  
+
+  Gallery navigation
+    i.e., previous/next photo buttons
+
+  "New content" indicator, somehow?
+    or maybe just freshness?
+
   Easter Eggs...
 
 

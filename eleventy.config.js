@@ -69,12 +69,19 @@ module.exports = function(eleventyConfig) {
         "focalLength": "FocalLength.description",
         "lens": "Lens.description"
       };
+      const altModels = {
+        "EOS DIGITAL REBEL XSi": "450D"
+      };
 
       let exif = _.mapValues(config, tag => _.get(tags, tag));
 
       // Canon repeats the Make in the Model
       if (exif.model && exif.make && exif.model.startsWith(exif.make))
         exif.model = exif.model.slice(exif.make.length + 1);
+
+      // Use alternative Models
+      if (exif.model && exif.model in altModels)
+        exif.model = altModels[exif.model];
       
       // Remove trailing `f/` to get fstop value
       if (exif.aperture)
