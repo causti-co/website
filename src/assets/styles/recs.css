@@ -36,8 +36,8 @@ main > article.recs.list > .content .month > ul > li img {
   box-shadow: 2px 2px hotpink;
 }
 
-main > article.recs.list > .content .month > ul > li a {
-  display: block;
+main > article.recs.list > .content .month > ul > li a:first-of-type {
+  display: inline-block;
   font-weight: bold;
   color: black;
   text-decoration: underline;
@@ -45,6 +45,6 @@ main > article.recs.list > .content .month > ul > li a {
   margin-bottom: 4px;
 }
 
-main > article.recs.list > .content .month > ul > li a:focus {
+main > article.recs.list > .content .month > ul > li a:first-of-type:focus {
   text-decoration-color: white;
 }
