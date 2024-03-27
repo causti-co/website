@@ -27,12 +27,11 @@ main > article.recs.list > .content .month > ul > li p {
 }
 
 main > article.recs.list > .content .month > ul > li img {
-  max-width: 96px;
-  max-height: 96px;
+  max-width: 128px;
+  max-height: 128px;
   border: 2px solid black;
   float: left;
-  margin: 4px 8px 8px 0;
-  box-sizing: border-box;
+  margin: 4px 16px 8px 0;
   box-shadow: 2px 2px hotpink;
 }
 

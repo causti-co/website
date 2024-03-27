@@ -17,7 +17,7 @@ override:tags: []
           <p>
             <a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer">{{ rec.data.title }}</a><br />
             {% if rec.data.imageUrl %}<a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1"><img src="{{ rec.data.imageUrl }}" alt="" /></a>{% endif %}
-            {{ rec.data.description }}
+            {{ rec.data.description | nl2br | safe }}
           </p>
         </li>
       {%- endfor -%}
