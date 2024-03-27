@@ -16,7 +16,6 @@ Performance
   Minify CSS
     Or just skip this until we do SASS, since that minifies by itself.
     Actually, skip it. If we _really_ want to minify CSS just install the SASS plugin and rename the file.
-  Revise img `sizes` and webp widths
   
 
 Chores

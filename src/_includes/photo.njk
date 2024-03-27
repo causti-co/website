@@ -7,7 +7,8 @@ layout: index.njk
     <article class="photo">
       <div class="button">
         <a>
-          {% image responsive, alt, "(max-width: 600px) 50vw, 33vw" %}
+          {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
+          {% image responsive, alt, "calc(100vw - 368px)" %}
           <h1>{{ title }}</h1>
           <span class="camera">{{ exif.make }} {{ exif.model }}</span><span class="specs">{{ exif.focalLength }}&nbsp;&nbsp;&nbsp;<i>f</i>/{{ exif.fstop }}&nbsp;&nbsp;&nbsp;{{ exif.exposure }}&nbsp;&nbsp;&nbsp;ISO{{ exif.iso }}</span>
         </a>
