@@ -10,7 +10,10 @@ siteName: causti · co
     <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
     <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
     <link rel="canonical" href="https://causti.co{{ page.url }}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
     <meta name="generator" content="{{ eleventy.generator }}" />
+    {#- <meta name="description" content="" /> #}
     {#- <meta name="viewport" content="width=device-width" /> #}
     <meta property="og:site_name" content="{{ siteName }}" />
     <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ siteName }}{% endif %}" />
