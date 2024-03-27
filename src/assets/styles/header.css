@@ -6,9 +6,20 @@ header h1 {
   margin: 0;
   font-size: 4em;
   text-transform: uppercase;
+  display: inline;
+  padding: 0 4px;
+  margin-left: -4px;
 }
 
-header h1 > .dot {
+header h1 a {
+  text-decoration: none;
+}
+
+header h1 a:focus {
+  background-color: inherit;
+}
+
+header h1 .dot {
   height: 24px;
   vertical-align: middle;
   margin-top: -10px;
