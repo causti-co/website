@@ -57,6 +57,10 @@ module.exports = function(eleventyConfig) {
         responsive = stats.webp;
       }
 
+      const exifDate = value => {
+        const [ date, time ] = value.split(' ');
+        return new Date(`${date.replaceAll(':', '-')}T${time}.000Z`);
+      };
       const tags = await ExifReader.load(file);
       const config = {
         "height": "Image Height.value",
@@ -67,7 +71,9 @@ module.exports = function(eleventyConfig) {
         "aperture": "FNumber.description",
         "iso": "ISOSpeedRatings.value",
         "focalLength": "FocalLength.description",
-        "lens": "Lens.description"
+        "lens": "Lens.description",
+        "date": "DateTime.description",
+        "originalDate": "DateTimeOriginal.description"
       };
       const altModels = {
         "EOS DIGITAL REBEL XSi": "450D"
@@ -82,12 +88,16 @@ module.exports = function(eleventyConfig) {
       // Use alternative Models
       if (exif.model && exif.model in altModels)
         exif.model = altModels[exif.model];
-      
+
       // Remove trailing `f/` to get fstop value
       if (exif.aperture)
         exif.fstop = exif.aperture.slice("f/".length);
       else
         exif.fstop = undefined;
+
+      // Parse exif dates
+      if (exif.date) exif.date = exifDate(exif.date);
+      if (exif.originalDate) exif.originalDate = exifDate(exif.originalDate);
 
       return {
         exif,
