@@ -169,3 +169,6 @@ remove yourself from the discussion, avoid dunks, you do not need to take part o
 obligatory "how this blog works" blogpost
 
 https://twitter.com/search?q=from%3Amvaldesdeleon%20until%3A2023-06-22&src=typed_query&f=live
+
+computer art
+  https://digitalartmuseum.org/molnar/computergraphics6070s.html
