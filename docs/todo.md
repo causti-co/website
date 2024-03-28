@@ -17,6 +17,14 @@ Design
 
   Easter Eggs...
 
+  Photo Details page w/ additional information
+    Description
+    exif dates
+
+  Recs List
+    Give it a proper design, stop abusing the Text List design
+    Enable the use of {{ item.content }} from the individual recs, so we can have rich-text descriptions and additional links
+
 
 Performance
   Minify CSS
@@ -25,8 +33,6 @@ Performance
   
 
 Chores
-  Description meta-tag
-  Keywords meta-tag?
   sitemap.xml
   RSS feed
   Consider hosting somewhere else so i can get some non-cookie-requiring statistics?
