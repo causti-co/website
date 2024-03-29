@@ -3,6 +3,7 @@ const _ = require("lodash");
 const ExifReader = require("exifreader");
 const Image = require("@11ty/eleventy-img");
 const eleventySass = require("eleventy-sass");
+const markdownItAttrs = require("markdown-it-attrs");
 
 const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
 
@@ -22,6 +23,7 @@ const groupByMonth = tag => collection => {
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySass);
+  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAttrs));
 
   // Ignore `_drafts`
   eleventyConfig.ignores.add("**/_drafts/**");
