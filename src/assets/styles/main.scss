@@ -1,16 +1,12 @@
----
-permalink: assets/styles/main.css
----
-@charset "utf-8";
-{% include "./fonts.css" %}
-{% include "./links.css" %}
-{% include "./home.css" %}
-{% include "./text.css" %}
-{% include "./photo.css" %}
-{% include "./recs.css" %}
-{% include "./about.css" %}
-{% include "./header.css" %}
-{% include "./footer.css" %}
+@use "./fonts.css";
+@use "./links.css";
+@use "./home.css";
+@use "./text.css";
+@use "./photo.css";
+@use "./recs.css";
+@use "./about.css";
+@use "./header.css";
+@use "./footer.css";
 
 html {
   font-family: "Berkeley Mono", monospace;

@@ -2,6 +2,7 @@ const path = require("node:path");
 const _ = require("lodash");
 const ExifReader = require("exifreader");
 const Image = require("@11ty/eleventy-img");
+const eleventySass = require("eleventy-sass");
 
 const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
 
@@ -20,6 +21,8 @@ const groupByMonth = tag => collection => {
 };
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(eleventySass);
+
   // Ignore `_drafts`
   eleventyConfig.ignores.add("**/_drafts/**");
 
