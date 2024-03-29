@@ -1,34 +1,5 @@
 @use "settings" as *;
 
-main > article.photo.single > .content {
-  height: $content-height;
-  min-height: 640px;
-
-  > .photo {
-    height: 100%;
-
-    .button > a {
-      display: flex;
-      flex-flow: column nowrap;
-
-      img {
-        height: 0;
-        min-height: 240px;
-        flex-grow: 1;
-        background-color: $gray-60;
-        object-fit: contain;
-      }
-      
-      h3 {
-        margin-bottom: 48px;
-        padding-top: 4px;
-        font-size: 1.2em;
-        font-weight: bold;
-      }
-    }
-  }
-}
-
 main > article.photo.list > .content {
   display: grid;
   gap: 32px;
@@ -60,10 +31,42 @@ main > article.photo.list > .content {
   }
 }
 
+main > article.photo.single > .content {
+  height: $content-height;
+  min-height: 640px;
+
+  > .photo {
+    height: 100%;
+
+    .button > .content {
+      display: flex;
+      flex-flow: column nowrap;
+
+      img {
+        height: 0;
+        min-height: 240px;
+        flex-grow: 1;
+        background-color: $gray-60;
+        object-fit: contain;
+      }
+      
+      h3 {
+        padding-top: 4px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      p {
+        margin: 4px 4px 0;
+      }
+    }
+  }
+}
+
 main > article.photo > .content > .photo .button {
   height: 100%;
 
-  > a {
+  > .content {
     display: block;
     position: relative;
     height: 100%;
@@ -71,8 +74,8 @@ main > article.photo > .content > .photo .button {
     background-color: $gray-05;
     @include border();
     @include box-shadow();
-    text-decoration: underline;
-    text-decoration-color: $accent-dark;
+    box-sizing: border-box;
+    padding-bottom: 32px;
 
     > img {
       display: block;
@@ -82,10 +85,12 @@ main > article.photo > .content > .photo .button {
     }
 
     > h3 {
-      margin: 0 0 32px;
+      margin: 0;
       padding: 0 4px;
       border-top: (3 * $default-border-width) double $default-border-color;
       font-weight: normal;
+      text-decoration: underline;
+      text-decoration-color: $accent-dark;
     }
 
     .number, .camera {
