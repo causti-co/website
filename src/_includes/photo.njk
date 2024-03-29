@@ -7,6 +7,7 @@ layout: index.njk
     <article class="photo">
       <div class="button">
         <div class="content">
+          <a class="full-screen" href="#full-screen">↗</a>
           {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
           {% image responsive, alt, "calc(100vw - 368px)" %}
           <h3>{{ title }}</h3>
@@ -15,5 +16,9 @@ layout: index.njk
         </div>
       </div>
     </article>
+  </section>
+  <section id="full-screen">
+    <a class="close" href="#">↙</a>
+    {% image responsive, alt, "100vw" %}
   </section>
 </article>

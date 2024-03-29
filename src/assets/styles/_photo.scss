@@ -40,7 +40,31 @@ main > article.photo.single > .content {
 
     .button > .content {
       display: flex;
+      position: relative;
       flex-flow: column nowrap;
+
+      > .full-screen {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 32px;
+        width: 32px;
+        padding-left: 2px;
+        box-sizing: border-box;
+        color: $black;
+        background-color: $accent-dark;
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 26px;
+        text-align: center;
+        text-decoration: none;
+        opacity: 0.5;
+
+        &:hover, &:focus {
+          color: $white;
+          opacity: 1;
+        }
+      }
 
       img {
         height: 0;
@@ -60,6 +84,49 @@ main > article.photo.single > .content {
         margin: 4px 4px 0;
       }
     }
+  }
+}
+
+main > article.photo.single > #full-screen {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &:target {
+    display: block;
+  }
+
+  > .close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 32px;
+    width: 32px;
+    color: $black;
+    background-color: $accent-dark;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 32px;
+    text-align: center;
+    text-decoration: none;
+    opacity: 0.5;
+
+    &:hover, &:focus {
+      color: $white;
+      opacity: 1;
+    }
+  }
+
+  > img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: $gray-60;
+    object-fit: contain;
   }
 }
 
