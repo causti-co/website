@@ -13,15 +13,15 @@ siteName: causti · co
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="Martín Valdés de León" />
     <meta name="generator" content="{{ eleventy.generator }}" />
-    {#- <meta name="description" content="" /> #}
+    {#- <meta name="description" content="" /> -#}
     {#- <meta name="viewport" content="width=device-width" /> #}
     <meta property="og:site_name" content="{{ siteName }}" />
     <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ siteName }}{% endif %}" />
     {#- <meta property="og:description" content="" /> #}
     <meta property="og:type" content="{{ og.type }}" />
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
-    {# Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
-    {# To support using the last photo as og.image, we make it the default here. #}
+    {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
+    {#- To support using the last photo as og.image, we make it the default here. #}
     {%- set photo = collections.photo | last -%}
     {%- set largest = photo.data.responsive | last %}
     <meta property="og:image" content="https://causti.co{% if og.image.url %}{{ og.image.url }}{% else %}{{ largest.url}}{% endif %}" />
