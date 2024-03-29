@@ -1,0 +1,44 @@
+@use "settings" as *;
+
+// Module Dimensions
+$extra-link-padding: 4px;
+
+header {
+  padding: $default-padding-size;
+
+  h1 {
+    display: inline;
+    margin: 0 {
+      // Offset the header to keep alignment
+      left: -$extra-link-padding;
+    }
+    font-size: 4em;
+    text-transform: uppercase;
+
+    a {
+      padding: 0 $extra-link-padding;
+      text-decoration: none;
+
+      &:focus {
+        background-color: inherit;
+      }
+    }
+
+    .dot {
+      height: 24px;
+      margin-top: -10px;
+      vertical-align: middle;
+      animation: rotation 4s infinite reverse linear;
+      cursor: help;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

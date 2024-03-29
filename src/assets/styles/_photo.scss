@@ -1,0 +1,104 @@
+@use "settings" as *;
+
+main > article.photo.single > .content {
+  height: $content-height;
+  min-height: 640px;
+
+  > .photo {
+    height: 100%;
+
+    .button > a {
+      display: flex;
+      flex-flow: column nowrap;
+
+      img {
+        height: 0;
+        min-height: 240px;
+        flex-grow: 1;
+        background-color: $gray-60;
+        object-fit: contain;
+      }
+      
+      h1 {
+        margin-bottom: 48px;
+        padding-top: 4px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+main > article.photo.list > .content {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  > .photo .button {
+    > a:focus {
+      background-color: $accent-light;
+      text-decoration-color: $white;
+    }
+
+    > a:active {
+      top: 0;
+      left: 0;
+      background-color: $accent-dark;
+      @include box-shadow();
+      text-decoration-color: $white;
+    }
+
+    > a > img {
+      height: 240px;
+    }
+
+    &:hover > a {
+      top: -2 * $default-box-shadow-size;
+      left: -2 * $default-box-shadow-size;
+      @include box-shadow(3 * $default-box-shadow-size);
+    }
+  }
+}
+
+main > article.photo > .content > .photo .button {
+  height: 100%;
+
+  > a {
+    display: block;
+    position: relative;
+    height: 100%;
+    color: $black;
+    background-color: $gray-05;
+    @include border();
+    @include box-shadow();
+    text-decoration: underline;
+    text-decoration-color: $accent-dark;
+
+    > img {
+      display: block;
+      width: 100%;
+      background-color: $gray-05;
+      object-fit: cover;
+    }
+
+    > h1 {
+      margin: 0 0 32px;
+      padding: 0 4px;
+      border-top: (3 * $default-border-width) double $default-border-color;
+      font-weight: normal;
+    }
+
+    .number, .camera {
+      position: absolute;
+      left: 4px;
+      bottom: 4px;
+      font-weight: bold;
+    }
+
+    .date, .specs {
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+    }
+  }
+}

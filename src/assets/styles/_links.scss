@@ -1,0 +1,23 @@
+@use "settings" as *;
+
+:link {
+  color: $accent-dark;
+}
+
+:visited {
+  color: inherit;
+  text-decoration-color: $accent-dark;
+}
+
+:focus {
+  color: $white;
+  background-color: $accent-dark;
+  outline: none;
+}
+
+:visited:focus {
+  color: inherit;
+  background-color: $accent-dark;
+  text-decoration-color: $white;
+  outline: none;
+}

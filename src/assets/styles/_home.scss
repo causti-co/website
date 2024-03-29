@@ -1,0 +1,14 @@
+@use "settings" as *;
+
+main > article.home > .content {
+  height: $content-height;
+
+  img {
+    height: 100%;
+    width: 100%;
+    @include border();
+    box-sizing: border-box;
+    @include box-shadow(2 * $default-box-shadow-size, $accent-secondary);
+    object-fit: cover;
+  }
+}

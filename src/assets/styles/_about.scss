@@ -1,0 +1,23 @@
+@use "settings" as *;
+
+main > article.about > .content p {
+  font-size: 1.5em;
+
+  b {
+    padding: 4px 6px;
+    color: $gray-05;
+    background-color: $black;
+    font-weight: normal;
+    font-size: 1.1em;
+  }
+
+  u {
+    text-decoration-style: wavy;
+    text-decoration-color: $accent-dark;
+  }
+
+  .large {
+    color: $black;
+    font-size: 1.2em;
+  }
+}

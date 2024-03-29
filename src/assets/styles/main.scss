@@ -1,72 +1,86 @@
-@use "./fonts.css";
-@use "./links.css";
-@use "./home.css";
-@use "./text.css";
-@use "./photo.css";
-@use "./recs.css";
-@use "./about.css";
-@use "./header.css";
-@use "./footer.css";
+@use "fonts";
+@use "links";
+@use "header";
+@use "footer";
+@use "home";
+@use "text";
+@use "photo";
+@use "recs";
+@use "about";
+@use "_settings" as *;
+
+// Module Colors
+$margin-color: $gray-10;
+$header-background-color: $gray-25;
+$main-background-color: $gray-25;
+// Module Dimensions
+$article-spacing-left: 160px;
+$article-spacing-right: 180px;
 
 html {
-  font-family: "Berkeley Mono", monospace;
-  background-color: gainsboro;
-  padding: 8px;
+  padding: $main-margin-size;
   box-sizing: border-box;
+  font-family: "Berkeley Mono", monospace;
+  background-color: $margin-color;
 }
 
 body {
   margin: 0;
-  min-height: calc(100vh - 16px);
-  border: 2px solid black;
+  min-height: calc(100vh - 2 * $main-margin-size);
+  @include border;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
-  background-color: silver;
+  background-color: $main-background-color;
   overscroll-behavior: none;
 }
 
 header {
-  height: 72px;
+  height: $header-height;
+  background-color: $header-background-color;
 }
 
 main {
+  position: relative;
+  padding: $default-padding-size $article-spacing-right 32px 0;
+  @include border;
+  border: {
+    left-width: 0;
+    right-width: 0;
+  }
   flex-grow: 1;
-  position: relative;
-  border: solid black;
-  border-width: 2px 0;
-  padding: 16px 180px 32px 8px;
-}
 
-main > article {
-  padding-left: 160px;
-}
+  > article {
+    padding-left: $article-spacing-left;
 
-main > article > h1 {
-  position: absolute;
-  left: 8px;
-  top: 32px;
-  margin: 0;
-  font-size: 4em;
-  line-height: 1em;
-  text-align: right;
-  writing-mode: vertical-rl;
-  transform: rotate(-180deg);
-}
+    > h1 {
+      position: absolute;
+      left: 8px;
+      margin: 0 {
+        top: 8px;
+      }
+      font-size: 4em;
+      line-height: 1em;
+      text-align: right;
+      writing-mode: vertical-rl;
+      transform: rotate(-180deg);
 
-main > article > h1 .small {
-  font-size: 0.5em;
-  line-height: 0.5em;
-  vertical-align: bottom;
-  display: inline-block;
-  position: relative;
-  left: 8px;
+      .small {
+        position: relative;
+        left: 8px;
+        display: inline-block;
+        font-size: 0.5em;
+        line-height: 0.5em;
+        vertical-align: bottom;
+      }
+    }
+  }
 }
 
 footer {
   position: fixed;
   bottom: 0;
-  left: 8px;
-  width: calc(100% - 16px);
-  background-color: gainsboro;
+  left: $main-margin-size;
+  width: calc(100% - 2 * $main-margin-size);
+  background-color: $margin-color;
 }

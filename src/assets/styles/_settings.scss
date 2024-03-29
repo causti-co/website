@@ -1,0 +1,41 @@
+@use 'sass:color';
+
+// Color Definitions
+$black: black;
+$gray-90: color.scale($black, $lightness: 10%);
+$gray-80: color.scale($black, $lightness: 20%);
+$gray-70: color.scale($black, $lightness: 30%);
+$gray-60: color.scale($black, $lightness: 40%);
+$gray-50: color.scale($black, $lightness: 50%);
+$gray-40: color.scale($black, $lightness: 60%);
+$gray-30: color.scale($black, $lightness: 70%);
+$gray-25: color.scale($black, $lightness: 75%);
+$gray-20: color.scale($black, $lightness: 80%);
+$gray-15: color.scale($black, $lightness: 85%);
+$gray-10: color.scale($black, $lightness: 90%);
+$gray-05: color.scale($black, $lightness: 95%);
+$white: white;
+$accent-light: orange;
+$accent-dark: darkorange;
+$accent-secondary: hotpink;
+
+// Settings
+$main-margin-size: 8px;
+$default-padding-size: 16px;
+$header-height: 72px;
+$footer-height: 32px; // Used to calc full-height content, but not for the actual footer
+$default-border-color: $black;
+$default-border-width: 2px;
+$default-box-shadow-color: $black;
+$default-box-shadow-size: 2px;
+
+// Computed content height
+$content-height: calc(100vh - $header-height - $footer-height - 2 * $main-margin-size - 4 * $default-padding-size - 4 * $default-border-width);
+
+@mixin border($width: 2px, $style: solid) {
+  border: $width $style $default-border-color;
+}
+
+@mixin box-shadow($size: $default-box-shadow-size, $color: $default-box-shadow-color) {
+  box-shadow: $size $size $color;
+}

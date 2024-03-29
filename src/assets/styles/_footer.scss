@@ -1,0 +1,99 @@
+@use "settings" as *;
+
+footer nav {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: $gray-15;
+  @include border();
+  border-bottom-width: 0;
+
+  > ul {
+    margin: 0;
+    padding: $default-padding-size;
+    list-style: none;
+
+    > li {
+      padding: 0;
+      margin-bottom: $default-padding-size;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .button {
+        > a {
+          display: block;
+          position: relative;
+          padding: 2px 16px 2px 32px;
+          border: 1px solid $black;
+          color: $black;
+          background-color: $gray-05;
+          @include box-shadow();
+          font-size: 1.5em;
+          text-align: right;
+          text-decoration: underline;
+          text-decoration-color: $accent-dark;
+
+          &:focus {
+            color: $white;
+            background-color: $gray-30;
+            text-decoration-color: $accent-dark;
+          }
+
+          &:active {
+            top: 0;
+            left: 0;
+            color: $white;
+            background-color: $gray-50;
+            @include box-shadow();
+            text-decoration-color: $accent-dark;
+          }
+        }
+
+        &:hover > a {
+          top: -2 * $default-box-shadow-size;
+          left: -2 * $default-box-shadow-size;
+          @include box-shadow(3 * $default-box-shadow-size);
+        }
+
+        &.here > a {
+          top: $default-box-shadow-size;
+          left: $default-box-shadow-size;
+          color: $white;
+          background-color: $gray-50;
+          @include box-shadow(-1 * $default-box-shadow-size);
+        }
+
+        &.here:hover > a {
+          top: 3 * $default-box-shadow-size;
+          left: 3 * $default-box-shadow-size;
+          @include box-shadow(-3 * $default-box-shadow-size);
+        }
+      }
+    }
+  }
+}
+
+footer > .content {
+  padding: 4px;
+  margin-bottom: $main-margin-size;
+  @include border();
+  background-color: $gray-05;
+  font-size: 0.75em;
+  text-align: center;
+  
+  p {
+    margin: 0;
+  }
+
+  .cc .icon {
+    height: 16px;
+    margin-left: 4px;
+    vertical-align: middle;
+
+    &:first-of-type {
+      margin-left: 8px;
+    }
+  }
+}
