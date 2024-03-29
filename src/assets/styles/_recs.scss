@@ -17,36 +17,46 @@ main > article.recs.list > .content .month {
       align-items: baseline;
       font-size: 1.2em;
 
-      .number {
+      > .number {
         margin-right: 8px;
         font-size: 0.75em;
         font-weight: bold;
       }
 
-      p {
-        margin: 0;
-      }
-
-      img {
-        max-width: 128px;
-        max-height: 128px;
-        margin: 4px 16px 8px 0;
-        float: left;
-        @include border();
-        @include box-shadow($color: $accent-secondary);
-      }
-
-      a:first-of-type {
-        display: inline-block;
-        margin-bottom: 4px;
-        color: $black;
-        font-weight: bold;
-        text-decoration: underline;
-        text-decoration-color: $accent-dark;
-      }
-
-      a:first-of-type:focus {
-        text-decoration-color: $white;
+      > .rec {
+        h3 {
+          display: inline-block;
+          margin: 0 {
+            bottom: 4px;
+          }
+          color: $black;
+          font-weight: bold;
+          text-decoration: underline;
+          text-decoration-color: $accent-dark;
+        }
+  
+        a:focus h3 {
+          text-decoration-color: $white;
+        }
+  
+        img {
+          max-width: 128px;
+          max-height: 128px;
+          margin: 4px 16px 8px 0;
+          float: left;
+          @include border();
+          @include box-shadow($color: $accent-secondary);
+        }
+  
+        p {
+          margin: 0 {
+            bottom: 16px;
+          }
+  
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
       }
     }
   }

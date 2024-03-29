@@ -7,22 +7,22 @@ override:tags: []
 <article class="recs list">
   <h1>re<br/>cs&nbsp;</h1>
   <section class="content">
-  {%- for month, recs in collections.recsByMonth -%}
+  {%- for month, recs in collections.recsByMonth %}
     <section class="month">
       <h2>{{ month }}</h2>
       <ul>
-      {%- for rec in recs -%}
+      {%- for rec in recs %}
         <li>
           <span class="number">{{ rec.data.number | shortNumber }}</span>
-          <p>
-            <a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer">{{ rec.data.title }}</a><br />
+          <article class="rec">
+            <a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer"><h3>{{ rec.data.title }}</h3></a></br>
             {% if rec.data.imageUrl %}<a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1"><img src="{{ rec.data.imageUrl }}" alt="" /></a>{% endif %}
-            {{ rec.data.description | nl2br | safe }}
-          </p>
+            {{ rec.content | safe }}
+          </article>
         </li>
-      {%- endfor -%}
+      {%- endfor %}
       </ul>
     </section>
-  {%- endfor -%}
+  {%- endfor %}
   </section>
 </article>
