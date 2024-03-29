@@ -11,7 +11,7 @@ layout: index.njk
           {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
           {% image responsive, alt, "calc(100vw - 368px)" %}
           <h3>{{ title }}</h3>
-          {{ content | safe }}
+          {{ content | safe | indent(10) -}}
           <span class="camera">{{ exif.make | capitalize }} {{ exif.model }}</span><span class="specs">{% if exif.focalLength %}{{ exif.focalLength }}{% else %}?? mm{% endif %}&nbsp;&nbsp;&nbsp;<i>f</i>/{% if exif.fstop %}{{ exif.fstop }}{% else %}??{% endif %}&nbsp;&nbsp;&nbsp;{% if exif.exposure %}{{ exif.exposure }}s{% else %}1/???s{% endif %}&nbsp;&nbsp;&nbsp;ISO·{% if exif.iso %}{{ exif.iso }}{% else %}???{% endif %}</span>
         </div>
       </div>

@@ -42,6 +42,8 @@ main > article.photo.single > .content {
       display: flex;
       position: relative;
       flex-flow: column nowrap;
+      // Hide overflow until we have a small screen design
+      overflow: hidden;
 
       > .full-screen {
         position: absolute;
@@ -60,7 +62,7 @@ main > article.photo.single > .content {
         line-height: 26px;
         text-align: center;
         text-decoration: none;
-        opacity: 0.5;
+        opacity: 0.4;
 
         &:hover, &:focus {
           color: $gray-05;
@@ -117,7 +119,7 @@ main > article.photo.single > #full-screen {
     line-height: 30px;
     text-align: center;
     text-decoration: none;
-    opacity: 0.5;
+    opacity: 0.4;
 
     &:hover, &:focus {
       color: $gray-05;
