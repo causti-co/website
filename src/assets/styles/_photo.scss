@@ -45,11 +45,13 @@ main > article.photo.single > .content {
 
       > .full-screen {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 2px;
+        right: 4px;
         height: 32px;
         width: 32px;
         padding-left: 2px;
+        @include border(1px);
+        @include box-shadow();
         box-sizing: border-box;
         color: $black;
         background-color: $accent-dark;
@@ -61,7 +63,7 @@ main > article.photo.single > .content {
         opacity: 0.5;
 
         &:hover, &:focus {
-          color: $white;
+          color: $gray-05;
           opacity: 1;
         }
       }
@@ -76,8 +78,7 @@ main > article.photo.single > .content {
       
       h3 {
         padding-top: 4px;
-        font-size: 1.2em;
-        font-weight: bold;
+        font-size: 1.5em;
       }
 
       p {
@@ -102,21 +103,24 @@ main > article.photo.single > #full-screen {
 
   > .close {
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 8px;
     height: 32px;
     width: 32px;
     color: $black;
     background-color: $accent-dark;
+    @include border(1px);
+    @include box-shadow($color: $gray-05);
+    box-sizing: border-box;
     font-size: 2em;
     font-weight: bold;
-    line-height: 32px;
+    line-height: 30px;
     text-align: center;
     text-decoration: none;
     opacity: 0.5;
 
     &:hover, &:focus {
-      color: $white;
+      color: $gray-05;
       opacity: 1;
     }
   }
@@ -125,7 +129,7 @@ main > article.photo.single > #full-screen {
     display: block;
     height: 100%;
     width: 100%;
-    background-color: $gray-60;
+    background-color: $gray-90;
     object-fit: contain;
   }
 }
@@ -142,7 +146,7 @@ main > article.photo > .content > .photo .button {
     @include border();
     @include box-shadow();
     box-sizing: border-box;
-    padding-bottom: 32px;
+    padding-bottom: 42px;
 
     > img {
       display: block;
@@ -155,7 +159,6 @@ main > article.photo > .content > .photo .button {
       margin: 0;
       padding: 0 4px;
       border-top: (3 * $default-border-width) double $default-border-color;
-      font-weight: normal;
       text-decoration: underline;
       text-decoration-color: $accent-dark;
     }

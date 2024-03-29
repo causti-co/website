@@ -32,8 +32,8 @@ $default-box-shadow-size: 2px;
 // Computed content height
 $content-height: calc(100vh - $header-height - $footer-height - 2 * $main-margin-size - 4 * $default-padding-size - 4 * $default-border-width);
 
-@mixin border($width: 2px, $style: solid) {
-  border: $width $style $default-border-color;
+@mixin border($width: 2px, $style: solid, $color: $default-border-color) {
+  border: $width $style $color;
 }
 
 @mixin box-shadow($size: $default-box-shadow-size, $color: $default-box-shadow-color) {
