@@ -34,4 +34,4 @@ For the moment you'll have to take a look around and figure how things work. I'l
 
 ### Legal
 
-causti • co © 2024 by Martín Valdés de León. Website content (`src/**/*.md`, `src/photo/**/*.{jpg,jpeg,webp}`) is licensed under CC BY-NC-ND 4.0. Remaining content is licensed under CC BY-NC-SA-4.0. For additional licensing contact [Martín Valdés de León](mailto:m.valdesdeleon@gmail.com?subject=causti+•+co+licensing)
+causti • co © 2024 by Martín Valdés de León. Website content (`src/**/*.md`, `src/photo/**/*.{jpg,jpeg,webp}`) is licensed under CC BY-NC-ND 4.0. Remaining content is licensed under CC BY-NC-SA-4.0. For additional licensing contact [Martín Valdés de León](mailto:m.valdesdeleon@gmail.com?subject=causti+•+co+licensing).

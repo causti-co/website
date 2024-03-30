@@ -1,0 +1,1 @@
+Please don't. This is a personal project, and I've no intentions on taking external contributions. If you find a bug/issue and want to document it please go ahead, but do not submit any fixes as I will 100% not merge them.
