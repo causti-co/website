@@ -40,8 +40,8 @@ main > article.recs.list > .content .month {
         }
   
         img {
-          max-width: 128px;
-          max-height: 128px;
+          max-width: 160px;
+          max-height: 160px;
           margin: 4px 16px 8px 0;
           float: left;
           @include border();
@@ -52,6 +52,7 @@ main > article.recs.list > .content .month {
           margin: 0 {
             bottom: 16px;
           }
+          line-height: 1.5em;
   
           &:last-of-type {
             margin-bottom: 0;
