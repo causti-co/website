@@ -29,13 +29,36 @@ _There has to be a better way..._
 
 ## ...and make it double
 
-So you learn about `.env` files. You find some convenient library for your either language of choice or JavaScript, add a couple of lines to your project, and that's it. It loads yout `.env` files and the rest just works. Don't forget to add your `.env` to your project's `.gitignore` file, you don't want to be committing any secrets, now, do you?
+So you learn about `.env` files. You find some convenient library for your either language of choice or JavaScript, add a couple of lines to your project, and that's it. It loads your `.env` files and the rest just works. Don't forget to add your `.env` to your project's `.gitignore` file, you don't want to be committing any secrets, now, do you?
 
-And it is quite likely that this is where your story ends, and that you never run into issues with this.
+Let's quickly recap what you just did: 1/ You externalized your application's configuration to environment variabkes. 2/ You've introduced a convenient way to load a configuration file into your environment variables. Do you think you'll be strong enough to restrain yourself from using `.env` files in prod? You won't. The alternative would most likely feel clunky in comparison. Why would you store your configuration somewhere else?
 
-`.env` in prod
-can you be certain your env variables reach your app?
-you just invented configuration files, use a config file instead
-`.env` used properly is quite good, actually. so just do it properly.
+Even if _you_ don't use a `.env` file in production, you're going to want to be **sure** that there is no `.env` file there. Otherwise, you might end up in a situation where you're properly providing a value via environment variables, only to have this value overwriten by a `.env` file that should not be there. And by this point it should be quite clear that what you've done is reinvent configuration files, except you're restricting yourself to key-value pairs, and forcing your configuration through the "API" of environment variables for no good reason.
 
-maybe add a few words about your "runtime environment" somewhere?
+In the process, you've made your application no longer environment-agnostic. You've made it aware of the specific details of your development environment, and potentially carried that into other environments.
+
+## Doing it the right way
+
+I've already mentioned that there are some inherent issues with (ab)using environment variables to configure your applications, and will pick this up again once we're done here, but let's not question that for the moment, and assume that you're using environment variables correctly, and still want a way to conviniently configre your local environment on a per-project level. `.env` files can be great at that. You just gotta approach it correctly.
+
+This is going to be an implementation detail of your environment. Whatever you do, your application should not have to know or care.
+
+### Add `.env` to your global `~/.gitignore` file
+
+You don't want to commit `.env` files, but you also don't want to configure this on a per-project basis. Ignore them globally and forget about them.
+
+### Source `.env` files in your shell
+
+You can load `.env` files by sourcing them in your shell (`source .env`). Even better, you can automate this process with the approrpiate tooling. I use [hyperupcall/autoenv](https://github.com/hyperupcall/autoenv) to automatically load `.env` files when changing directories.
+
+Congratulations! You're now using environment variables correctly. You have a convenient way of configuring your local environment, that does not propagate to other environments. If you want to provide values on a different environment, you'll need to follow that environment's best practices.
+
+## Appendix: Please don't
+
+While I have you here, a couple more things.
+
+You do know that environment variables are global to your process, right? Say you're a node developer. There's nothing that keeps code in `node_modules/nonsuspicious-library/index.js` from peeking at `process.env.AWS_ACCESS_KEY_SECRET`. You don't need to grant it permission. You won't get a notification. It just can. I assume you've already considered this attack vector. Right?
+
+Also, you do know there's a world out there besides key=value pairs, right? If you find yourself doing stuff like `GALACTUS_SERVICE_HOSTNAME`, `GALACTUS_SERVICE_PORT`, `GALACTUS_SERVICE_VERSION`, etc., you probably want to stop what you're doing and go define a configuration file.
+
+It's 2024, let's be honest, you're containerizing and deploying this onto Kubernetes. You do know that Kubernetes lets you inject configuration and secrets into your containers, not only as environment variables, but also as files?
