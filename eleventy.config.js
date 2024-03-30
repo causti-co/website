@@ -25,8 +25,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAttrs));
 
-  // Ignore `_drafts`
-  eleventyConfig.ignores.add("**/_drafts/**");
+  // Ignore `_drafts` in production
+  const { ELEVENTY_ENV } = process.env;
+  
+  if (ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV)) {
+    eleventyConfig.ignores.add("**/_drafts/**");
+  }
 
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/robots.txt");
