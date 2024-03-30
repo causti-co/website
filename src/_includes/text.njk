@@ -6,6 +6,6 @@ layout: index.njk
   <section class="content">
     <h1>{{ title }}</h1>
     <h4>KEYWORDS: {% if keywords.length %}{{ keywords | join(", ") }}{% else %}N/A{% endif %}</h4>
-    {{ content | safe | indent(4) }}
+    {{ content | safeLinks | safe | indent(4) }}
   </section>
 </article>

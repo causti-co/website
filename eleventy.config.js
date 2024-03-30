@@ -132,6 +132,21 @@ module.exports = function(eleventyConfig) {
     return `#${pad3(value)}`;
   });
 
+  const linkStartTag = /<a href="([^"]*)"([^>]*)>/ig;
+  const targetAttr = /target=/ig;
+  const relAttr = /rel=/ig;
+  const origin = "https://causti.co";
+  eleventyConfig.addFilter("safeLinks", value => {
+    return value.replaceAll(linkStartTag, (oldValue, linkUrl, attrs) => {
+      let url = new URL(linkUrl, origin);
+      
+      if (url.origin !== origin)
+        return `<a href="${linkUrl}"${!targetAttr.test(attrs) ? ` target="_blank"` : ""}${!relAttr.test(attrs) ? ` rel="noopener noreferrer"` : ""}${attrs}>`
+      else
+        return oldValue;
+    });
+  });
+
   eleventyConfig.addShortcode("image", (responsive, alt, sizes) => {
     const largest = responsive[responsive.length - 1];
     const srcset = responsive.map(size => size.srcset).join(", ");
