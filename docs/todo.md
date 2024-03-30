@@ -22,6 +22,8 @@ Design
     Then we will probably want to tweak it a bit e.g. to specify starting  line number
     https://www.11ty.dev/docs/plugins/syntaxhighlight/
 
+  A Nunjucks Filter to add the target/rel attributes to <a>
+
 Chores
   sitemap.xml
   RSS feed
