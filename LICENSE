@@ -1,6 +1,6 @@
 causti • co (c) by Martín Valdés de León
 
-Website content (`src/**/*/md`, `src/photo/**.{jpg,jpeg,webp}`) is licensed under a
+Website content (`src/**/*.md`, `src/photo/**/*.{jpg,jpeg,webp}`) is licensed under a
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
 Remaining content is licensed under a
