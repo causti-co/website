@@ -1,6 +1,5 @@
 ---
 date: 2024-04-03
-title: <photo-title>
+title: are you still there?
 alt: <alt-text>
 ---
-`<optional description>`
