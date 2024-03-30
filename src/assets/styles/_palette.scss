@@ -1,0 +1,170 @@
+@use "sass:string";
+@use "sass:math";
+@use "settings" as *;
+
+// Module Dimensions
+$palette-color-size: 32px;
+// Module Settings
+$void-message: "▖▘▝▗▖▘▝▗▖▘▝▗▖▘▝▗▛▜▟▙▛▜▟▙▛▜▟▙▛▜▟▙▞▚▞▚▞▚▞▚▞▚▞▚▞▚▞▚    you've just lost the game        ";
+$void-duration: string.length($void-message) * 0.5s;
+
+.palette {
+  position: fixed;
+  top: $main-margin-size + $header-height + 2 * $default-border-width + 3 * $default-padding-size;
+  right: $main-margin-size + $default-border-width + $default-padding-size;
+  z-index: 1;
+
+  > ul {
+    display: flex;
+    height: $palette-color-size * 10;
+    margin: 0;
+    padding: 0;
+    flex-flow: column wrap-reverse;
+
+    > li {
+      display: block;
+      position: relative;
+      width: $palette-color-size;
+      height: $palette-color-size;
+      @include border();
+      border: {
+        bottom-width: 0;
+        left-width: 0;
+      }
+      box-sizing: border-box;
+
+      &:not(.void)::after {
+        position: absolute;
+        top: 4px;
+        right: $palette-color-size * 2 + 8px;
+        display: none;
+        content: attr(class);
+      }
+
+      &:not(.void):hover::after {
+        display: block;
+      }
+
+      &.break {
+        flex-basis: 100%;
+        width: 0;
+        border: none;
+      }
+
+      &:last-child {
+        border-bottom-width: $default-border-width;
+        height: $palette-color-size + $default-border-width;
+      }
+
+      &:has(+ .break) {
+        border-bottom-width: $default-border-width;
+        height: $palette-color-size + $default-border-width;
+      }
+
+      &.break ~ li {
+        border-left-width: $default-border-width;
+        width: $palette-color-size + $default-border-width;
+
+        &::after {
+          right: $palette-color-size + 8px;
+        }
+
+        &.void {
+          border: {
+            bottom-width: 0;
+            left-width: 0;
+          }
+        
+          line-height: 32px;
+          text-align: center;
+          font-size: 1.3em;
+          text-shadow: 2px 2px white;
+        
+          &::before {
+            display: block;
+            content: string.slice($void-message, 1, 1);
+            animation: void-content $void-duration infinite normal linear;
+          }
+        }
+      }
+    }
+  }
+
+  .white {
+    background-color: $white;
+  }
+  
+  .gray-05 {
+    background-color: $gray-05;
+  }
+  
+  .gray-10 {
+    background-color: $gray-10;
+  }
+  
+  .gray-15 {
+    background-color: $gray-15;
+  }
+  
+  .gray-20 {
+    background-color: $gray-20;
+  }
+  
+  .gray-25 {
+    background-color: $gray-25;
+  }
+  
+  .gray-30 {
+    background-color: $gray-30;
+  }
+  
+  .gray-40 {
+    background-color: $gray-40;
+  }
+  
+  .gray-50 {
+    background-color: $gray-50;
+  }
+  
+  .gray-60 {
+    background-color: $gray-60;
+  }
+  
+  .gray-70 {
+    background-color: $gray-70;
+  }
+  
+  .gray-80 {
+    background-color: $gray-80;
+  }
+  
+  .gray-90 {
+    background-color: $gray-90;
+  }
+  
+  .black {
+    background-color: $black;
+  }
+  
+  .accent-light {
+    background-color: $accent-light;
+  }
+  
+  .accent-dark {
+    background-color: $accent-dark;
+  }
+  
+  .accent-secondary {
+    background-color: $accent-secondary;
+  }
+}
+
+@keyframes void-content {
+  $length: string.length($void-message);
+  @for $i from 1 through $length {
+    #{math.div($i - 1, $length) * 100%} {
+      content: string.slice($void-message, $i, $i);
+    }
+  }
+}
+

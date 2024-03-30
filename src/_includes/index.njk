@@ -1,5 +1,5 @@
 ---
-siteName: causti · co
+siteName: causti • co
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,10 @@ siteName: causti · co
   </head>
   <body>
     <header>
-      <h1><a href="/" tabindex="-1">causti <img class="dot" src="/assets/images/causti.co.svg" alt="·" /> co</a></h1>
+      <h1><a href="/" tabindex="-1">causti </a><a href="#egg" tabindex="-1"><img class="dot" src="/assets/images/causti.co.svg" alt="·" /></a><a href="/" tabindex="-1"> co</a></h1>
+      <div id="egg">
+        {% include "palette.njk" %}
+      </div>
     </header>
     <main>
       {{ content | safe | indent(6) }}

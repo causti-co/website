@@ -18,8 +18,6 @@ Design
   "New content" indicator, somehow?
     or maybe just freshness?
 
-  Easter Eggs...
-
   Syntax Highlighting, whenever we first need it
     Then we will probably want to tweak it a bit e.g. to specify starting  line number
     https://www.11ty.dev/docs/plugins/syntaxhighlight/
