@@ -22,6 +22,16 @@ Design
     Then we will probably want to tweak it a bit e.g. to specify starting  line number
     https://www.11ty.dev/docs/plugins/syntaxhighlight/
 
+  Wordcount/Read time
+  Backlinks
+  References/Footnotes
+  Revision/Page History
+  Last Updated date
+  Global Content Statistics
+  Keyword Collections
+  Links back to github
+  Privacy Notice...
+
 Chores
   sitemap.xml
   RSS feed
