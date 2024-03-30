@@ -1,1 +1,7 @@
-Please don't. This is a personal project, and I've no intentions on taking external contributions. If you find a bug/issue and want to document it please go ahead, but do not submit any fixes as I will 100% not merge them.
+## Issues
+
+If you find an issue and want to report it, please go ahead and use the provided template.
+
+## Pull Requests
+
+This is a personal project, where I intend to remain the sole author. **Please do not create Pull Requests**. I will not be merging them.
