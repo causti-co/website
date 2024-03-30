@@ -1,7 +1,8 @@
 ---
 date: 2024-04-02
-title: We need to talk about environment variables
-keywords: [development, devops]
+title: |-
+  We need to talk about: environment variables
+keywords: [development, devops, wntta]
 ---
 I've been delivering different versions of this rant over the past decade to whomever was there to hear. And seeing as people are still not getting the point, as exemplified by projects like [@dotenvx/dotenvx](https://github.com/dotenvx/dotenvx), [joho/godotenv](https://github.com/joho/godotenv), or [theskumar/python-dotenv](https://github.com/theskumar/python-dotenv), etc., it looks like it's time I get this down in written form.
 
@@ -21,7 +22,7 @@ And before you know it, you have a new tool in your toolbox.
 
 So you use it. You want your programs to be cool programs that can be configured via environment variables. You've seen other do it: that's how you learned about environment variables in the first place. You learn about [The Twelve-Factor App](https://12factor.net/config), and how "The twelve-factor app stores config in environment variables", and your start passing all kinds of configuration to your application via environment variables.
 
-At this point I need to stop what I'm doing and tell you to: Please don't. Configuration files are a good thing. They exist for a good reason. If you expect different environments to place their configuration files at different locations, then it makes sense to configure _the path from where to load configuration files_ via environment variables. But I don't have time for that discussion now, there's more important things I want to get to.
+At this point I need to stop what I'm doing and tell you: Please don't. Configuration files are a good thing. They exist for a good reason. If you expect different environments to place their configuration files at different locations, then it makes sense to configure _the path from where to load configuration files_ via environment variables. But I don't have time for that right now, there's more important things I want to get to.
 
 Regardless of whether it makes sense or not, the point is that by now you're writing applications that need to get configured via environment variables. So you need to set some environment varibles. So far you've seen how to pass values manually, and how to set them in your current shell, but you don't want to be doing this every time you're writing some code. There has to be a way to set environment variables once in a single place, and have them be available every time you open a new shell. And sure, there is, and you've done this already: your shell's rc file (`~/.bashrc`, `~/.zshrc`, etc.). But this feels... _wrong_... right? It feels weird having to go and edit a global file with project-specific configuration. And if you ever need to provide two projects with different values for the same variable, you're shit out of luck.
 
@@ -61,4 +62,6 @@ You do know that environment variables are global to your process, right? Say yo
 
 Also, you do know there's a world out there besides key=value pairs, right? If you find yourself doing stuff like `GALACTUS_SERVICE_HOSTNAME`, `GALACTUS_SERVICE_PORT`, `GALACTUS_SERVICE_VERSION`, etc., you probably want to stop what you're doing and go define a configuration file.
 
-It's 2024, let's be honest, you're containerizing and deploying this onto Kubernetes. You do know that Kubernetes lets you inject configuration and secrets into your containers, not only as environment variables, but also as files?
+Environment variables are fine, as long as they are the right tool for the job. But for anything even slightly more complex than just a few strings or numbers, you really want to be looking at configuration files. It's 2024, let's be honest: you're containerizing and deploying this onto Kubernetes. You do know that Kubernetes lets you inject configuration and secrets into your containers, not only as environment variables, but also as files, right? You have no excuses here.
+
+Rant over.
