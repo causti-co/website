@@ -179,6 +179,27 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  const preStartTag = /<pre([^>]*)>/ig;
+  const preEndTag = /<\/pre>/ig;
+  eleventyConfig.addFilter("betterIndent", (value, spaces) => {
+    const [first, ...rest] = value.split("\n");
+    let newValue = first;
+    let insidePre = preStartTag.test(first);
+
+    for (let line of rest) {
+      if (preStartTag.test(line)) {
+        insidePre = true;
+      } else {
+        if (!insidePre) line = `${" ".repeat(spaces)}${line}`;
+        if (preEndTag.test(line)) insidePre = false;
+      }
+
+      newValue += `\n${line}`;
+    }
+
+    return newValue.trimEnd();
+  });
+
   eleventyConfig.addShortcode("image", (responsive, alt, sizes) => {
     const largest = responsive[responsive.length - 1];
     const srcset = responsive.map(size => size.srcset).join(", ");

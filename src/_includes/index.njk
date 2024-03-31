@@ -38,7 +38,7 @@ siteName: causti • co
       </div>
     </header>
     <main>
-      {{ content | safe | indent(6) }}
+      {{ content | betterIndent(6) | safe }}
     </main>
     <footer>
       <nav>
