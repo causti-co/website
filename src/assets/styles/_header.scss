@@ -19,6 +19,10 @@ header {
       padding: 0 $extra-link-padding;
       text-decoration: none;
 
+      &:link {
+        color: $black;
+      }
+
       &:focus {
         background-color: inherit;
       }

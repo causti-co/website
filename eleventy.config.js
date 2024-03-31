@@ -34,7 +34,7 @@ module.exports = function(eleventyConfig) {
     const syntaxHighlighter = await Shiki({
       // Light: min-light rose-pine-dawn
       // Dark: catppuccin-frappe material-theme material-theme-palenight nord
-      theme: "nord",
+      theme: "rose-pine-dawn",
       transformers: [{
         pre(node) {
           const rawMeta = this.options.meta.__raw;
@@ -208,7 +208,7 @@ module.exports = function(eleventyConfig) {
     const largest = responsive[responsive.length - 1];
     const srcset = responsive.map(size => size.srcset).join(", ");
 
-		return `<img src="${largest.url}" srcset="${srcset}" sizes="${sizes}" width="${largest.width}" height="${largest.height}" alt="${alt}" loading="lazy" decoding="async">`;
+    return `<img src="${largest.url}" srcset="${srcset}" sizes="${sizes}" width="${largest.width}" height="${largest.height}" alt="${alt}" loading="lazy" decoding="async">`;
   });
 
   eleventyConfig.addCollection("textByMonth", groupByMonth("text"));
