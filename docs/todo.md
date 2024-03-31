@@ -28,6 +28,10 @@ Design
   Backlinks
   References/Footnotes
   Revision/Page History
+    https://github.com/causti-co/website/commits/c153a1024f3caa5a9f03af335158736d1ba03c58/src/text/001-logarithmic-age.md
+    https://github.com/causti-co/website/blob/c153a1024f3caa5a9f03af335158736d1ba03c58/src/text/001-logarithmic-age.md
+    https://github.com/causti-co/website/commit/c153a1024f3caa5a9f03af335158736d1ba03c58
+    https://github.com/causti-co/website/tree/c153a1024f3caa5a9f03af335158736d1ba03c58
   Last Updated date
   Global Content Statistics
   Keyword Collections
