@@ -1,3 +1,4 @@
+const pkg = require("./package.json");
 const path = require("node:path");
 const _ = require("lodash");
 const ExifReader = require("exifreader");
@@ -170,7 +171,7 @@ module.exports = function(eleventyConfig) {
   const linkStartTag = /<a href="([^"]*)"([^>]*)>/ig;
   const targetAttr = /target=/ig;
   const relAttr = /rel=/ig;
-  const origin = "https://causti.co";
+  const { origin } = new URL(pkg.homepage);
   eleventyConfig.addFilter("safeLinks", value => {
     return value.replaceAll(linkStartTag, (oldValue, linkUrl, attrs) => {
       let url = new URL(linkUrl, origin);
