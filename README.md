@@ -24,9 +24,9 @@ By default, content inside the `src/**/_drafts/` folders will be ignored. If you
 
 ### Deploy
 
-The `build-and-deploy` workflow handles continuous deployment to GitHub Pages, with a twist: The repository that hosts the actual GitHub Page is not this repository, it's [causti-co/causti-co.github.io](https://github.com/causti-co/causti-co.github.io). So the deploy step is actually just pushing the latest static content into this repository, using [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys).
+The `build-and-deploy` workflow handles continuous deployment to GitHub Pages, with a twist: The repository that hosts the actual GitHub Pages is not this repository, it's [causti-co/causti-co.github.io](https://github.com/causti-co/causti-co.github.io). So the deploy step is actually just pushing the latest static content into this repository, using [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys).
 
-Why? Because I really did not want to use `docs/` for GitHub pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repostory just for the static content. But overall I'm happy with this approach, and from the point of view of this repository, we're 100% agnostic of GitHub Pages which makes it easier for me to change hosting providers in the future.
+Why? Because I really did not want to use `docs/` for GitHub Pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repostory just for the static content. But overall I'm happy with this approach, and from the point of view of this repository, we're 100% agnostic of GitHub Pages which makes it easier for me to change hosting providers in the future.
 
 ### Learn more
 
