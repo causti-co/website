@@ -1,7 +1,7 @@
 ---
 date: 2024-04-02
 title: |-
-  We need to talk about: environment variables
+  We need to talk about: Environment variables
 keywords: [development, devops, wntta]
 ---
 I've been delivering different versions of this rant over the past decade to whomever was there to hear. And seeing as people are still not getting the point, as exemplified by projects like [@dotenvx/dotenvx](https://github.com/dotenvx/dotenvx), [joho/godotenv](https://github.com/joho/godotenv), or [theskumar/python-dotenv](https://github.com/theskumar/python-dotenv), etc., it looks like it's time I get this down in written form.
@@ -54,13 +54,32 @@ You can load `.env` files by sourcing them in your shell (`source .env`). Even b
 
 Congratulations! You're now using environment variables correctly. You have a convenient way of configuring your local environment, that does not propagate to other environments. If you want to provide values on a different environment, you'll need to follow that environment's best practices.
 
-## Appendix: Please don't
+## Please don't
 
 While I have you here, a couple more things.
 
 You do know that environment variables are global to your process, right? Say you're a node developer. There's nothing that keeps code in `node_modules/nonsuspicious-library/index.js` from peeking at `process.env.AWS_ACCESS_KEY_SECRET`. You don't need to grant it permission. You won't get a notification. It just can. I assume you've already considered this attack vector. Right?
 
 Also, you do know there's a world out there besides key=value pairs, right? If you find yourself doing stuff like `GALACTUS_SERVICE_HOSTNAME`, `GALACTUS_SERVICE_PORT`, `GALACTUS_SERVICE_VERSION`, etc., you probably want to stop what you're doing and go define a configuration file.
+
+And please, **please** don't do stuff like this. This is real code from a project that shall remain nameless:
+
+```json
+{
+  "name": "@unfortunate/developer",
+  "version": "4.2.0",
+  "scripts": {
+    "serve:dev": "ELEVENTY_ENV=development eleventy --serve",
+    "serve:prod": "ELEVENTY_ENV=production eleventy --serve",
+    "build": "ELEVENTY_ENV=production eleventy",
+    "build:dev": "ELEVENTY_ENV=development eleventy"
+  }
+}
+```
+
+I know this stuff looks super convenient, helpful, intuitive, innocent, you name it. But trust me, when you're running `ELEVENTY_ENV=development npm run build` and you can't for the life of you figure out why `console.log(process.env.ELEVENTY_ENV)` prints `'production'`, you're going to want to have a word with whomever wrote those npm scripts.
+
+## Foreword
 
 Environment variables are fine, as long as they are the right tool for the job. But for anything even slightly more complex than just a few strings or numbers, you really want to be looking at configuration files. It's 2024, let's be honest: you're containerizing and deploying this onto Kubernetes. You do know that Kubernetes lets you inject configuration and secrets into your containers, not only as environment variables, but also as files, right? You have no excuses here.
 
