@@ -1,5 +1,16 @@
 @use "settings" as *;
 
+main > article.about > h1 {
+  a {
+    color: $black;
+    text-decoration-color: $accent-dark;
+  }
+
+  a:focus {
+    text-decoration-color: $white;
+  }
+}
+
 main > article.about > .content p {
   font-size: 1.5em;
 
