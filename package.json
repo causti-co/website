@@ -16,6 +16,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^4.0.2",
+    "@shikijs/markdown-it": "^1.2.2",
     "eleventy-sass": "^2.2.4",
     "exifreader": "^4.21.1",
     "lodash": "^4.17.21",

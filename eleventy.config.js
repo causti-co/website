@@ -4,6 +4,7 @@ const ExifReader = require("exifreader");
 const Image = require("@11ty/eleventy-img");
 const eleventySass = require("eleventy-sass");
 const markdownItAttrs = require("markdown-it-attrs");
+const _Shiki = import("@shikijs/markdown-it");
 
 const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
 
@@ -22,6 +23,37 @@ const groupByMonth = tag => collection => {
 };
 
 module.exports = function(eleventyConfig) {
+  // Workaround until amendLibrary supports async functions
+  eleventyConfig.on("eleventy.before", async () => {
+    const { default: Shiki } = await _Shiki;
+
+    const metaUnquoted = /(\w+)=(?!")([^\s]*)/ig;
+    const metaQuoted = /(\w+)="([^"]*)"/ig;
+    const syntaxHighlighter = await Shiki({
+      theme: "catppuccin-latte",
+      transformers: [{
+        pre(node) {
+          const rawMeta = this.options.meta.__raw;
+          const matches = [
+            ...rawMeta.matchAll(metaUnquoted),
+            ...rawMeta.matchAll(metaQuoted)
+          ].map(([oldValue, key, value]) => [key, value]);
+
+          for (let [key, value] of matches) {
+            if (key === "class") {
+              this.addClassToHast(node, value);
+            } else {
+              node.properties[`data-${key}`] = value;
+            }
+          }
+
+          delete node.properties["tabindex"];
+        }
+      }]
+    });
+    eleventyConfig.amendLibrary("md", mdLib => mdLib.use(syntaxHighlighter));
+  });
+
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAttrs));
 

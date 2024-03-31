@@ -62,18 +62,30 @@ main > article.text.single > .content {
     font-size: 2em;
   }
 
+  pre, code {
+    font-family: inherit;
+  }
+
   p {
     font-size: 1.2em;
     line-height: 1.5em;
+
+    code {
+      color: $gray-10;
+      background-color: $gray-40;
+      padding: 0 2px;
+      @include box-shadow($color: $gray-80);
+      text-shadow: 1px 1px $gray-80;
+    }
   }
 
-  code {
-    font-family: inherit;
-    color: $gray-10;
-    background-color: $gray-40;
-    padding: 0 2px;
-    @include box-shadow($color: $gray-80);
-    text-shadow: 1px 1px $gray-80;
+  pre.shiki {
+    padding: 16px;
+    font-size: 1em;
+    line-height: 1.5em;
+    overflow-x: auto;
+    @include border();
+    @include box-shadow();
   }
   
   table {
