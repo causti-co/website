@@ -29,8 +29,11 @@ module.exports = function(eleventyConfig) {
 
     const metaUnquoted = /(\w+)=(?!")([^\s]*)/ig;
     const metaQuoted = /(\w+)="([^"]*)"/ig;
+
     const syntaxHighlighter = await Shiki({
-      theme: "catppuccin-latte",
+      // Light: min-light rose-pine-dawn
+      // Dark: catppuccin-frappe material-theme material-theme-palenight nord
+      theme: "nord",
       transformers: [{
         pre(node) {
           const rawMeta = this.options.meta.__raw;

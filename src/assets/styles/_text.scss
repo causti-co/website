@@ -80,12 +80,12 @@ main > article.text.single > .content {
   }
 
   pre.shiki {
-    padding: 16px;
+    padding: 8px;
     font-size: 1em;
     line-height: 1.5em;
     overflow-x: auto;
     @include border();
-    @include box-shadow();
+    @include box-shadow($size: 2 * $default-box-shadow-size, $color: $accent-secondary);
   }
   
   table {
@@ -94,7 +94,7 @@ main > article.text.single > .content {
     table-layout: fixed;
     border-collapse: collapse;
     @include border();
-    @include box-shadow();
+    @include box-shadow($size: 2 * $default-box-shadow-size);
 
     thead th,
     tbody td {
