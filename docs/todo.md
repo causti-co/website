@@ -1,4 +1,6 @@
 Design
+  Review padding at the bottom of each section
+
   Photo Details page w/ additional information
     exif dates
 
