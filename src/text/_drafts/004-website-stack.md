@@ -44,7 +44,7 @@ website/
 
 ### Sass
 
-I migrated all the styles from CSS to SCSS, since writing plain CSS is extremeky repetitive. I'm using the [eleventy-sass](https://github.com/kentaroi/eleventy-sass) plugin with no further configuration. Setting the `ELEVENTY_ENV` environment variable to a non-production value will generate uncompressed CSS with source maps, which is nice.
+I migrated all the styles from CSS to SCSS, since writing plain CSS is extremeky repetitive. I'm using the [eleventy-sass](https://github.com/kentaroi/eleventy-sass) plugin with no further configuration. Setting the `ELEVENTY_ENV` [environment variable](/text/002-environment-variables/) to a non-production value will generate uncompressed CSS with source maps, which is nice.
 
 ### Custom collections
 
