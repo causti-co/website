@@ -4,11 +4,11 @@ layout: index.njk
 <article class="text single">
   <h1>
     <span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;te&nbsp;<br/>
-    <span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;xt
+    <span class="small smaller">({{ stats.words}}w {{ stats.minutes }}')</span><span class="small">&nbsp;&nbsp;&nbsp;{{ number | shortNumber }}</span>&nbsp;&nbsp;xt
   </h1>
   <section class="content">
     <h1>{{ title }}</h1>
-    <h4>KEYWORDS: {% if keywords.length %}{{ keywords | join(", ") }}{% else %}N/A{% endif %}</h4>
+    <h4><b>KEYWORDS:</b> {% if keywords.length %}{{ keywords | join(", ") }}{% else %}N/A{% endif %}</h4>
     {{ content | safeLinks | betterIndent(4) | safe }}
   </section>
 </article>

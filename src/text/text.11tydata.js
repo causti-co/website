@@ -34,9 +34,14 @@ module.exports = {
       }
     },
     stats: async data => {
-      const contents = await readFile(data.page.inputPath, { encoding: 'utf8' });
-
-      return readingTime(contents);
+      if (data.page.fileSlug !== "text") {
+        const contents = await readFile(data.page.inputPath, { encoding: 'utf8' });
+        const { words, minutes } = readingTime(contents);
+        return {
+          words,
+          minutes: Math.ceil(minutes)
+        };
+      }
     }
   }
 };
