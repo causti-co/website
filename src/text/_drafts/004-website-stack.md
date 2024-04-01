@@ -264,14 +264,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.on("eleventy.before", async () => {
     const { default: Shiki } = await _Shiki;
 
-    const metaUnquoted = /(\w+)=(?!")([^\s]*)/ig;
-    const metaQuoted = /(\w+)="([^"]*)"/ig;
+    const metaUnquoted = /([\w\-_]+)=(?!")([^\s]*)/ig;
+    const metaQuoted = /([\w\-_]+)="([^"]*)"/ig;
 
     const syntaxHighlighter = await Shiki({
       theme: "rose-pine-dawn",
       transformers: [{
         pre(node) {
-          const rawMeta = this.options.meta.__raw;
+          let rawMeta = this.options.meta.__raw;
+          if (rawMeta.startsWith("[") && rawMeta.endsWith("]"))
+            rawMeta = rawMeta.slice(1, -1);
+
           const matches = [
             ...rawMeta.matchAll(metaUnquoted),
             ...rawMeta.matchAll(metaQuoted)
@@ -281,6 +284,7 @@ module.exports = function(eleventyConfig) {
             if (key === "class") {
               this.addClassToHast(node, value);
             } else {
+              if (key.startsWith("data-")) key = key.slice("data-".length);
               node.properties[`data-${key}`] = value;
             }
           }
@@ -296,8 +300,8 @@ module.exports = function(eleventyConfig) {
 
 I took the liberty of providing a basic transformer that removes the `tabindex` property from the `<pre>` tag (Is there a reason to want to make these available to tab navigation that I'm not getting?), as well as allowing additional classes and attributes to be defined by adding them next to the codeblock fence, like so:
 
-````md [class="line-numbers diff" data-start-line=53]
-```js [class="line-numbers diff" data-start-line=53]
+````md [class="line-numbers diff" start-line=53]
+```js [class="line-numbers diff" start-line=53]
 // (... code here ...)
 ```
 ````
