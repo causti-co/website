@@ -23,7 +23,7 @@ I decided to manually number content items by adopting the following naming conv
 
 ### Folder structure
 
-```
+```txt [class=tree]
 website/
 ├─ dist/
 ├─ src/

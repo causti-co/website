@@ -50,7 +50,7 @@ main > article.text.single > .content {
     margin-top: 0;
     color: $gray-60;
   }
-  
+
   h2 {
     display: inline-block;
     margin: 0;
@@ -86,8 +86,12 @@ main > article.text.single > .content {
     overflow-x: auto;
     @include border();
     @include box-shadow($size: 2 * $default-box-shadow-size, $color: $accent-secondary);
+
+    &.tree {
+      line-height: 1.2em;
+    }
   }
-  
+
   table {
     margin: 0 auto;
     background-color: $gray-20;
@@ -109,7 +113,7 @@ main > article.text.single > .content {
         left-width: 0;
       }
     }
-    
+
     tbody td {
       @include border();
       border: {
