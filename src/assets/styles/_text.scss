@@ -81,6 +81,8 @@ main > article.text.single > .content {
 
   pre.shiki {
     padding: 8px;
+    // margin-bottom needs a little push to visually accomodate for the box-shadow
+    margin-bottom: calc(1em + 2 * $default-box-shadow-size);
     font-size: 1em;
     line-height: 1.5em;
     overflow-x: auto;
