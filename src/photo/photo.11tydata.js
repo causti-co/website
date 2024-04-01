@@ -8,6 +8,7 @@ module.exports = {
         return `${data.page.filePathStem.replace("/_drafts/", "/")}/`;
       }
     },
+    description: data => data.description ? data.description : data.alt,
     og: {
       image: data => {
         if (data.responsive) {

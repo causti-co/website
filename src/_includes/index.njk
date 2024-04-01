@@ -1,5 +1,8 @@
 ---
 siteName: causti • co
+generalDescription: >-
+  A personal website by Martín Valdés de León.
+  Read some texts, enjoy the photos, and pick something you like from the recommendations list.
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -13,11 +16,11 @@ siteName: causti • co
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="Martín Valdés de León" />
     <meta name="generator" content="{{ eleventy.generator }}" />
-    {#- <meta name="description" content="" /> -#}
+    <meta name="description" content="{{ description or generalDescription }}" />
     {#- <meta name="viewport" content="width=device-width" /> #}
     <meta property="og:site_name" content="{{ siteName }}" />
     <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ siteName }}{% endif %}" />
-    {#- <meta property="og:description" content="" /> #}
+    <meta property="og:description" content="{{ description or generalDescription }}" />
     <meta property="og:type" content="{{ og.type }}" />
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
     {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
