@@ -1,5 +1,7 @@
 const util = require('node:util');
 const exec = util.promisify(require("node:child_process").exec);
+const { readFile } = require('node:fs/promises');
+const readingTime = require('reading-time');
 
 module.exports = {
   layout: "text.njk",
@@ -30,6 +32,11 @@ module.exports = {
 
         return history;
       }
+    },
+    stats: async data => {
+      const contents = await readFile(data.page.inputPath, { encoding: 'utf8' });
+
+      return readingTime(contents);
     }
   }
 };
