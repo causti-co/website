@@ -100,6 +100,9 @@ stuck on a pattern
 how good am i, really?
 the old internet and the new real life
   the internette
+the current internet is no the same we had before
+  our experience was unique, and not driven by social media or adtech
+  that internet is gone
 i've a headache
 flirting, romance, seduction, incels
 motherfucking TLS

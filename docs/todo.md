@@ -1,6 +1,8 @@
 Design
   Review padding at the bottom of each section
 
+  Flexbox for the Detailed Photo Footer
+
   Photo Details page w/ additional information
     exif dates
 
