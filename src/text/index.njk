@@ -11,7 +11,10 @@ override:tags: []
       <h2>{{ month }}</h2>
       <ul>
       {%- for text in texts %}
-        <li><span class="number">{{ text.data.number | shortNumber }}</span><a href="{{ text.page.url }}">{{ text.data.title }}</a></li>
+        <li>
+          <span class="number">{{ text.data.number | shortNumber }}</span>
+          <a href="{{ text.page.url }}">{{ text.data.title }}</a>
+        </li>
       {%- endfor %}
       </ul>
     </section>

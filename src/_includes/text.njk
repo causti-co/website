@@ -2,7 +2,10 @@
 layout: index.njk
 ---
 <article class="text single">
-  <h1><span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;te&nbsp;<br/><span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;xt</h1>
+  <h1>
+    <span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;te&nbsp;<br/>
+    <span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;xt
+  </h1>
   <section class="content">
     <h1>{{ title }}</h1>
     <h4>KEYWORDS: {% if keywords.length %}{{ keywords | join(", ") }}{% else %}N/A{% endif %}</h4>

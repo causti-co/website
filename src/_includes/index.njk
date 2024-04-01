@@ -19,7 +19,7 @@ generalDescription: >-
     <meta name="description" content="{{ description or generalDescription }}" />
     {#- <meta name="viewport" content="width=device-width" /> #}
     <meta property="og:site_name" content="{{ siteName }}" />
-    <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ siteName }}{% endif %}" />
+    <meta property="og:title" content="{{ title or siteName }}" />
     <meta property="og:description" content="{{ description or generalDescription }}" />
     <meta property="og:type" content="{{ og.type }}" />
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
@@ -27,11 +27,11 @@ generalDescription: >-
     {#- To support using the last photo as og.image, we make it the default here. #}
     {%- set photo = collections.photo | last -%}
     {%- set largest = photo.data.responsive | last %}
-    <meta property="og:image" content="https://causti.co{% if og.image.url %}{{ og.image.url }}{% else %}{{ largest.url}}{% endif %}" />
-    <meta property="og:image:type" content="{% if og.image.type %}{{ og.image.type }}{% else %}{{ largest.sourceType }}{% endif %}" />
-    <meta property="og:image:width" content="{% if og.image.width %}{{ og.image.width }}{% else %}{{ largest.width }}{% endif %}" />
-    <meta property="og:image:height" content="{% if og.image.height %}{{ og.image.height }}{% else %}{{ largest.height }}{% endif %}" />
-    <meta property="og:image:alt" content="{% if og.image.alt %}{{ og.image.alt }}{% else %}{{ photo.data.alt }}{% endif %}" />
+    <meta property="og:image" content="https://causti.co{{ og.image.url or largest.url }}" />
+    <meta property="og:image:type" content="{{ og.image.type or largest.sourceType }}" />
+    <meta property="og:image:width" content="{{ og.image.width or largest.width }}" />
+    <meta property="og:image:height" content="{{ og.image.height or largest.height }}" />
+    <meta property="og:image:alt" content="{{ og.image.alt or photo.data.alt }}" />
   </head>
   <body>
     <header>

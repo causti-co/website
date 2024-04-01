@@ -2,7 +2,10 @@
 layout: index.njk
 ---
 <article class="photo single">
-  <h1><span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;pho<br/><span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;to</h1>
+  <h1>
+    <span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;pho<br/>
+    <span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;to
+  </h1>
   <section class="content">
     <article class="photo">
       <div class="button">
@@ -12,7 +15,13 @@ layout: index.njk
           {% image responsive, alt, "calc(100vw - 368px)" %}
           <h3>{{ title }}</h3>
           {{ content | safeLinks | betterIndent(10) | safe }}
-          <span class="camera">{{ exif.make | capitalize }} {{ exif.model }}</span><span class="specs">{% if exif.focalLength %}{{ exif.focalLength }}{% else %}?? mm{% endif %}&nbsp;&nbsp;&nbsp;<i>f</i>/{% if exif.fstop %}{{ exif.fstop }}{% else %}??{% endif %}&nbsp;&nbsp;&nbsp;{% if exif.exposure %}{{ exif.exposure }}s{% else %}1/???s{% endif %}&nbsp;&nbsp;&nbsp;ISO·{% if exif.iso %}{{ exif.iso }}{% else %}???{% endif %}</span>
+          <span class="camera">{{ exif.make | capitalize }} {{ exif.model }}</span>
+          <span class="specs">
+            {{ exif.focalLength or "?? mm" }}&nbsp;&nbsp;&nbsp;
+            <i>f</i>/{{ exif.fstop or "??" }}&nbsp;&nbsp;&nbsp;
+            {{ exif.exposure or "1/???" }}s&nbsp;&nbsp;&nbsp;
+            ISO·{{ exif.iso or "???" }}
+          </span>
         </div>
       </div>
     </article>
