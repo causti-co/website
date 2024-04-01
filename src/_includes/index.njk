@@ -37,6 +37,15 @@ generalDescription: >-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mvaldesdeleon" />
     <meta name="twitter:creator" content="@mvaldesdeleon" />
+    {%- if og.type === "article" %}
+    <meta name="article:published_time" content="{{ date.toISOString() }}" />
+    {#- <meta name="article:modified_time" content="{{ date.toISOString() }}" /> #}
+    <meta name="article:author" content="Martín Valdés de León" />
+    {#- <meta name="article:section" content="text" /> #}
+    {%- for keyword in keywords %}
+    <meta name="article:tag" content="{{ keyword }}" />
+    {%- endfor %}
+    {%- endif %}
   </head>
   <body>
     <header>
