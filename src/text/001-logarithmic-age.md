@@ -2,6 +2,10 @@
 date: 2024-04-01
 title: Logarithmic age
 keywords: [life, death, mathematics]
+description: >-
+  time might be linear, but our subjective value of it isn't.
+  how could life look if we measured things differently to reflect this?
+  have I ever told you about logarithmic age?
 ---
 Have I ever told you about [logarithmic](https://en.wikipedia.org/wiki/Logarithm) age? I don't remember exactly when I first came up with this idea, but the realization was that not all consecutive 365-day period in your life are comparably significant. Of course, we speak from the bias of being our current age, but I think we can all agree that the amount of shit you get done during days 7305 and 7670 of your life is significantly more than what you get done between days 2922 and 3287.
 
