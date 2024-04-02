@@ -60,6 +60,27 @@ og:
       {{ content | betterIndent(6) | safe }}
     </main>
     <footer>
+      {%- if experimental %}
+      {%- if history %}
+      <div id="git">
+        <a class="open" href="#git">
+          <img src="/assets/images/git.svg" alt="Git"/>
+          <img class="selected" src="/assets/images/git.white.svg" alt="Git"/>
+        </a>
+        <a class="close" href="#">
+          <img class="selected" src="/assets/images/git.white.svg" alt="Git"/>
+        </a>
+        <div class="content">
+          <a href="https://github.com/causti-co/website/blob/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">src</a> <a href="https://github.com/causti-co/website/edit/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">edit</a>
+          <ul>
+            {%- for commit in history %}
+            <li>{{commit.subject }} {{ commit.date | shortDate}} <a href="https://github.com/causti-co/website/commit/{{commit.hash}}" target="_blank" rel="noopener noreferrer">{{commit.shortHash}}</a></li>
+            {%- endfor %}
+          </ul>
+        </div>
+      </div>
+      {%- endif %}
+      {%- endif %}
       <nav>
         <ul>
           <li><div class="button{% if page.url == "/" %} here{% endif %}"><a href="/">home</a></div></li>
