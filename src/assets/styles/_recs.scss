@@ -1,6 +1,6 @@
 @use "settings" as *;
 
-main > article.recs.list > .content .month {
+main > article.recs-list > .content .month {
   > h2 {
     margin-bottom: 8px;
   }

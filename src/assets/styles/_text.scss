@@ -1,6 +1,6 @@
 @use "settings" as *;
 
-main > article.text.list > .content .month {
+main > article.text-list > .content .month {
   > h2 {
     margin-bottom: 8px;
   }
@@ -33,7 +33,7 @@ main > article.text.list > .content .month {
   }
 }
 
-main > article.text.single > .content {
+main > article.text > .content {
   h1 {
     margin: 0 {
       bottom: 8px;

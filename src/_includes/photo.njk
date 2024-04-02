@@ -1,15 +1,15 @@
 ---
 layout: index.njk
 ---
-<article class="photo single">
+<article class="photo">
   <h1>
     <span class="small">{{ page.date | shortDate }}&nbsp;&nbsp;</span>&nbsp;pho<br/>
     <span class="small">{{ number | shortNumber }}</span>&nbsp;&nbsp;to
   </h1>
   <section class="content">
     <article class="photo">
-      <div class="button">
-        <div class="content">
+      <div class="card">
+        <div class="card-content">
           <a class="full-screen" href="#full-screen">↗</a>
           {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
           {% image responsive, alt, "calc(100vw - 368px)" %}

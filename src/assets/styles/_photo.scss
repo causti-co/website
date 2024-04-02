@@ -1,11 +1,55 @@
 @use "settings" as *;
 
-main > article.photo.list > .content {
+main > article.photo-list,
+main > article.photo {
+  > .content > .photo .card {
+    height: 100%;
+
+    > .card-content {
+      display: block;
+      position: relative;
+      height: 100%;
+      background-color: $gray-05;
+      @include border();
+      @include box-shadow();
+      box-sizing: border-box;
+      padding-bottom: 42px;
+
+      > img {
+        display: block;
+        width: 100%;
+        background-color: $gray-05;
+        object-fit: cover;
+      }
+
+      > h3 {
+        margin: 0;
+        padding: 0 4px;
+        border-top: (3 * $default-border-width) double $default-border-color;
+      }
+
+      .number, .camera {
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+        font-weight: bold;
+      }
+
+      .date, .specs {
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+      }
+    }
+  }
+}
+
+main > article.photo-list > .content {
   display: grid;
   gap: 32px;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 
-  > .photo .button {
+  > .photo .card {
     > a:focus {
       background-color: $accent-light;
     }
@@ -29,14 +73,14 @@ main > article.photo.list > .content {
   }
 }
 
-main > article.photo.single > .content {
+main > article.photo > .content {
   height: $content-height;
   min-height: 640px;
 
   > .photo {
     height: 100%;
 
-    .button > .content {
+    .card > .card-content {
       display: flex;
       position: relative;
       flex-flow: column nowrap;
@@ -89,7 +133,7 @@ main > article.photo.single > .content {
   }
 }
 
-main > article.photo.single > #full-screen {
+main > article.photo > #full-screen {
   position: fixed;
   display: none;
   top: 0;
@@ -131,46 +175,5 @@ main > article.photo.single > #full-screen {
     width: 100%;
     background-color: $gray-90;
     object-fit: contain;
-  }
-}
-
-main > article.photo > .content > .photo .button {
-  height: 100%;
-
-  > .content {
-    display: block;
-    position: relative;
-    height: 100%;
-    background-color: $gray-05;
-    @include border();
-    @include box-shadow();
-    box-sizing: border-box;
-    padding-bottom: 42px;
-
-    > img {
-      display: block;
-      width: 100%;
-      background-color: $gray-05;
-      object-fit: cover;
-    }
-
-    > h3 {
-      margin: 0;
-      padding: 0 4px;
-      border-top: (3 * $default-border-width) double $default-border-color;
-    }
-
-    .number, .camera {
-      position: absolute;
-      left: 4px;
-      bottom: 4px;
-      font-weight: bold;
-    }
-
-    .date, .specs {
-      position: absolute;
-      right: 4px;
-      bottom: 4px;
-    }
   }
 }
