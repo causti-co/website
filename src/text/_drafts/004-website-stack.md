@@ -361,6 +361,62 @@ module.exports = async () => {
 };
 ```
 
+Then I thought it would be even cooler to show a git-powered revision history, so I did it all over again as a folder data file:
+
+```js
+const util = require('node:util');
+const exec = util.promisify(require("node:child_process").exec);
+
+module.exports = {
+    history: async data => {
+      if (data.page.fileSlug !== "text") {
+        const { stdout } = await exec(`git log --format=%H%n%h%n%cI%n%s%n ${data.page.inputPath}`);
+        const history = stdout.trimEnd().split("\n\n").map(logEntry => {
+          const [hash, shortHash, date, subject] = logEntry.split("\n");
+
+          return {
+            hash,
+            shortHash,
+            date: new Date(date),
+            subject
+          };
+        });
+
+        return history;
+      }
+    }
+  }
+};
+```
+
+### Reading time
+
+I wanted to provide an indicator of length for the text content, so I used the [reading-time](https://github.com/ngryman/reading-time/) library to add a word count and estimated reading time. I really wanted to get as precise a word count as possible, so I chose to re-load the Markdown and use that as the starting point (after skipping any Front Matter), rather than process the Markdown content already rendered into HTML and try to remove the tags:
+
+```js
+const { readFile } = require('node:fs/promises');
+const readingTime = require('reading-time');
+
+module.exports = {
+    stats: async data => {
+      if (data.page.fileSlug !== "text") {
+        const contents = await readFile(data.page.inputPath, { encoding: 'utf8' });
+        const fragments = contents.split("---\n");
+
+        const { words, minutes } = readingTime(fragments[fragments.length - 1]);
+
+        return {
+          words,
+          minutes: Math.ceil(minutes)
+        };
+      }
+    }
+  }
+};
+```
+
+Ideally I would be able to configure `markdown-it` to perform plain-text rendering with some additional tweaking such as completely ignoring codeblocks. I tried going through the documentation but could not find a suitable example to use as a starting point, I guess I'll need to look at some plugins or similar and see if I can figure it out. For the time-being this will have to do.
+
 ## Continuous Deployment
 
 The `build-and-deploy` workflow handles continuous deployment to GitHub Pages, with a twist: The repository that hosts the actual GitHub Pages is not this repository, it's [causti-co/causti-co.github.io](https://github.com/causti-co/causti-co.github.io). So the deploy step is actually just pushing the latest static content into this repository, using [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys):
