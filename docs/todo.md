@@ -3,9 +3,6 @@ Design
 
   Flexbox for the Detailed Photo Footer
 
-  Recs
-    Add date of individual recs
-
   Photo Details page w/ additional information
     exif dates
 
@@ -19,6 +16,7 @@ Design
     Mobile / Small Screens
 
     Migrate font sizes from `em` to `rem`
+      It will be easier to start from the most nested elements outwards, because then we don't have to deal with cascading changes
 
     Home & Photo are using a fixed-height header in the calc, but the actual header is dynamic based on content size.
 
