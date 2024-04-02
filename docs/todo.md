@@ -3,6 +3,9 @@ Design
 
   Flexbox for the Detailed Photo Footer
 
+  Recs
+    Add date of individual recs
+
   Photo Details page w/ additional information
     exif dates
 
@@ -27,18 +30,32 @@ Design
     https://www.11ty.dev/docs/plugins/syntaxhighlight/
 
   Wordcount/Read time
+    Think abour redesigning this...
+
   Backlinks
   References/Footnotes
+  
   Revision/Page History
+    Last Updated date
+    Links back to github
+
+    We need to find a place to put this...
     https://github.com/causti-co/website/commits/c153a1024f3caa5a9f03af335158736d1ba03c58/src/text/001-logarithmic-age.md
     https://github.com/causti-co/website/blob/c153a1024f3caa5a9f03af335158736d1ba03c58/src/text/001-logarithmic-age.md
     https://github.com/causti-co/website/commit/c153a1024f3caa5a9f03af335158736d1ba03c58
     https://github.com/causti-co/website/tree/c153a1024f3caa5a9f03af335158736d1ba03c58
-  Last Updated date
+
+    https://github.com/causti-co/website/edit/main/src/text/001-logarithmic-age.md
+  
   Global Content Statistics
   Keyword Collections
-  Links back to github
   Privacy Notice...
+
+  Provide some variables that give information as to the kind of page being rendered
+    i.e., is it a text? a photo? is a single, a list?
+    I need this accesible from the _index layout
+    And maybe we could re-access this data from the computed properties, where we're currently checking this a bunch
+      then we have this logic in a single place, and use the computed results elsewhere
 
 Chores
   sitemap.xml
