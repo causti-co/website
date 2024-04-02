@@ -23,11 +23,22 @@ main > article.text-list > .content .month {
         font-weight: bold;
       }
 
-      .date-and-stats {
-        color: $gray-70;
-        margin-left: 8px;
-        font-size: 0.70em;
-        font-weight: bold;
+      > .text {
+        h3 {
+          margin: 0 {
+            bottom: 4px;
+          }
+
+          .date-and-stats {
+            color: $gray-70;
+            font-size: 0.70em;
+          }
+        }
+
+        p {
+          margin: 0;
+          line-height: 1.5em;
+        }
       }
     }
   }
