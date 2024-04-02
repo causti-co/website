@@ -25,18 +25,14 @@ main > article.recs.list > .content .month {
 
       > .rec {
         h3 {
-          display: inline-block;
           margin: 0 {
             bottom: 4px;
           }
-          color: $black;
-          font-weight: bold;
-          text-decoration: underline;
-          text-decoration-color: $accent-dark;
-        }
-  
-        a:focus h3 {
-          text-decoration-color: $white;
+          
+          .date {
+            color: $gray-70;
+            font-size: 0.7em;
+          }
         }
   
         img {

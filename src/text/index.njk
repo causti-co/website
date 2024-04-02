@@ -19,6 +19,7 @@ description: >-
         <li>
           <span class="number">{{ text.data.number | shortNumber }}</span>
           <a href="{{ text.page.url }}">{{ text.data.title }}</a>
+          <span class="date-and-stats">;; {{ text.page.date | shortDate }}; {{ text.data.stats.words}}w; {{ text.data.stats.minutes}}'</span>
         </li>
       {%- endfor %}
       </ul>
