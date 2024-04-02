@@ -9,20 +9,22 @@ module.exports = {
       }
     },
     description: data => data.description ? data.description : data.alt,
-    og: {
-      image: data => {
-        if (data.responsive) {
-          const largest = data.responsive[data.responsive.length - 1];
+    og: data => {
+      let og = {};
 
-          return {
-            url: largest.url,
-            type: largest.sourceType,
-            width: largest.width,
-            height: largest.height,
-            alt: data.alt
-          };
+      if (data.responsive) {
+        const largest = data.responsive[data.responsive.length - 1];
+
+        og.image = {
+          url: largest.url,
+          type: largest.sourceType,
+          width: largest.width,
+          height: largest.height,
+          alt: data.alt
         }
-      }
+      };
+
+      return { ...data.og, ...og };
     }
   }
 };
