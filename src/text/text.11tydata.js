@@ -36,7 +36,10 @@ module.exports = {
     stats: async data => {
       if (data.page.fileSlug !== "text") {
         const contents = await readFile(data.page.inputPath, { encoding: 'utf8' });
-        const { words, minutes } = readingTime(contents);
+        const fragments = contents.split("---\n");
+
+        const { words, minutes } = readingTime(fragments[fragments.length - 1]);
+
         return {
           words,
           minutes: Math.ceil(minutes)
