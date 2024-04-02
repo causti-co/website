@@ -27,28 +27,25 @@ footer nav {
           position: relative;
           padding: 2px 16px 2px 32px;
           border: 1px solid $black;
-          color: $black;
           background-color: $gray-05;
           @include box-shadow();
           font-size: 1.5em;
           text-align: right;
-          text-decoration: underline;
-          text-decoration-color: $accent-dark;
 
           &:focus {
             color: $white;
             background-color: $gray-30;
             text-decoration-color: $accent-dark;
           }
+        }
 
-          &:active {
-            top: 0;
-            left: 0;
-            color: $white;
-            background-color: $gray-50;
-            @include box-shadow();
-            text-decoration-color: $accent-dark;
-          }
+        > a:active, &:hover > a:active {
+          top: 0;
+          left: 0;
+          color: $white;
+          background-color: $gray-50;
+          @include box-shadow();
+          text-decoration-color: $accent-dark;
         }
 
         &:hover > a {

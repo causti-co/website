@@ -8,15 +8,13 @@ main > article.photo.list > .content {
   > .photo .button {
     > a:focus {
       background-color: $accent-light;
-      text-decoration-color: $white;
     }
 
-    > a:active {
+    > a:active, &:hover > a:active {
       top: 0;
       left: 0;
       background-color: $accent-dark;
       @include box-shadow();
-      text-decoration-color: $white;
     }
 
     > a > img {
@@ -55,7 +53,6 @@ main > article.photo.single > .content {
         @include border(1px);
         @include box-shadow();
         box-sizing: border-box;
-        color: $black;
         background-color: $accent-dark;
         font-size: 2em;
         font-weight: bold;
@@ -81,6 +78,8 @@ main > article.photo.single > .content {
       h3 {
         padding-top: 4px;
         font-size: 1.5em;
+        text-decoration: underline;
+        text-decoration-color: $accent-dark;
       }
 
       p {
@@ -109,7 +108,6 @@ main > article.photo.single > #full-screen {
     right: 8px;
     height: 32px;
     width: 32px;
-    color: $black;
     background-color: $accent-dark;
     @include border(1px);
     @include box-shadow($color: $gray-05);
@@ -143,7 +141,6 @@ main > article.photo > .content > .photo .button {
     display: block;
     position: relative;
     height: 100%;
-    color: $black;
     background-color: $gray-05;
     @include border();
     @include box-shadow();
@@ -161,8 +158,6 @@ main > article.photo > .content > .photo .button {
       margin: 0;
       padding: 0 4px;
       border-top: (3 * $default-border-width) double $default-border-color;
-      text-decoration: underline;
-      text-decoration-color: $accent-dark;
     }
 
     .number, .camera {

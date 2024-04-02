@@ -29,16 +29,6 @@ main > article.text.list > .content .month {
         font-size: 0.70em;
         font-weight: bold;
       }
-
-      a {
-        color: $black;
-        text-decoration: underline;
-        text-decoration-color: $accent-dark;
-
-        &:focus {
-          text-decoration-color: $white;
-        }
-      }
     }
   }
 }
@@ -91,9 +81,9 @@ main > article.text.single > .content {
     line-height: 1.5em;
 
     code {
+      padding: 0 2px;
       color: $gray-10;
       background-color: $gray-40;
-      padding: 0 2px;
       @include box-shadow($color: $gray-80);
       text-shadow: 1px 1px $gray-80;
     }
