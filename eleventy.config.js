@@ -65,11 +65,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAttrs));
 
-  // Ignore `_drafts` in production
+  // Environment-sensitive configuration
   const { ELEVENTY_ENV } = process.env;
   
+  // Use same logic as `eleventy-sass` for now
   if (ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV)) {
+    // Ignore `_drafts`
     eleventyConfig.ignores.add("**/_drafts/**");
+  } else {
+    // Feature-flag for experimental features
+    eleventyConfig.addGlobalData("experimental", true);
   }
 
   // Copy static assets
