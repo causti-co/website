@@ -1,0 +1,37 @@
+      <div id="git">
+        <a class="open" href="#git">
+          <img src="/assets/images/git.svg" alt="Git"/>
+          <img class="selected" src="/assets/images/git.white.svg" alt="Git"/>
+        </a>
+        <a class="close" href="#">
+          <img class="selected" src="/assets/images/git.white.svg" alt="Git"/>
+        </a>
+        <div class="content">
+          <div class="actions">
+            <a href="https://github.com/causti-co/website/blob/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">≡</a>
+            <a href="https://github.com/causti-co/website/edit/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">±</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>date</th>
+                <th>subject</th>
+                <th>commit</th>
+              </tr>
+            </thead>
+            <tbody>
+            {%- for commit in history %}
+              <tr>
+                <td>{{ commit.date | shortDate}}</td>
+                <td><b>{{commit.subject }}</b></td>
+                <td><a href="https://github.com/causti-co/website/commit/{{commit.hash}}" target="_blank" rel="noopener noreferrer">{{commit.shortHash}}</a></td>
+              </tr>
+            {%- else %}
+              <tr>
+                <td colspan="3"><i>Not commited</i></td>
+              </tr>
+            {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
