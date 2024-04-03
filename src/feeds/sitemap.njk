@@ -1,0 +1,59 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+baseUrl: https://causti.co
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {# home #}
+  {%- set newestContent = collections.allContent | first -%}
+  <url>
+    <loc>{{ baseUrl }}/</loc>
+    <lastmod>{{ newestContent.page.date.toISOString() }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {# text #}
+  {%- set contentCollection = collections.text | reverse -%}
+  {%- set newestContent = contentCollection | first -%}
+  <url>
+    <loc>{{ baseUrl }}/text/</loc>
+    <lastmod>{{ newestContent.page.date.toISOString() }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {%- for content in contentCollection %}
+  <url>
+    <loc>{{ baseUrl }}{{content.page.url }}</loc>
+    <lastmod>{{ content.page.date.toISOString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  {%- endfor %}
+  {# photo #}
+  {%- set contentCollection = collections.photo | reverse -%}
+  {%- set newestContent = contentCollection | first -%}
+  <url>
+    <loc>{{ baseUrl }}/photo/</loc>
+    <lastmod>{{ newestContent.page.date.toISOString() }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {%- for content in contentCollection %}
+  <url>
+    <loc>{{ baseUrl }}{{content.page.url }}</loc>
+    <lastmod>{{ content.page.date.toISOString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  {%- endfor %}
+  {# recs #}
+  {%- set contentCollection = collections.recs | reverse -%}
+  {%- set newestContent = contentCollection | first -%}
+  <url>
+    <loc>{{ baseUrl }}/recs/</loc>
+    <lastmod>{{ newestContent.page.date.toISOString() }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {# about #}
+  <url>
+    <loc>{{ baseUrl }}/about/</loc>
+    <lastmod>{{ commit.date.toISOString() }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+</urlset>
