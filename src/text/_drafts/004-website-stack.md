@@ -223,10 +223,12 @@ Somewhere in the 11ty docs they suggest using a `_drafts` folder, and I liked th
 
 ```js
 module.exports = function(eleventyConfig) {
-  // Ignore `_drafts` in production
+  // Environment-sensitive configuration
   const { ELEVENTY_ENV } = process.env;
   
+  // Use same logic as `eleventy-sass` for now
   if (ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV)) {
+    // Ignore `_drafts`
     eleventyConfig.ignores.add("**/_drafts/**");
   }
 };
@@ -245,6 +247,38 @@ module.exports = {
   }
 };
 ```
+
+### Feature flags
+
+Actually, I left a couple of lines out of that "Environment-sensitive configuration" snippet. Here's how it really looks like:
+
+```js
+module.exports = function(eleventyConfig) {
+  // Environment-sensitive configuration
+  const { ELEVENTY_ENV } = process.env;
+  
+  // Use same logic as `eleventy-sass` for now
+  if (ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV)) {
+    // Ignore `_drafts`
+    eleventyConfig.ignores.add("**/_drafts/**");
+  } else {
+    // Feature-flag for experimental features
+    eleventyConfig.addGlobalData("experimental", true);
+  }
+};
+```
+
+I'm using this opportunity to conditionally set feature flags (at the moment just one, the `experimental` flag). Just like `_drafts` lets me work on content without publishing it, the `experimental` flag lets me work on entire features without publishing them:
+
+{% raw%}
+```handlebars
+{%- if experimental %}
+<h1>my next amazing feature</h1>
+{%- endif %}
+```
+{% endraw %}
+
+This way I can be in the middle of working on a new feature, and still be able to publish a hotfix to production without having to create a new brach or stash my work in progress.
 
 ### Syntax Highlgihting
 
