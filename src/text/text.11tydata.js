@@ -19,7 +19,12 @@ module.exports = {
     history: async data => {
       if (data.page.fileSlug !== "text") {
         const { stdout } = await exec(`git log --format=%H%n%h%n%cI%n%s%n ${data.page.inputPath}`);
-        const history = stdout.trimEnd().split("\n\n").map(logEntry => {
+        const trimmed = stdout.trimEnd();
+
+        if (trimmed === "")
+          return [];
+
+        const history = trimmed.split("\n\n").map(logEntry => {
           const [hash, shortHash, date, subject] = logEntry.split("\n");
 
           return {

@@ -221,7 +221,8 @@ footer > #git {
         right-width: 0;
       }
 
-      &:has( tbody tr:nth-child(3) ) {
+      // Adjust borders if the scrollbar is visible
+      &:has(tbody tr:nth-child(3)) {
         border-right-width: 2px;
 
         tbody tr:last-child td {
@@ -253,6 +254,10 @@ footer > #git {
           top-width: 0;
           left-width: 0;
           bottom-style: dashed;
+        }
+
+        &[colspan="3"] {
+          text-align: center;
         }
 
         &:last-child {
