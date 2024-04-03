@@ -1,5 +1,5 @@
 ---
-date: 2024-04-02
+date: 2024-04-05
 title: |-
   We need to talk about: Environment variables
 keywords: [development, devops, wntta]

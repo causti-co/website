@@ -1,5 +1,5 @@
 ---
-date: 2024-04-04
+date: 2024-04-19
 title: |-
   *clan* *clan* *clan* *clan*
 alt: A photo of a pedestrian railroad crossing, shot from a low angle facing upwards. A passing train is caught in the shot, creating a blur as it moves across the frame, partially covered by the pedestrian barriers and warning signs.
