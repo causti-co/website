@@ -60,7 +60,6 @@ og:
       {{ content | betterIndent(6) | safe }}
     </main>
     <footer>
-      {%- if experimental %}
       {%- if history %}
       <div id="git">
         <a class="open" href="#git">
@@ -99,7 +98,6 @@ og:
           </table>
         </div>
       </div>
-      {%- endif %}
       {%- endif %}
       <nav>
         <ul>
