@@ -44,6 +44,7 @@ Design
       About?
     Keyword Collections
       Could be an alternative view within /texts/, accessible from within /texts/
+      https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
     Privacy Notice §
       Footer/Header or About
     "New content" indicator, somehow?
