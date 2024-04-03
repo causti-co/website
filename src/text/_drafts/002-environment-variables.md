@@ -3,6 +3,12 @@ date: 2024-04-02
 title: |-
   We need to talk about: Environment variables
 keywords: [development, devops, wntta]
+description: >-
+  do you ever think about the environment?
+  what it is, and also, what it isn't.
+  convenience is good.
+  convenience can be dangerous.
+  we need to talk.
 ---
 I've been delivering different versions of this rant over the past decade to whomever was there to hear. And seeing as people are still not getting the point, as exemplified by projects like [@dotenvx/dotenvx](https://github.com/dotenvx/dotenvx), [joho/godotenv](https://github.com/joho/godotenv), or [theskumar/python-dotenv](https://github.com/theskumar/python-dotenv), etc., it looks like it's time I get this down in written form.
 
