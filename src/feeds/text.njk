@@ -3,23 +3,23 @@ permalink: text/feed.xml
 eleventyExcludeFromCollections: true
 title: causti • co
 subtitle: text
-baseUrl: https://causti.co/
+baseUrl: https://causti.co
 ---
-{%- set contentCollection = collections.text | reverse %}
+{%- set contentCollection = collections.text | reverse -%}
 {%- set newestContent = contentCollection | first -%}
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ baseUrl }}" xml:lang="en">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ baseUrl }}/" xml:lang="en">
 	<title>{{ title }}</title>
 	<subtitle>{{ subtitle }}</subtitle>
 	<link href="{{ baseUrl}}{{ permalink }}" rel="self" />
-	<link href="{{ baseUrl }}" />
+	<link href="{{ baseUrl }}/" />
 	<id>{{ baseUrl }}/</id>
 	<updated>{{ newestContent.page.date | dateToRfc3339 }}</updated>
   <author>
     <name>Martín Valdés de León</name>
   </author>
   <generator>{{ eleventy.generator }}</generator>
-  <icon>{{ baseUrl }}assets/icons/favicon.png</icon>
+  <icon>{{ baseUrl }}/assets/icons/favicon.png</icon>
   <rights>causti • co © 2024 by Martín Valdés de León, is licensed under CC BY-NC-ND 4.0</rights>
   <category term="text" />
 	{%- for content in contentCollection.slice(0, 20) %}
