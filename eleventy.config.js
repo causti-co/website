@@ -3,6 +3,7 @@ const path = require("node:path");
 const _ = require("lodash");
 const ExifReader = require("exifreader");
 const Image = require("@11ty/eleventy-img");
+const eleventyRss = require("@11ty/eleventy-plugin-rss");
 const eleventySass = require("eleventy-sass");
 const markdownItAttrs = require("markdown-it-attrs");
 const _Shiki = import("@shikijs/markdown-it");
@@ -63,6 +64,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(eleventySass);
+  eleventyConfig.addPlugin(eleventyRss);
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAttrs));
 
   // Environment-sensitive configuration
@@ -222,6 +224,29 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("textByMonth", groupByMonth("text"));
   eleventyConfig.addCollection("recsByMonth", groupByMonth("recs"));
+  eleventyConfig.addCollection("allContent", collectionApi => {
+    const tags = ["text", "photo", "recs"];
+
+    const allContent = tags.flatMap(tag => collectionApi.getFilteredByTag(tag));
+
+    return allContent.map(item => {
+      for (let tag of tags) {
+        if (item.data.tags.includes(tag)) {
+          item.data.category = tag;
+          break;
+        }
+      }
+
+      if (item.data.category === "recs") {
+        // Individual recs have no url, lets provide one
+        item.page.url = "/recs/";
+      }
+
+      return item;
+    }).sort((l, r) => {
+      return r.page.date - l.page.date;
+    });
+  });
 
   return {
     dir: {

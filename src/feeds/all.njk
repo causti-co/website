@@ -1,0 +1,52 @@
+---
+permalink: feed.xml
+title: causti • co
+subtitle: all content
+baseUrl: https://causti.co/
+---
+{%- set contentCollection = collections.allContent %}
+{%- set newestContent = contentCollection | first -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ baseUrl }}" xml:lang="en">
+	<title>{{ title }}</title>
+	<subtitle>{{ subtitle }}</subtitle>
+	<link href="{{ baseUrl}}{{ permalink }}" rel="self" />
+	<link href="{{ baseUrl }}" />
+	<id>{{ baseUrl }}/</id>
+	<updated>{{ newestContent.page.date | dateToRfc3339 }}</updated>
+  <author>
+    <name>Martín Valdés de León</name>
+  </author>
+  <generator>{{ eleventy.generator }}</generator>
+  <icon>{{ baseUrl }}assets/icons/favicon.png</icon>
+  <rights>causti • co © 2024 by Martín Valdés de León, is licensed under CC BY-NC-ND 4.0</rights>
+	{%- for content in contentCollection.slice(0, 20) %}
+  {%- set contentUrl = baseUrl + content.page.url %}
+  <entry>
+    <category term="{{ content.data.category }}" />
+		<title>{{ content.data.title }}</title>
+		<link href="{{ contentUrl }}" />
+    <link rel="alternate" type="text/html" href="{{ contentUrl }}" />
+    {%- if content.data.responsive %}
+    {%- set largest = content.data.responsive | last %}
+    <link rel="alternate" type="{{ largest.sourceType }}" href="{{ baseUrl }}{{ largest.url }}" />
+    {%- endif %}
+    {%- if content.data.url %}
+    <link rel="related" type="text/html" href="{{ content.data.url }}" />
+    {%- endif %}
+		<id>{{ contentUrl }}</id>
+    <updated>{{ content.page.date | dateToRfc3339 }}</updated>
+    <published>{{ content.page.date | dateToRfc3339 }}</published>
+		<summary>{{ content.data.description or content.data.alt or content.data.title }}</summary>
+    <content type="html">
+      {%- if content.data.category === "text" or content.data.category === "recs" %}
+      {{ content.templateContent | htmlToAbsoluteUrls(baseUrl) }}
+      {%- else %}
+      {%- filter htmlToAbsoluteUrls(baseUrl) %}
+      {% image content.data.responsive, content.data.alt, "100vw" %}
+      {%- endfilter %}
+      {%- endif %}
+    </content>
+	</entry>
+  {%- endfor %}
+</feed>
