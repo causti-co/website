@@ -179,9 +179,35 @@ footer > #git {
     padding: 8px {
       left: 40px;
     }
+    min-height: 100px;
     max-height: 160px;
     box-sizing: border-box;
     overflow-y: auto;
+
+    > .actions {
+      position: absolute;
+      left: 0;
+      bottom: 29px;
+      width: 29px;
+
+      > a {
+        display: block;
+        height: 29px;
+        background-color: $gray-05;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 26px;
+
+        &:hover, &:focus {
+          color: $white;
+          background-color: $accent-dark;
+        }
+      }
+    }
 
     > ul {
       margin: 0;
