@@ -221,10 +221,13 @@ footer > #git {
         right-width: 0;
       }
 
-      // Adjust borders if the scrollbar is visible
-      &:has(tbody tr:nth-child(3)) {
+      // Related to .container max-height. Once we exceed it, show the border.
+      &:has(tbody tr:nth-child(5)) {
         border-right-width: 2px;
+      }
 
+      // Related to .container min-height. Once we exceed it, hide the border.
+      &:has(tbody tr:nth-child(3)) {
         tbody tr:last-child td {
           border-bottom-width: 0;
         }

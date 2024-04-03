@@ -79,15 +79,15 @@ og:
             <thead>
               <tr>
                 <th>date</th>
-                <th>message</th>
-                <th>sha</th>
+                <th>subject</th>
+                <th>commit</th>
               </tr>
             </thead>
             <tbody>
             {%- for commit in history %}
               <tr>
                 <td>{{ commit.date | shortDate}}</td>
-                <td>{{commit.subject }}</td>
+                <td><b>{{commit.subject }}</b></td>
                 <td><a href="https://github.com/causti-co/website/commit/{{commit.hash}}" target="_blank" rel="noopener noreferrer">{{commit.shortHash}}</a></td>
               </tr>
             {%- else %}
