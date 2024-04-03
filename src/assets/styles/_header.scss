@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "settings" as *;
 
 // Module Dimensions
@@ -35,7 +36,7 @@ header {
 
   > .actions {
     position: absolute;
-    top: $main-margin-size / 4;
+    top: math.div($main-margin-size, 4);
     right: $main-margin-size + $default-border-width + $default-box-shadow-size + $default-padding-size;
     @include border();
     @include box-shadow();
