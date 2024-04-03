@@ -1,9 +1,10 @@
 Design
-  0. Add link to Atom feed somewhere...
-
   1. Review padding at the bottom of each section
 
   2. Flexbox for the Detailed Photo Footer
+
+  0. Git Design has all absolute coordinates
+    Refactor to use the right variables from settings, and do the right math
 
   Responsive Design
     Mobile / Small Screens
