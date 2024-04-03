@@ -1,4 +1,6 @@
 Design
+  0. Add link to Atom feed somewhere...
+
   1. Review padding at the bottom of each section
 
   2. Flexbox for the Detailed Photo Footer
@@ -39,6 +41,4 @@ Design
 
 
 Chores
-  0. sitemap.xml
-
   Consider hosting somewhere else so i can get some non-cookie-requiring statistics?

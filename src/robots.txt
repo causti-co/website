@@ -1,3 +1,5 @@
+Sitemap: https://causti.co/sitemap.xml
+
 User-agent: GPTBot
 Disallow: /
 
