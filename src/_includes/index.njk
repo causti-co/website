@@ -75,11 +75,28 @@ og:
             <a href="https://github.com/causti-co/website/blob/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">≡</a>
             <a href="https://github.com/causti-co/website/edit/main/{{ page.inputPath.slice(1) }}" target="_blank" rel="noopener noreferrer">±</a>
           </div>
-          <ul>
+          <table>
+            <thead>
+              <tr>
+                <th>date</th>
+                <th>message</th>
+                <th>sha</th>
+              </tr>
+            </thead>
+            <tbody>
             {%- for commit in history %}
-            <li>{{commit.subject }} {{ commit.date | shortDate}} <a href="https://github.com/causti-co/website/commit/{{commit.hash}}" target="_blank" rel="noopener noreferrer">{{commit.shortHash}}</a></li>
+              <tr>
+                <td>{{ commit.date | shortDate}}</td>
+                <td>{{commit.subject }}</td>
+                <td><a href="https://github.com/causti-co/website/commit/{{commit.hash}}" target="_blank" rel="noopener noreferrer">{{commit.shortHash}}</a></td>
+              </tr>
+            {%- else %}
+              <tr>
+                <td colspan="3"><i>Not commited yet.</i></td>
+              </tr>
             {%- endfor %}
-          </ul>
+            </tbody>
+          </table>
         </div>
       </div>
       {%- endif %}

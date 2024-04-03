@@ -176,7 +176,7 @@ footer > #git {
   }
 
   .content {
-    padding: 8px {
+    padding: 0 {
       left: 40px;
     }
     min-height: 100px;
@@ -209,17 +209,59 @@ footer > #git {
       }
     }
 
-    > ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    table {
+      margin: 0 auto;
+      width: 100%;
+      background-color: $gray-20;
+      border-collapse: collapse;
+      @include border();
+      border: {
+        top-width: 0;
+        bottom-width: 0;
+        right-width: 0;
+      }
 
-      > li {
-        margin-bottom: 4px;
+      &:has( tbody tr:nth-child(3) ) {
+        border-right-width: 2px;
+
+        tbody tr:last-child td {
+          border-bottom-width: 0;
+        }
+      }
+
+      thead th,
+      tbody td {
+        padding: 4px 8px;
+      }
+
+      thead th {
+        background-color: $gray-10;
+        @include border();
+        border: {
+          top-width: 0;
+          left-width: 0;
+        }
 
         &:last-child {
-          margin-bottom: 0;
+          border-right-width: 0;
         }
+      }
+
+      tbody td {
+        @include border();
+        border: {
+          top-width: 0;
+          left-width: 0;
+          bottom-style: dashed;
+        }
+
+        &:last-child {
+          border-right-width: 0;
+        }
+      }
+
+      tbody tr:last-child td {
+        border-bottom-style: solid;
       }
     }
   }
