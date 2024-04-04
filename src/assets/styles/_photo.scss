@@ -202,3 +202,9 @@ main > article.photo > #full-screen {
     object-fit: contain;
   }
 }
+
+@media (width <= 1024px) {
+  main > article.photo > .content > .photo .card > .card-content {
+    word-break: break-word;
+  }
+}
