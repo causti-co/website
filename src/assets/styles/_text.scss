@@ -50,8 +50,7 @@ main > article.text > .content {
       bottom: 8px;
     }
     font-size: 3em;
-    text-decoration: underline;
-    text-decoration-color: $accent-dark;
+    text-decoration: underline $accent-dark;
   
     .stats {
       display: inline-block;
