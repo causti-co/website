@@ -1,9 +1,4 @@
 Design
-  0. Missing natural width/height for img tags causing redraws
-    recs
-    and git/freed svgs
-    and footer CC icons
-
   1. Review padding at the bottom of each section
 
   2. Flexbox for the Detailed Photo Footer
@@ -57,8 +52,9 @@ Design
   404 page
 
   Somehow make it work?
-    https://www.caust.co/
+    https://www.causti.co/
 
 
 Chores
+  Recs Feed does not include the image as part of the content
   Consider hosting somewhere else so i can get some non-cookie-requiring statistics?
