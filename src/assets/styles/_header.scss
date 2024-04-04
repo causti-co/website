@@ -40,7 +40,7 @@ header {
   > .actions {
     position: absolute;
     top: math.div($main-margin-size, 4);
-    right: $main-margin-size + $default-border-width + $default-box-shadow-size + $default-padding-size;
+    right: $main-margin-size + $default-border-width + $default-padding-size;
     @include border();
     @include box-shadow();
     box-sizing: border-box;
