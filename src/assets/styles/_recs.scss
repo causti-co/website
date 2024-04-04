@@ -1,5 +1,8 @@
 @use "settings" as *;
 
+// Module Dimensions
+$image-max-size: 240px;
+
 main > article.recs-list > .content .month {
   > h2 {
     margin-bottom: 8px;
@@ -21,7 +24,7 @@ main > article.recs-list > .content .month {
       margin-bottom: 4px;
       flex-flow: row nowrap;
       align-items: baseline;
-      font-size: 1.2em;
+      font-size: 1.2rem;
 
       > .number {
         margin-right: 8px;
@@ -44,8 +47,8 @@ main > article.recs-list > .content .month {
         img {
           width: auto;
           height: auto;
-          max-width: 160px;
-          max-height: 160px;
+          max-width: $image-max-size;
+          max-height: $image-max-size;
           margin: 4px 16px 8px 0;
           float: left;
           @include border();

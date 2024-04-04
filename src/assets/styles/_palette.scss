@@ -5,8 +5,8 @@
 // Module Dimensions
 $palette-color-size: 32px;
 // Module Settings
-$void-message: "▖▘▝▗▖▘▝▗▖▘▝▗▖▘▝▗▛▜▟▙▛▜▟▙▛▜▟▙▛▜▟▙▞▚▞▚▞▚▞▚▞▚▞▚▞▚▞▚    you've just lost the game        ";
-$void-duration: string.length($void-message) * 0.5s;
+$void-message: "▖▘▝▗▖▘▝▗▖▘▝▗▖▘▝▗▛▜▟▙▛▜▟▙▛▜▟▙▛▜▟▙▞▚▞▚▞▚▞▚▞▚▞▚▞▚▞▚    you have just lost the game        ";
+$void-duration: string.length($void-message) * 0.3s;
 
 .palette {
   position: fixed;
@@ -75,10 +75,10 @@ $void-duration: string.length($void-message) * 0.5s;
             left-width: 0;
           }
         
-          line-height: 32px;
+          line-height: $palette-color-size;
           text-align: center;
-          font-size: 1.3em;
-          text-shadow: 2px 2px white;
+          font-size: 16px;
+          text-shadow: 2px 2px white, 4px 4px #f5a9b8, 6px 6px #5bcefa;
         
           &::before {
             display: block;

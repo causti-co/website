@@ -1,14 +1,14 @@
 @use "settings" as *;
 
 main > article.about > .content p {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 
   &:first-child {
     margin-top: 0;
   }
 
   b {
-    padding: 4px 6px;
+    padding: 0.20em;
     color: $gray-05;
     background-color: $black;
     font-weight: normal;

@@ -1,5 +1,9 @@
 @use "settings" as *;
 
+// Module Dimensions
+$card-width: 240px;
+$full-screen-button-size: 32px;
+
 main > article.photo-list {
   padding-bottom: $default-padding-size;
 }
@@ -44,7 +48,7 @@ main > article.photo {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        margin-top: 16px;
+        margin-top: $default-padding-size;
         padding: 0 4px 4px;
 
         .number, .camera {
@@ -58,12 +62,12 @@ main > article.photo {
 main > article.photo-list > .content {
   display: grid;
   gap: 32px;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
 
   > .photo .card {
     > .card-content {
       > img {
-        height: 240px;
+        height: $card-width;
         flex-grow: 0;
       }
 
@@ -109,16 +113,16 @@ main > article.photo > .content {
 
       > .full-screen {
         position: absolute;
-        top: 2px;
-        right: 4px;
-        height: 32px;
-        width: 32px;
+        top: 4px;
+        right: 6px;
+        height: $full-screen-button-size;
+        width: $full-screen-button-size;
         padding-left: 2px;
         @include border(1px);
         @include box-shadow();
         box-sizing: border-box;
         background-color: $accent-dark;
-        font-size: 2em;
+        font-size: $full-screen-button-size;
         font-weight: bold;
         line-height: 26px;
         text-align: center;
@@ -133,7 +137,7 @@ main > article.photo > .content {
 
       img {
         height: 0;
-        min-height: 240px;
+        min-height: $card-width;
         background-color: $gray-60;
         object-fit: contain;
         flex-grow: 1;
@@ -141,7 +145,7 @@ main > article.photo > .content {
       
       h3 {
         padding-top: 4px;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         text-decoration: underline $accent-dark;
         flex-grow: 0;
       }
@@ -171,15 +175,15 @@ main > article.photo > #full-screen {
     position: fixed;
     top: 8px;
     right: 8px;
-    height: 32px;
-    width: 32px;
+    height: $full-screen-button-size;
+    width: $full-screen-button-size;
     background-color: $accent-dark;
     @include border(1px);
     @include box-shadow($color: $gray-05);
     box-sizing: border-box;
-    font-size: 2em;
+    font-size: $full-screen-button-size;
     font-weight: bold;
-    line-height: 30px;
+    line-height: 28px;
     text-align: center;
     text-decoration: none;
     opacity: 0.4;

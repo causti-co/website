@@ -21,7 +21,7 @@ main > article.text-list > .content .month {
       margin-bottom: 4px;
       flex-flow: row nowrap;
       align-items: baseline;
-      font-size: 1.2em;
+      font-size: 1.2rem;
 
       .number {
         margin-right: 8px;
@@ -51,6 +51,8 @@ main > article.text-list > .content .month {
 }
 
 main > article.text > .content {
+  font-size: 1rem;
+  
   h1 {
     margin: 0 {
       bottom: 8px;
@@ -86,6 +88,12 @@ main > article.text > .content {
     @include box-shadow();
     box-sizing: border-box;
     font-size: 2em;
+
+    &.funky {
+      background-color: $accent-secondary;
+      color: $white;
+      transform: rotate(-3deg);
+    }
   }
 
   pre, code {

@@ -22,6 +22,7 @@ html {
   padding: $main-margin-size;
   box-sizing: border-box;
   font-family: "Berkeley Mono", monospace;
+  font-size: 16px;
   background-color: $margin-color;
   color: $black;
 }
@@ -60,7 +61,7 @@ main {
       left: $main-margin-size;
       top: 2 * $default-padding-size;
       margin: 0;
-      font-size: 4em;
+      font-size: 4rem;
       line-height: 1em;
       text-align: right;
       writing-mode: vertical-rl;
@@ -73,10 +74,6 @@ main {
         font-size: 0.5em;
         line-height: 0.5em;
         vertical-align: bottom;
-
-        &.smaller {
-          font-size: 0.3em;
-        }
       }
     }
   }

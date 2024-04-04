@@ -15,10 +15,11 @@ header {
       // Offset the header to keep alignment
       left: -$extra-link-padding;
     }
-    font-size: 4em;
+    font-size: 4rem;
     text-transform: uppercase;
 
     a {
+      // We want to add this to make the link area a bit larger than just the text
       padding: 0 $extra-link-padding;
       text-decoration: none;
 
@@ -29,8 +30,8 @@ header {
 
     .dot {
       width: auto;
-      height: 24px;
-      margin-top: -10px;
+      height: 0.375em;
+      margin-top: -0.15em;
       vertical-align: middle;
       animation: rotation 4s infinite reverse linear;
       cursor: help;
