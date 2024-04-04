@@ -12,6 +12,7 @@ footer nav {
   background-color: $gray-15;
   @include border();
   border-bottom-width: 0;
+  font-size: 1.5rem;
 
   > ul {
     margin: 0;
@@ -34,7 +35,6 @@ footer nav {
           border: 1px solid $black;
           background-color: $gray-05;
           @include box-shadow();
-          font-size: 1.5rem;
           text-align: right;
 
           &:focus {
