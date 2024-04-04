@@ -53,9 +53,6 @@ Design
     Basically an independent layout from the rest of the site
       Could be generated from the latest content?
 
-  Somehow make it work?
-    https://www.causti.co/
-
 
 Chores
   Consider hosting somewhere else so i can get some non-cookie-requiring statistics?
