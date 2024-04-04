@@ -14,9 +14,9 @@ I've been delivering different versions of this rant over the past decade to who
 
 Then at least I can start linking people to here rather than having to repeat myself again. And again. And again.
 
-## TL;DR
+## TL;DR {.funky}
 
-`.env` files are an implementation detail of _your_ environment. **Nothing** in your project should care or know that `.env` files exist. If you want to use `.env` files, then you need to: 1/ Add `.env` to your global `~/.gitignore` file, and **never** to a project's `.gitignore` file. 2/ Configure **your environment** to load `.env` files (for example, using [hyperupcall/autoenv](https://github.com/hyperupcall/autoenv)), and **not** your project.
+`.env` files are an implementation detail of _your_ environment. **Nothing** in your project should care or know that `.env` files exist. If you want to use `.env` files, then you need to: 1/ Add `.env` to your global `~/.gitignore` file, and **never** to a project's `.gitignore` file. 2/ Configure **your environment**, and **not your project**, to load `.env` files (for example, using [hyperupcall/autoenv](https://github.com/hyperupcall/autoenv)).
 
 ## Variables of the Environment
 
