@@ -90,3 +90,19 @@ footer {
   width: calc(100% - 2 * $main-margin-size);
   background-color: $margin-color;
 }
+
+@media (width <= 800px) {
+  main {
+    > article {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media (width <= 400px) {
+  main {
+    > article {
+      font-size: 2rem;
+    }
+  }
+}

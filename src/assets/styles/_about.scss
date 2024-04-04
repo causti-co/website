@@ -25,3 +25,9 @@ main > article.about > .content p {
     font-size: 1.2em;
   }
 }
+
+@media (width <= 1024px) {
+  main > article.about > .content {
+    font-size: 1.25rem;
+  }
+}

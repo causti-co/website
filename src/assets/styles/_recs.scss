@@ -77,3 +77,26 @@ main > article.recs-list > .content .month {
     }
   }
 }
+
+@media (width <= 1024px) {
+  main > article.recs-list > .content .month {
+    > ul > li > .rec h3 .date {
+      display: block;
+    }
+  }
+}
+
+@media (width <= 800px) {
+  main > article.recs-list > .content .month {
+    > ul > li {
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    > ul > li > .rec img {
+      display: block;
+      float: none;
+      margin: 8px auto;
+    }
+  }
+}
