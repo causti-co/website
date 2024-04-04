@@ -57,10 +57,9 @@ main {
 
     > h1 {
       position: absolute;
-      left: 8px;
-      margin: 0 {
-        top: 8px;
-      }
+      left: $main-margin-size;
+      top: 2 * $default-padding-size;
+      margin: 0;
       font-size: 4em;
       line-height: 1em;
       text-align: right;

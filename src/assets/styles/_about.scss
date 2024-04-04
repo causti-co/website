@@ -3,6 +3,10 @@
 main > article.about > .content p {
   font-size: 1.5em;
 
+  &:first-child {
+    margin-top: 0;
+  }
+
   b {
     padding: 4px 6px;
     color: $gray-05;

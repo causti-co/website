@@ -4,6 +4,12 @@ main > article.recs-list > .content .month {
   > h2 {
     margin-bottom: 8px;
   }
+
+  &:first-child {
+    > h2 {
+      margin-top: 0;
+    }
+  }
   
   > ul {
     padding: 0;

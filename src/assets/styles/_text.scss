@@ -5,6 +5,12 @@ main > article.text-list > .content .month {
     margin-bottom: 8px;
   }
 
+  &:first-child {
+    > h2 {
+      margin-top: 0;
+    }
+  }
+
   > ul {
     padding: 0;
     margin: 0;
