@@ -22,7 +22,7 @@ $accent-secondary: hotpink;
 // Settings
 $main-margin-size: 8px;
 $default-padding-size: 16px;
-$header-height: 72px;
+$header-height: 72px; // Used to calc full-height content, but not for the actual header
 $footer-height: 32px; // Used to calc full-height content, but not for the actual footer
 $default-border-color: $black;
 $default-border-width: 2px;

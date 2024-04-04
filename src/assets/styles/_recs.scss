@@ -3,9 +3,14 @@
 // Module Dimensions
 $image-max-size: 240px;
 
+main > article.recs-list > .content {
+  font-size: 1.2rem;
+}
+
 main > article.recs-list > .content .month {
   > h2 {
     margin-bottom: 8px;
+    font-size: 1.25em;
   }
 
   &:first-child {
@@ -24,7 +29,10 @@ main > article.recs-list > .content .month {
       margin-bottom: 4px;
       flex-flow: row nowrap;
       align-items: baseline;
-      font-size: 1.2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       > .number {
         margin-right: 8px;

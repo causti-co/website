@@ -1,8 +1,13 @@
 @use "settings" as *;
 
+main > article.text-list > .content {
+  font-size: 1.2rem;
+}
+
 main > article.text-list > .content .month {
   > h2 {
     margin-bottom: 8px;
+    font-size: 1.25em;
   }
 
   &:first-child {
@@ -21,9 +26,12 @@ main > article.text-list > .content .month {
       margin-bottom: 4px;
       flex-flow: row nowrap;
       align-items: baseline;
-      font-size: 1.2rem;
 
-      .number {
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      > .number {
         margin-right: 8px;
         font-size: 0.75em;
         font-weight: bold;
@@ -54,23 +62,25 @@ main > article.text > .content {
   font-size: 1rem;
   
   h1 {
+    display: inline-block;
     margin: 0 {
       bottom: 8px;
     }
     font-size: 3em;
     text-decoration: underline $accent-dark;
-  
-    .stats {
-      display: inline-block;
-      margin-left: 16px;
-      color: $gray-50;
-      font-size: 0.4em;
-      text-decoration: none;
-      cursor: wait;
+  }
 
-      &:hover {
-        color: $gray-80;
-      }
+  .stats {
+    display: inline-block;
+    margin-left: 8px;
+    color: $gray-50;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: wait;
+
+    &:hover {
+      color: $gray-80;
     }
   }
 

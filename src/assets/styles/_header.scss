@@ -8,6 +8,7 @@ $action-image-size: 16px;
 
 header {
   padding: $default-padding-size;
+  font-size: 4rem;
 
   h1 {
     display: inline;
@@ -15,7 +16,8 @@ header {
       // Offset the header to keep alignment
       left: -$extra-link-padding;
     }
-    font-size: 4rem;
+    font-size: 1em;
+
     text-transform: uppercase;
 
     a {
@@ -46,6 +48,7 @@ header {
     @include box-shadow();
     box-sizing: border-box;
     text-align: center;
+    font-size: 16px;
 
     > .feed {
       display: block;

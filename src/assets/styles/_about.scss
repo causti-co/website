@@ -1,8 +1,10 @@
 @use "settings" as *;
 
-main > article.about > .content p {
+main > article.about > .content {
   font-size: 1.5rem;
+}
 
+main > article.about > .content p {
   &:first-child {
     margin-top: 0;
   }

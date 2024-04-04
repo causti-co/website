@@ -39,7 +39,6 @@ body {
 }
 
 header {
-  height: $header-height;
   background-color: $header-background-color;
 }
 
@@ -54,14 +53,15 @@ main {
   flex-grow: 1;
 
   > article {
-    padding-left: $article-spacing-left;
+    font-size: 4rem;
+    padding-left: 2.5em;
 
     > h1 {
       position: absolute;
       left: $main-margin-size;
       top: 2 * $default-padding-size;
       margin: 0;
-      font-size: 4rem;
+      font-size: 1em;
       line-height: 1em;
       text-align: right;
       writing-mode: vertical-rl;
@@ -75,6 +75,10 @@ main {
         line-height: 0.5em;
         vertical-align: bottom;
       }
+    }
+
+    > .content {
+      font-size: 1rem;
     }
   }
 }
