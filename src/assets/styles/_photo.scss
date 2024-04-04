@@ -10,39 +10,46 @@ main > article.photo {
     height: 100%;
 
     > .card-content {
-      display: block;
+      display: flex;
+      flex-flow: column nowrap;
       position: relative;
       height: 100%;
       background-color: $gray-05;
       @include border();
       @include box-shadow();
       box-sizing: border-box;
-      padding-bottom: 42px;
+      text-decoration: none;
 
       > img {
         display: block;
         width: 100%;
         background-color: $gray-05;
         object-fit: cover;
+        flex: {
+          shrink: 0;
+          basis: auto;
+        }
       }
 
       > h3 {
         margin: 0;
         padding: 0 4px;
         border-top: (3 * $default-border-width) double $default-border-color;
+        flex-shrink: 0;
+        text-decoration: underline $accent-dark;
       }
 
-      .number, .camera {
-        position: absolute;
-        left: 4px;
-        bottom: 4px;
-        font-weight: bold;
-      }
+      > .details {
+        flex: 0 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-top: 16px;
+        padding: 0 4px 4px;
 
-      .date, .specs {
-        position: absolute;
-        right: 4px;
-        bottom: 4px;
+        .number, .camera {
+          font-weight: bold;
+        }
       }
     }
   }
@@ -54,22 +61,33 @@ main > article.photo-list > .content {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 
   > .photo .card {
-    > a:focus {
-      background-color: $accent-light;
+    > .card-content {
+      > img {
+        height: 240px;
+        flex-grow: 0;
+      }
+
+      > h3 {
+        flex-grow: 1;
+      }
+
+      &:focus {
+        background-color: $accent-light;
+
+        > h3 {
+          text-decoration-color: $white;
+        }
+      }
     }
 
-    > a:active, &:hover > a:active {
+    > .card-content:active, &:hover > .card-content:active {
       top: 0;
       left: 0;
       background-color: $accent-dark;
       @include box-shadow();
     }
 
-    > a > img {
-      height: 240px;
-    }
-
-    &:hover > a {
+    &:hover > .card-content {
       top: -2 * $default-box-shadow-size;
       left: -2 * $default-box-shadow-size;
       @include box-shadow(3 * $default-box-shadow-size);
@@ -88,8 +106,6 @@ main > article.photo > .content {
       display: flex;
       position: relative;
       flex-flow: column nowrap;
-      // Hide overflow until we have a small screen design
-      overflow: hidden;
 
       > .full-screen {
         position: absolute;
@@ -118,20 +134,21 @@ main > article.photo > .content {
       img {
         height: 0;
         min-height: 240px;
-        flex-grow: 1;
         background-color: $gray-60;
         object-fit: contain;
+        flex-grow: 1;
       }
       
       h3 {
         padding-top: 4px;
         font-size: 1.5em;
-        text-decoration: underline;
-        text-decoration-color: $accent-dark;
+        text-decoration: underline $accent-dark;
+        flex-grow: 0;
       }
 
       p {
         margin: 4px 4px 0;
+        flex-grow: 0;
       }
     }
   }

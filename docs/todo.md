@@ -1,11 +1,9 @@
 STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
-  2. Flexbox for the Detailed Photo Footer
-
   Responsive Design
-    Mobile / Small Screens
-
-    3. Migrate font sizes from `em` to `rem`
+    Migrate font sizes from `em` to `rem`
       It will be easier to start from the most nested elements outwards, because then we don't have to deal with cascading changes
+
+    Mobile / Small Screens
 
     Home & Photo are using a fixed-height header in the calc, but the actual header is dynamic based on content size.
 
