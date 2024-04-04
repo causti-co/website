@@ -9,12 +9,12 @@ baseUrl: https://causti.co
 {%- set newestContent = contentCollection | first -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ baseUrl }}/" xml:lang="en">
-	<title>{{ title }}</title>
-	<subtitle>{{ subtitle }}</subtitle>
-	<link href="{{ baseUrl}}{{ permalink }}" rel="self" />
-	<link href="{{ baseUrl }}/" />
-	<id>{{ baseUrl }}/</id>
-	<updated>{{ newestContent.page.date | dateToRfc3339 }}</updated>
+  <title>{{ title }}</title>
+  <subtitle>{{ subtitle }}</subtitle>
+  <link href="{{ baseUrl}}{{ permalink }}" rel="self" />
+  <link href="{{ baseUrl }}/" />
+  <id>{{ baseUrl }}/</id>
+  <updated>{{ newestContent.page.date | dateToRfc3339 }}</updated>
   <author>
     <name>Martín Valdés de León</name>
   </author>
@@ -22,20 +22,23 @@ baseUrl: https://causti.co
   <icon>{{ baseUrl }}/assets/icons/favicon.png</icon>
   <rights>causti • co © 2024 by Martín Valdés de León, is licensed under CC BY-NC-ND 4.0</rights>
   <category term="recs" />
-	{%- for content in contentCollection.slice(0, 20) %}
+  {%- for content in contentCollection.slice(0, 20) %}
   {%- set contentUrl = baseUrl + content.page.url %}
   <entry>
-		<title>{{ content.data.title }}</title>
-		<link href="{{ contentUrl }}" />
+    <title>{{ content.data.title }}</title>
+    <link href="{{ contentUrl }}" />
     <link rel="alternate" type="text/html" href="{{ contentUrl }}" />
     <link rel="related" type="text/html" href="{{ content.data.url }}" />
-		<id>{{ contentUrl }}</id>
+    {%- if content.data.imageUrl %}
+    <link rel="alternate" type="image/jpeg" href="{{ baseUrl }}{{ content.data.imageUrl }}" />
+    {%- endif %}
+    <id>{{ contentUrl }}</id>
     <updated>{{ content.page.date | dateToRfc3339 }}</updated>
     <published>{{ content.page.date | dateToRfc3339 }}</published>
-		<summary>{{ content.data.title }}</summary>
+    <summary>{{ content.data.title }}</summary>
     <content type="html">
       {{ content.templateContent | htmlToAbsoluteUrls(baseUrl) }}
     </content>
-	</entry>
+  </entry>
   {%- endfor %}
 </feed>

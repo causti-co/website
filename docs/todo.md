@@ -56,5 +56,4 @@ Design
 
 
 Chores
-  Recs Feed does not include the image as part of the content
   Consider hosting somewhere else so i can get some non-cookie-requiring statistics?
