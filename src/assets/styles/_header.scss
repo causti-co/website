@@ -3,6 +3,8 @@
 
 // Module Dimensions
 $extra-link-padding: 4px;
+$action-button-size: 20px;
+$action-image-size: 16px;
 
 header {
   padding: $default-padding-size;
@@ -45,8 +47,8 @@ header {
 
     > .feed {
       display: block;
-      width: 20px;
-      height: 20px;
+      width: $action-button-size;
+      height: $action-button-size;
       background-color: $white;
 
       &:hover {
@@ -54,9 +56,9 @@ header {
       }
 
       img {
-        padding-top: 2px;
-        width: 16px;
-        height: 16px;
+        padding-top: math.div($action-button-size - $action-image-size, 2);
+        width: $action-image-size;
+        height: $action-image-size;
       }
     }
   }

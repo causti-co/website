@@ -1,10 +1,12 @@
 Design
+  0. Missing natural width/height for img tags causing redraws
+    recs
+    and git/freed svgs
+    and footer CC icons
+
   1. Review padding at the bottom of each section
 
   2. Flexbox for the Detailed Photo Footer
-
-  0. Git Design has all absolute coordinates
-    Refactor to use the right variables from settings, and do the right math
 
   Responsive Design
     Mobile / Small Screens

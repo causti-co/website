@@ -1,4 +1,9 @@
+@use "sass:math";
 @use "settings" as *;
+
+// Module Dimensions
+$git-button-size: 32px;
+$git-image-size: 24px;
 
 footer nav {
   position: absolute;
@@ -97,10 +102,10 @@ footer > .content {
 
 footer > #git {
   position: absolute;
-  bottom: calc(100% + 8px);
-  left: 8px;
-  height: 32px;
-  width: 32px;
+  bottom: calc(100% + 8px + $default-border-width);
+  left: 8px + $default-border-width;
+  height: $git-button-size;
+  width: $git-button-size;
   background-color: $gray-05;
   @include border();
   @include box-shadow();
@@ -130,17 +135,17 @@ footer > #git {
     display: block;
     bottom: 0;
     left: 0;
-    width: 28px;
-    height: 28px;
+    width: $git-button-size - 2 * $default-border-width;
+    height: $git-button-size - 2 * $default-border-width;
     box-sizing: border-box;
 
     > img {
       display: block;
-      width: 24px;
-      height: 24px;
+      width: $git-image-size;
+      height: $git-image-size;
       padding: {
-        top: 2px;
-        left: 2px;
+        top: math.div($git-button-size - 2 * $default-border-width - $git-image-size, 2);
+        left: math.div($git-button-size - 2 * $default-border-width - $git-image-size, 2);
       }
     }
   }
@@ -168,16 +173,19 @@ footer > #git {
   }
 
   .close {
-    height: 29px;
-    width: 29px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    height: $git-button-size - 2 * $default-border-width + 1px;
+    width: $git-button-size - 2 * $default-border-width + 1px;
     background-color: $accent-dark;
+    @include border($width: 1px);
+    border: {
+      bottom-width: 0;
+      left-width: 0;
+    }
   }
 
   .content {
     padding: 0 {
-      left: 40px;
+      left: $git-button-size + 8px;
     }
     min-height: 100px;
     max-height: 160px;
@@ -187,15 +195,18 @@ footer > #git {
     > .actions {
       position: absolute;
       left: 0;
-      bottom: 29px;
-      width: 29px;
+      bottom: $git-button-size - 2 * $default-border-width + 1px;
+      width: $git-button-size - 2 * $default-border-width + 1px;
 
       > a {
         display: block;
-        height: 29px;
+        height: $git-button-size - 2 * $default-border-width + 1px;
         background-color: $gray-05;
-        border-top: 1px solid black;
-        border-right: 1px solid black;
+        @include border($width: 1px);
+        border: {
+          bottom-width: 0;
+          left-width: 0;
+        }
         box-sizing: border-box;
         text-decoration: none;
         text-align: center;
@@ -223,7 +234,7 @@ footer > #git {
 
       // Related to .container max-height. Once we exceed it, show the border.
       &:has(tbody tr:nth-child(5)) {
-        border-right-width: 2px;
+        border-right-width: $default-border-width;
       }
 
       // Related to .container min-height. Once we exceed it, hide the border.
