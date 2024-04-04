@@ -1,5 +1,9 @@
 @use "settings" as *;
 
+main > article.photo-list {
+  padding-bottom: $default-padding-size;
+}
+
 main > article.photo-list,
 main > article.photo {
   > .content > .photo .card {

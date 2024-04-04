@@ -1,6 +1,4 @@
 Design
-  1. Review padding at the bottom of each section
-
   2. Flexbox for the Detailed Photo Footer
 
   Responsive Design
@@ -22,7 +20,7 @@ Design
       most likely in a box floating above the menu
       but maybe attached to the photo box?
         try it out, see how it looks
-    
+
     Photo Details page w/ additional information
       exif dates (shot , edited)
         I still struggle with the design for this...
@@ -38,18 +36,22 @@ Design
 
   NEEDS DESIGN, INDEX:
     Global Content Statistics, %
-      About?
+      Header Action
+    Privacy Notice §
+      Header Action
     Keyword Collections
       Could be an alternative view within /texts/, accessible from within /texts/
       https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
-    Privacy Notice §
-      Footer/Header or About
+
     "New content" indicator, somehow?
       or maybe just freshness?
         The design part is easy, but...
         Would require Browser-side JS, or a scheduled build just to re-generate this information statically every day
 
   404 page
+    Some kind of full-screen image background with some text and a link to the main or something
+    Basically an independent layout from the rest of the site
+      Could be generated from the latest content?
 
   Somehow make it work?
     https://www.causti.co/
