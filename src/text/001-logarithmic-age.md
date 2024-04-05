@@ -24,6 +24,6 @@ What do these new numbers mean? We can take a look.
 | 6               | 32 - 64    |
 | 7               | 64 - 128   |
 
-The first two years are the same, but then it starts to get interesting. Year two, you star to socialize. Year three is your early childhood. Year four is the core of your youth. Year five you're a young adult. Year six is the major part of your life. And finally year seven is when you retire and die. Every year you have twice as much time to acomplish things as the previous one. Every year puts you twice as close to the end of your life as the previous one.
+The first two years are the same, but then it starts to get interesting. Year two, you star to socialize. Year three is your early childhood. Year four is the core of your youth. Year five you're a young adult. Year six is the major part of your life. And finally year seven is when you retire and die. Every year you have twice as much time to accomplish things as the previous one. Every year puts you twice as close to the end of your life as the previous one.
 
 Me? I recently turned 6. Fuck.
