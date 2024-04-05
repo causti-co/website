@@ -13,6 +13,7 @@ html {
   font-size: 16px;
   color: $white;
   background-color: $black;
+  overflow: hidden;
 }
 
 body {
@@ -92,5 +93,42 @@ body {
       // transform: rotate(calc(var(--offsetY) * 1deg + var(--offsetX) * 1deg));
       transition: all 0.3s;
     }
+  }
+}
+
+@media (hover: none) {
+  body > .frame > h1 {
+    --offsetX: -3;
+    --offsetY: -3;
+  }
+}
+
+@media (width <= 1024px) {
+  body > .frame > h1 {
+    font-size: 6rem;
+  }
+}
+
+@media (width <= 800px) {
+  body > .frame > h1 {
+    font-size: 5rem;
+  }
+}
+
+@media (width <= 600px) {
+  body > .frame > h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (width <= 500px) {
+  body > .frame > h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (width <= 400px) {
+  body > .frame > h1 {
+    font-size: 2rem;
   }
 }

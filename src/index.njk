@@ -7,6 +7,6 @@ eleventyExcludeFromCollections: true
   <h1>ho<br/>me&nbsp;</h1>
   <section class="content">
     {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
-    {% image photo.data.responsive, photo.data.alt, "calc(100vw - 368px)" %}
+    {% image photo.data.responsive, photo.data.alt, "(min-width: 800px) calc(100vw - 360px), calc(100vw - 160px)" %}
   </section>
 </article>

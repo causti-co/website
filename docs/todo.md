@@ -1,10 +1,17 @@
 STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
   Responsive Design
     Mobile / Small Screens
-      1. We need to decide what to do with the menu, it takes up too much space on a small screen.
       2. We need to decide what to do with the sub-header, for similar reasons.
 
+      3. Once we're done, we need to recompute responsive img sizes attributes
+        The extension breaks if the website uses media queries, which kind of defeats the purpose xD
+        So I eyeballed the home/photo ones
+
     Home & Photo are using a fixed-height header/footer in the calc, but the actual header/footer is dynamic based on content size.
+      Just measure again and call it a day. We now have a media query which switches to absolute positioning, after which point we're no longer using this fake height anyway
+
+    There's also a bug when the width goes under 368 pixels
+
 
 STUFF THAT I CAN WORK ON RIGHT NOW
   Global Content Statistics

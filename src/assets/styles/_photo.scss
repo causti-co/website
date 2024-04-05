@@ -48,6 +48,7 @@ main > article.photo {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
+        align-items: flex-end;
         margin-top: $default-padding-size;
         padding: 0 4px 4px;
 
@@ -206,5 +207,34 @@ main > article.photo > #full-screen {
 @media (width <= 1024px) {
   main > article.photo > .content > .photo .card > .card-content {
     word-break: break-word;
+  }
+}
+
+@media (width <= 800px) {
+  main > article.photo {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    bottom: 16px;
+    left: 0;
+    padding: 0;
+  }
+
+  main > article.photo > .content {
+    width: 100%;
+    height: 100%;
+    padding-left: 120px;
+    box-sizing: border-box;
+    min-height: auto;
+
+    > .photo .card > .card-content img {
+      min-height: auto;
+    }
+  }
+}
+
+@media (width <= 400px) {
+  main > article.photo > .content {
+    padding-left: 80px;
   }
 }

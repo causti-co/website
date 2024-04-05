@@ -286,3 +286,88 @@ footer > #git {
     }
   }
 }
+
+@media (width <= 800px) {
+  footer nav {
+    left: 0;
+    position: relative;
+    border: none;
+
+    > ul {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+
+      > li {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  footer > .content {
+    margin-bottom: 0;
+    border: {
+      bottom-width: 0;
+      left-width: 0;
+      right-width: 0;
+    }
+  }
+}
+
+@media (width <= 700px) {
+  footer nav {
+    font-size: 1.25em;
+
+    > ul {
+      gap: 8px;
+      padding: 8px;
+
+      > li {
+        .button > a {
+          padding-left: initial;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 600px) {
+  footer nav {
+    > ul {
+      > li {
+        .button > a {
+          padding-right: 8px;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 500px) {
+  footer nav {
+    > ul {
+      grid-template-columns: repeat(3, 1fr);
+
+      > li {
+        .button > a {
+          padding-right: 16px;
+          padding-left: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 400px) {
+  footer nav {
+    > ul {
+      > li {
+        .button > a {
+          padding-right: 8px;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}

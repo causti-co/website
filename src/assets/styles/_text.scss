@@ -185,6 +185,10 @@ main > article.text > .content {
     margin-left: 0;
     margin-bottom: 8px;
   }
+
+  main > article.text > .content p {
+    word-break: break-word;
+  }
 }
 
 @media (width <= 800px) {

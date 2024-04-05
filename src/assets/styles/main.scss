@@ -93,9 +93,19 @@ footer {
 
 @media (width <= 800px) {
   main {
+    padding: {
+      right: 16px;
+      bottom: 16px;
+    }
+
     > article {
       font-size: 3rem;
     }
+  }
+
+  footer {
+    position: static;
+    width: auto;
   }
 }
 
