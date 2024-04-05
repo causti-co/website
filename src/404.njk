@@ -1,0 +1,32 @@
+---
+permalink: 404.html
+eleventyExcludeFromCollections: true
+title: causti • co
+description: '404'
+---
+{%- set lastText = collections.text | reverse | first -%}
+{%- set lastPhoto = collections.photo | reverse | first -%}
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/assets/styles/404.css" />
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    {%- for i in range(0, 121) %}
+    <div class="cell"><a href="/"></a></div>
+    {%- endfor %}
+    <div class="frame">
+      {% image lastPhoto.data.responsive, lastPhoto.data.alt, "100vw" %}
+      <h1>¯\_(ツ)_/¯</h1>
+    </div>
+  </body>
+</html>

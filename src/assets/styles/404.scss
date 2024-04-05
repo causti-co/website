@@ -1,0 +1,96 @@
+@use "sass:color";
+@use "_settings" as *;
+
+:link, :visited, :focus {
+  color: inherit;
+  background-color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  font-family: "Berkeley Mono", monospace;
+  font-size: 16px;
+  color: $white;
+  background-color: $black;
+}
+
+body {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  grid-template: repeat(11, 1fr) / repeat(11, 1fr);
+  background-color: color.change($accent-secondary, $alpha: 0.3);
+  overflow: hidden;
+
+  .cell {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    > a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    & ~ .frame {
+      --offsetX: 0;
+      --offsetY: 0;
+    }
+
+    @for $i from 0 to 11 {
+      &:nth-child(11n + #{$i + 1}):hover ~ .frame {
+        --offsetX: #{$i - 5};
+      }
+      &:nth-child(n + #{11 * $i + 1}):nth-child(-n + #{11 * ($i + 1)}):hover ~ .frame {
+        --offsetY: #{$i - 5};
+      }
+    }
+  }
+
+  .frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      position: absolute;
+      top: calc(-10vh + var(--offsetY) * -1vh);
+      left: calc(-10vw + var(--offsetX) * -1vw);
+      width: 120vw;
+      height: 120vh;
+      object-fit: cover;
+      display: block;
+      opacity: calc(0.6 - var(--offsetY) * var(--offsetY) / 100 - var(--offsetX) * var(--offsetX) / 100);
+      transition: all 0.3s;
+    }
+
+    h1 {
+      display: block;
+      position: absolute;
+      font-size: 8rem;
+      text-align: center;
+      margin: 0;
+      padding: 1rem;
+      background-color: $accent-secondary;
+      @include border();
+      // @include box-shadow($size: 8px, $color: $accent-dark);
+      box-shadow: calc(var(--offsetX) * -4px) calc(var(--offsetY) * -4px) $accent-dark;
+      box-sizing: border-box;
+      text-shadow: calc(var(--offsetX) * -2px) calc(var(--offsetY) * -2px) black;
+      transform: scale(calc(1 + var(--offsetY) * var(--offsetY) / 200 + var(--offsetX) * var(--offsetX) / 200));
+      // transform: rotate(calc(var(--offsetY) * 1deg + var(--offsetX) * 1deg));
+      transition: all 0.3s;
+    }
+  }
+}

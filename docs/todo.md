@@ -13,11 +13,6 @@ STUFF THAT I CAN WORK ON RIGHT NOW
   Privacy Notice
     § in Header Action
 
-  404 page
-    Some kind of full-screen image background with some text and a link to the main or something
-    Basically an independent layout from the rest of the site
-      Could be generated from the latest content?
-
 STUFF THAT CAN WAIT UNTIL I HAVE MORE CONTENT
   HOME
     Include latest updates
