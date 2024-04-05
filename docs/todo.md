@@ -4,7 +4,7 @@ STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
       1. We need to decide what to do with the menu, it takes up too much space on a small screen.
       2. We need to decide what to do with the sub-header, for similar reasons.
 
-    Home & Photo are using a fixed-height header in the calc, but the actual header is dynamic based on content size.
+    Home & Photo are using a fixed-height header/footer in the calc, but the actual header/footer is dynamic based on content size.
 
 STUFF THAT I CAN WORK ON RIGHT NOW
   Global Content Statistics
