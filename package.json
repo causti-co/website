@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npx @11ty/eleventy",
-    "watch": "npx @11ty/eleventy --watch --incremental",
-    "serve": "npx @11ty/eleventy --serve --incremental"
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "Martín Valdés de León",
