@@ -26,7 +26,7 @@ main > article.recs-list > .content .month {
 
     > li {
       display: flex;
-      margin-bottom: 4px;
+      margin-bottom: 16px;
       flex-flow: row nowrap;
       align-items: baseline;
 
@@ -90,7 +90,6 @@ main > article.recs-list > .content .month {
   main > article.recs-list > .content .month {
     > ul > li {
       flex-direction: column;
-      margin-bottom: 16px;
     }
 
     > ul > li > .rec img {
