@@ -85,7 +85,7 @@ And please, **please** don't do stuff like this. This is real code from a projec
 
 I know this stuff looks super convenient, helpful, intuitive, innocent, you name it. But trust me, when you're running `ELEVENTY_ENV=development npm run build` and you can't for the life of you figure out why `console.log(process.env.ELEVENTY_ENV)` prints `'production'`, you're going to want to have a word with whomever wrote those npm scripts.
 
-## Foreword
+## Postscript
 
 Environment variables are fine, as long as they are the right tool for the job. But for anything even slightly more complex than just a few strings or numbers, you really want to be looking at configuration files. It's 2024, let's be honest: you're containerizing and deploying this onto Kubernetes. You do know that Kubernetes lets you inject configuration and secrets into your containers, not only as environment variables, but also as files, right? You have no excuses here.
 
