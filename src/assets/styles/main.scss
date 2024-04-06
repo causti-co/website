@@ -53,6 +53,7 @@ main {
   flex-grow: 1;
 
   > article {
+    position: relative;
     font-size: 4rem;
     padding-left: 2.5em;
 
@@ -126,6 +127,44 @@ footer {
 
     > article {
       font-size: 3rem;
+      padding-left: 16px;
+
+      > h1 {
+        font-size: 13px;
+        background: $white;
+        @include border();
+        @include box-shadow($size: -2px);
+        top: 0;
+        left: -8px;
+        padding: 4px 0;
+
+        > span {
+          display: inline-block;
+
+          &.offset, &.offset-2 {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      > h2 {
+        font-size: 13px;
+        background: $white;
+        @include border();
+        @include box-shadow($size: -2px);
+        left: -8px;
+        padding: 4px 0;
+
+        > span {
+          display: inline-block;
+          position: static;
+          font-size: 1em;
+
+          &.offset {
+            margin-bottom: 0;
+          }
+        }
+      }
     }
   }
 
