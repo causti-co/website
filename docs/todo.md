@@ -1,6 +1,15 @@
 STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
   Responsive Design
     Mobile / Small Screens
+      0. Take another design pass and come up with something better
+        1. Header now also reduces padding. It has two breakpoints, maybe we can do just one.
+        2. Main H1 needs to be refactored so that it can be collapsed onto the border like the Feed icon.
+          1. This also means splitting the "article data" from the "section title", because we will want to postion them independently
+          2. Also means reviewing the position/padding setting for the main/article, to make it consistent and easier to configure
+        3. Reconsider the menu once more
+
+      1. Use the right settings and calc, not just hardcoded coords.
+
       2. We need to decide what to do with the sub-header, for similar reasons.
 
       3. Once we're done, we need to recompute responsive img sizes attributes

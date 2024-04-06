@@ -130,8 +130,9 @@ footer {
   }
 
   footer {
-    position: static;
+    position: relative;
     width: auto;
+    left: 0;
   }
 }
 

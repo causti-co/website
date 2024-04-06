@@ -115,8 +115,10 @@ footer > #git {
 
   &:target {
     width: 640px;
+    max-width: calc(100vw - 40px);
     height: auto;
     opacity: 1;
+    z-index: 1;
 
     .open {
       display: none;
@@ -296,7 +298,8 @@ footer > #git {
     > ul {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+      gap: 8px;
+      padding: 8px;
 
       > li {
         margin-bottom: 0;
@@ -319,15 +322,16 @@ footer > #git {
     font-size: 1.25em;
 
     > ul {
-      gap: 8px;
-      padding: 8px;
-
       > li {
         .button > a {
           padding-left: initial;
         }
       }
     }
+  }
+
+  footer > #git .content table tbody td {
+    word-break: break-all;
   }
 }
 
