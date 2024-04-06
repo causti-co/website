@@ -32,8 +32,8 @@ footer nav {
           display: block;
           position: relative;
           padding: 0.1em $default-padding-size 0.1em (2 * $default-padding-size);
-          border: 1px solid $black;
           background-color: $gray-05;
+          @include border(1px);
           @include box-shadow();
           text-align: right;
 
@@ -292,7 +292,6 @@ footer > #git {
 @media (width <= 800px) {
   footer nav {
     position: fixed;
-    // top: 25vh;
     bottom: 5rem;
     right: 4px;
     left: auto;
@@ -317,6 +316,7 @@ footer > #git {
               left: 2px;
               right: 0;
             }
+            @include border(2px);
             @include box-shadow(-2px);
           }
 
