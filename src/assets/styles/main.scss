@@ -67,13 +67,39 @@ main {
       writing-mode: vertical-rl;
       transform: rotate(-180deg);
 
-      .small {
+      > span {
+        display: block;
+
+        &.offset {
+          margin-bottom: 0.6em;
+        }
+
+        &.offset-2 {
+          margin-bottom: 1.2em;
+        }
+      }
+    }
+
+    > h2 {
+      position: absolute;
+      left: $main-margin-size;
+      top: calc(2 * $default-padding-size + 2.4em);
+      margin: 0;
+      font-size: 1em;
+      line-height: 1em;
+      text-align: right;
+      writing-mode: vertical-rl;
+      transform: rotate(-180deg);
+
+      > span {
+        display: block;
         position: relative;
-        left: 8px;
-        display: inline-block;
+        left: -0.4em;
         font-size: 0.5em;
-        line-height: 0.5em;
-        vertical-align: bottom;
+
+        &.offset {
+          margin-bottom: 1.2em;
+        }
       }
     }
 

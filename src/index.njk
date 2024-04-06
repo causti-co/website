@@ -4,7 +4,7 @@ eleventyExcludeFromCollections: true
 ---
 {%- set photo = collections.photo | last -%}
 <article class="home">
-  <h1>ho<br/>me&nbsp;</h1>
+  <h1><span>ho</span><span class="offset">me</span></h1>
   <section class="content">
     {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
     {% image photo.data.responsive, photo.data.alt, "(min-width: 800px) calc(100vw - 360px), calc(100vw - 160px)" %}
