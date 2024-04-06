@@ -9,6 +9,10 @@ main > article.about > .content p {
     margin-top: 0;
   }
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   b {
     padding: 0.20em;
     color: $gray-05;

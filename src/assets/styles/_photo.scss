@@ -213,6 +213,10 @@ main > article.photo > #full-screen {
     padding-right: $default-padding-size;
   }
 
+  main > article.photo-list {
+    padding-bottom: $default-box-shadow-size;
+  }
+
   main > article.photo-list > .content {
     gap: $default-padding-size;
   }

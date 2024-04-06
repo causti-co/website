@@ -1,6 +1,3 @@
-STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
-  Review padding/spacings
-
 STUFF THAT I CAN WORK ON RIGHT NOW
   Global Content Statistics
     % in Header Action

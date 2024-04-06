@@ -192,5 +192,9 @@ main > article.text > .content {
       margin-left: 0;
       margin-bottom: $default-padding-size / 2;
     }
+
+    :last-child {
+      margin-bottom: 2em;
+    }
   }
 }
