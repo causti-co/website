@@ -291,87 +291,67 @@ footer > #git {
 
 @media (width <= 800px) {
   footer nav {
-    left: 0;
-    position: relative;
+    position: fixed;
+    // top: 25vh;
+    bottom: 5rem;
+    right: 4px;
+    left: auto;
+    background-color: transparent;
     border: none;
+    font-size: 1rem;
 
     > ul {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      display: flex;
+      flex-flow: row-reverse nowrap;
       gap: 8px;
-      padding: 8px;
+      writing-mode: vertical-rl;
+      transform: rotate(-180deg);
+      padding: 0;
 
       > li {
         margin-bottom: 0;
+
+        .button {
+          > a {
+            padding: {
+              left: 2px;
+              right: 0;
+            }
+            @include box-shadow(-2px);
+          }
+
+          > a:active, &:hover > a:active {
+            @include box-shadow(-2px);
+          }
+
+          &:hover > a {
+            top: 2 * $default-box-shadow-size;
+            left: 2 * $default-box-shadow-size;
+            @include box-shadow(-3 * $default-box-shadow-size);
+          }
+
+          &.here > a {
+            top: -1 * $default-box-shadow-size;
+            left: -1 * $default-box-shadow-size;
+            @include box-shadow($default-box-shadow-size);
+          }
+
+          &.here:hover > a {
+            top: -3 * $default-box-shadow-size;
+            left: -3 * $default-box-shadow-size;
+            @include box-shadow(3 * $default-box-shadow-size);
+          }
+        }
       }
     }
   }
 
   footer > .content {
     margin-bottom: 0;
-    border: {
-      bottom-width: 0;
-      left-width: 0;
-      right-width: 0;
-    }
-  }
-}
-
-@media (width <= 700px) {
-  footer nav {
-    font-size: 1.25em;
-
-    > ul {
-      > li {
-        .button > a {
-          padding-left: initial;
-        }
-      }
-    }
+    border: none;
   }
 
   footer > #git .content table tbody td {
     word-break: break-all;
-  }
-}
-
-@media (width <= 600px) {
-  footer nav {
-    > ul {
-      > li {
-        .button > a {
-          padding-right: 8px;
-          padding-left: 8px;
-        }
-      }
-    }
-  }
-}
-
-@media (width <= 500px) {
-  footer nav {
-    > ul {
-      grid-template-columns: repeat(3, 1fr);
-
-      > li {
-        .button > a {
-          padding-right: 16px;
-          padding-left: 32px;
-        }
-      }
-    }
-  }
-}
-
-@media (width <= 400px) {
-  footer nav {
-    > ul {
-      > li {
-        .button > a {
-          padding-right: 8px;
-          padding-left: 8px;
-        }
-      }
-    }
   }
 }

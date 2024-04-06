@@ -43,6 +43,10 @@ main > article.photo {
         text-decoration: underline $accent-dark;
       }
 
+      > h3, > p {
+        word-break: break-word;
+      }
+
       > .details {
         flex: 0 0;
         display: flex;
@@ -204,13 +208,15 @@ main > article.photo > #full-screen {
   }
 }
 
-@media (width <= 1024px) {
-  main > article.photo > .content > .photo .card > .card-content {
-    word-break: break-word;
-  }
-}
-
 @media (width <= 800px) {
+  main:has(> article.photo-list) {
+    padding-right: 16px;
+  }
+
+  main > article.photo-list > .content {
+    gap: 16px;
+  }
+
   main > article.photo {
     position: absolute;
     top: 16px;

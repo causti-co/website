@@ -26,7 +26,7 @@ main > article.about > .content p {
   }
 }
 
-@media (width <= 1024px) {
+@media (width <= 800px) {
   main > article.about > .content {
     font-size: 1.25rem;
   }

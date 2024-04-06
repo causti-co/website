@@ -121,7 +121,7 @@ footer {
 @media (width <= 800px) {
   main {
     padding: {
-      right: 16px;
+      right: 24px;
       bottom: 16px;
     }
 
@@ -133,7 +133,7 @@ footer {
         font-size: 13px;
         background: $white;
         @include border();
-        @include box-shadow($size: -2px);
+        @include box-shadow(-2px);
         top: 0;
         left: -8px;
         padding: 4px 0;
@@ -151,7 +151,7 @@ footer {
         font-size: 13px;
         background: $white;
         @include border();
-        @include box-shadow($size: -2px);
+        @include box-shadow(-2px);
         left: -8px;
         padding: 4px 0;
 

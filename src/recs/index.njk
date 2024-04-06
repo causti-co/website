@@ -23,7 +23,7 @@ description: >-
           <article class="rec">
             <h3>
               <a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer">{{ rec.data.title }}</a>
-              <span class="date">;; {{ rec.page.date | shortDate }}</span>
+              <span class="date">;;&nbsp;{{ rec.page.date | shortDate }}</span>
             </h3>
             {% if rec.data.imageUrl %}<a href="{{ rec.data.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1"><img src="{{ rec.data.imageUrl }}" alt="{{ rec.data.title }}" width="{{ rec.data.exif.width }}" height="{{ rec.data.exif.height }}" /></a>{% endif %}
             {{ rec.content | safeLinks | safe }}

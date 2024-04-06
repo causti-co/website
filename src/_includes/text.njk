@@ -9,7 +9,7 @@ layout: index.njk
   </h2>
   <section class="content">
     <h1>{{ title }}</h1>
-    <span class="stats">;; {{ stats.words}}w; {{ stats.minutes }}'</span>
+    <span class="stats">;;&nbsp;{{ stats.words}}w;&nbsp;{{ stats.minutes }}'</span>
     <h4><b>KEYWORDS:</b> {% if keywords.length %}{{ keywords | join(", ") }}{% else %}N/A{% endif %}</h4>
     {{ content | safeLinks | betterIndent(4) | safe }}
   </section>

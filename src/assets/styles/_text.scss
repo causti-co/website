@@ -111,6 +111,7 @@ main > article.text > .content {
   p {
     font-size: 1.2em;
     line-height: 1.5em;
+    word-break: break-word;
 
     code {
       padding: 0 2px;
@@ -169,37 +170,27 @@ main > article.text > .content {
   }
 }
 
-@media (width <= 1024px) {
-  main > article.text-list > .content .month {
-    > ul > li > .text h3 .date-and-stats {
-      display: block;
-    }
-  }
-
-  main > article.text > .content h1 {
-    margin-bottom: 0;
-  }
-
-  main > article.text > .content .stats {
-    display: block;
-    margin-left: 0;
-    margin-bottom: 8px;
-  }
-
-  main > article.text > .content p {
-    word-break: break-word;
-  }
-}
-
 @media (width <= 800px) {
   main > article.text-list > .content .month {
     > ul > li {
       flex-direction: column;
       margin-bottom: 16px;
+
+      > .text h3 .date-and-stats {
+        display: block;
+      }
     }
   }
 
-  main > article.text > .content h1 {
-    font-size: 2.25em;
+  main > article.text > .content {
+    h1 {
+      font-size: 2.25em;
+    }
+
+    .stats {
+      display: block;
+      margin-left: 0;
+      margin-bottom: 8px;
+    }
   }
 }
