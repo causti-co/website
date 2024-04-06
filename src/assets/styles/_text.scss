@@ -174,7 +174,7 @@ main > article.text > .content {
   main > article.text-list > .content .month {
     > ul > li {
       flex-direction: column;
-      margin-bottom: 16px;
+      margin-bottom: $default-padding-size;
 
       > .text h3 .date-and-stats {
         display: block;
@@ -190,7 +190,7 @@ main > article.text > .content {
     .stats {
       display: block;
       margin-left: 0;
-      margin-bottom: 8px;
+      margin-bottom: $default-padding-size / 2;
     }
   }
 }

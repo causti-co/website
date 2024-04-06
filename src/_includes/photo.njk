@@ -13,7 +13,7 @@ layout: index.njk
         <div class="card-content">
           <a class="full-screen" href="#full-screen">↗</a>
           {#- calc(100vw - 160px - 8px - 2px - 8px - 180px - 8px - 2px) #}
-          {% image responsive, alt, "(min-width: 800px) calc(100vw - 360px), calc(100vw - 160px)" %}
+          {% image responsive, alt, "(min-width: 800px) calc(100vw - 360px), calc(100vw - 60px)" %}
           <h3>{{ title }}</h3>
           {{ content | safeLinks | betterIndent(10) | safe }}
           <div class="details">

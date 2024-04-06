@@ -302,7 +302,7 @@ footer > #git {
     > ul {
       display: flex;
       flex-flow: row-reverse nowrap;
-      gap: 8px;
+      gap: $default-padding-size / 2;
       writing-mode: vertical-rl;
       transform: rotate(-180deg);
       padding: 0;
@@ -316,12 +316,12 @@ footer > #git {
               left: 2px;
               right: 0;
             }
-            @include border(2px);
-            @include box-shadow(-2px);
+            @include border();
+            @include box-shadow(-1 * $default-box-shadow-size);
           }
 
           > a:active, &:hover > a:active {
-            @include box-shadow(-2px);
+            @include box-shadow(-1 * $default-box-shadow-size);
           }
 
           &:hover > a {

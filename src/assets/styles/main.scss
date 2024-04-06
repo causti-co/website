@@ -121,19 +121,19 @@ footer {
 @media (width <= 800px) {
   main {
     padding: {
-      right: 24px;
-      bottom: 16px;
+      right: 1.5 * $default-padding-size;
+      bottom: $default-padding-size;
     }
 
     > article {
       font-size: 3rem;
-      padding-left: 16px;
+      padding-left: $default-padding-size;
 
       > h1 {
         font-size: 13px;
         background: $white;
         @include border();
-        @include box-shadow(-2px);
+        @include box-shadow(-1 * $default-box-shadow-size);
         top: 0;
         left: -8px;
         padding: 4px 0;
@@ -151,7 +151,7 @@ footer {
         font-size: 13px;
         background: $white;
         @include border();
-        @include box-shadow(-2px);
+        @include box-shadow(-1 * $default-box-shadow-size);
         left: -8px;
         padding: 4px 0;
 

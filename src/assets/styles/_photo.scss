@@ -210,18 +210,18 @@ main > article.photo > #full-screen {
 
 @media (width <= 800px) {
   main:has(> article.photo-list) {
-    padding-right: 16px;
+    padding-right: $default-padding-size;
   }
 
   main > article.photo-list > .content {
-    gap: 16px;
+    gap: $default-padding-size;
   }
 
   main > article.photo {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    bottom: 16px;
+    top: $default-padding-size;
+    right: $default-padding-size;
+    bottom: $default-padding-size;
     left: 0;
   }
 

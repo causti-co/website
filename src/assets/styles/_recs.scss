@@ -91,7 +91,7 @@ main > article.recs-list > .content .month {
         img {
           display: block;
           float: none;
-          margin: 8px auto;
+          margin: ($default-padding-size / 2) auto;
         }
       }
     }

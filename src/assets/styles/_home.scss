@@ -16,9 +16,9 @@ main > article.home > .content {
 @media (width <= 800px) {
   main > article.home {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    bottom: 16px;
+    top: $default-padding-size;
+    right: $default-padding-size;
+    bottom: $default-padding-size;
     left: 0;
   }
 

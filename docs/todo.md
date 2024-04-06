@@ -1,14 +1,5 @@
 STUFF I SHOULD FOCUS ON INSTEAD OF DOING OTHER THINGS
-  Responsive Design
-    Mobile / Small Screens
-      1. Use the right settings and calc, not just hardcoded coords.
-
-      3. Once we're done, we need to recompute responsive img sizes attributes
-        The extension breaks if the website uses media queries, which kind of defeats the purpose xD
-        So I eyeballed the home/photo ones
-
-    2. Home & Photo are using a fixed-height header/footer in the calc, but the actual header/footer is dynamic based on content size.
-      Just measure again and call it a day. We now have a media query which switches to absolute positioning, after which point we're no longer using this fake height anyway
+  Review padding/spacings
 
 STUFF THAT I CAN WORK ON RIGHT NOW
   Global Content Statistics
