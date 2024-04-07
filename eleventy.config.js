@@ -86,8 +86,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
 
   // Copy non-optimized content images
-  // Fold _drafts back into recs
-  eleventyConfig.addPassthroughCopy({"src/recs/**/*.jpg": "recs"});
+  // Fold _drafts back into their respective top-level folder
+  eleventyConfig.addPassthroughCopy({"src/recs/**/*.jpg": "assets/recs"});
+  eleventyConfig.addPassthroughCopy({"src/text/**/*.jpg": "assets/text"});
 
   // Get exif data from jpg files
   eleventyConfig.addDataExtension("jpg", {
