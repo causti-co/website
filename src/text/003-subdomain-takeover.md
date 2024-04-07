@@ -2,7 +2,13 @@
 date: 2024-04-07
 title: |-
   I was hacked!
-keywords: [dns, github, subdomain takeover, psa]
+keywords: [dns, github pages, subdomain takeover, psa]
+description: >-
+  i got lazy.
+  i got lucky.
+  and for a few hours, my house had a side-door leading to an online casino.
+  come take a look.
+  the answer will not surprise you.
 ---
 Today I woke up with an email from the "Google Search Console Team" informing me that a new owner had been added for `http://ftp.causti.co/`. **Not cool.**
 
