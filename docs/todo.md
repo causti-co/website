@@ -5,6 +5,15 @@ STUFF THAT I CAN WORK ON RIGHT NOW
   Privacy Notice
     § in Header Action
 
+  TEXT
+    A way to build a list of important resources from the links spread throughout the article.
+    This would basically be a "references" section, I guess. But I think I want to either selectively put links there, or at least be able to highlight some from the others.
+
+  IMAGES IN ARTICLES
+    Multiple things to consider...
+    1. We need to skip them as data objects
+    2. Ideally we don't have to write `/assets/text/` in the markdown files
+
 STUFF THAT CAN WAIT UNTIL I HAVE MORE CONTENT
   HOME
     Include latest updates
@@ -29,7 +38,6 @@ STUFF THAT CAN WAIT UNTIL I HAVE MORE CONTENT
 
   TEXT
     Backlinks
-    References/Footnotes
       these go at the bottom of the article
 
     Last Updated date
