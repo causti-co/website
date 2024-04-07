@@ -26,7 +26,7 @@ So the attacker is serving content from one of my subdomains, but they did not c
 
 Now at least I understand what is going on. I immediately remove the DNS record for `ftp.causti.co`, and confirm there are no other similar unused subdomains that could be taken over in a similar way.
 
-Searching for "github pages subdomain takeover" quickly lands me on the [can-i-cakeover-xyz](https://github.com/EdOverflow/can-i-take-over-xyz/issues/68) repository, discussing this exact kind of takeover. Here's what caught me off-guard: It seems that there are (at least) two separate domain ownership verification processes for GitHub, and I was foolish enough to assume they were related. They are not.
+Searching for "github pages subdomain takeover" quickly lands me on the [can-i-take-over-xyz](https://github.com/EdOverflow/can-i-take-over-xyz/issues/68) repository, discussing this exact kind of takeover. Here's what caught me off-guard: It seems that there are (at least) two separate domain ownership verification processes for GitHub, and I was foolish enough to assume they were related. They are not.
 
 When I first created this website, I created a [GitHub Organization](https://github.com/causti-co), and while setting it up I had to [verify ownership](https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization) of the `causti.co` domain. What I completely missed was the [second domain verification process exclusive to GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages#verifying-a-domain-for-your-organization-site).
 
