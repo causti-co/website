@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "settings" as *;
 
 // Module Dimensions
@@ -91,7 +92,7 @@ main > article.recs-list > .content .month {
         img {
           display: block;
           float: none;
-          margin: ($default-padding-size / 2) auto;
+          margin: math.div($default-padding-size, 2) auto;
         }
       }
     }

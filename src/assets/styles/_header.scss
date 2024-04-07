@@ -89,13 +89,13 @@ header {
 @media (width <= 800px) {
   header {
     font-size: 2rem;
-    padding: $default-padding-size / 2;
+    padding: math.div($default-padding-size, 2);
   }
 }
 
 @media (width <= 400px) {
   header {
     font-size: 1rem;
-    padding: $default-padding-size / 4;
+    padding: math.div($default-padding-size, 4);
   }
 }

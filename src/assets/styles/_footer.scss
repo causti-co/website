@@ -302,7 +302,7 @@ footer > #git {
     > ul {
       display: flex;
       flex-flow: row-reverse nowrap;
-      gap: $default-padding-size / 2;
+      gap: math.div($default-padding-size, 2);
       writing-mode: vertical-rl;
       transform: rotate(-180deg);
       padding: 0;
