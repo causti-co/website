@@ -30,7 +30,7 @@ Searching for "github pages subdomain takeover" quickly lands me on the [can-i-c
 
 When I first created this website, I created a [GitHub Organization](https://github.com/causti-co), and while setting it up I had to [verify ownership](https://docs.github.com/en/organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization) of the `causti.co` domain. What I completely missed was the [second domain verification process exclusive to GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages#verifying-a-domain-for-your-organization-site).
 
-**If you don't do this, anyone GitHub user can configure their repository to use one of your subdomains as a custom domain for their GitHub Pages, and GitHub will not perform any domain ownership verification.**
+**If you don't do this, any GitHub user can configure their repository to use one of your subdomains as a custom domain for their GitHub Pages, and GitHub will not perform any domain ownership verification.**
 
 It was the combination of both mistakes that made the takeover possible.
 
