@@ -18,8 +18,8 @@ footer > #git {
   opacity: 0.4;
 
   &:target {
-    width: 640px;
-    max-width: calc(100vw - 40px);
+    width: calc(100vw - 40px);
+    max-width: 800px;
     height: auto;
     opacity: 1;
     z-index: 1;
@@ -95,7 +95,7 @@ footer > #git {
       left: $git-button-size + 8px;
     }
     min-height: 100px;
-    max-height: 160px;
+    max-height: 240px;
     box-sizing: border-box;
     overflow-y: auto;
 
@@ -140,7 +140,7 @@ footer > #git {
       }
 
       // Related to .container max-height. Once we exceed it, show the border.
-      &:has(tbody tr:nth-child(5)) {
+      &:has(tbody tr:nth-child(8)) {
         border-right-width: $default-border-width;
       }
 
@@ -176,7 +176,10 @@ footer > #git {
           left-width: 0;
           bottom-style: dashed;
         }
-        word-break: break-all;
+
+        &:nth-child(2) {
+          word-break: break-word;
+        }
 
         &[colspan="3"] {
           text-align: center;
