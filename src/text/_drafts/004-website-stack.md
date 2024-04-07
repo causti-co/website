@@ -3,11 +3,11 @@ date: 2024-04-19
 title: How does this website work
 keywords: [development, web, devops]
 ---
-It's the obligatory "how does this website work" blogpost!
+It's the obligatory "how does this website work" blog post!
 
 I'll try to keep this one on the less-refined side of things, but let's see. First off, I assume you already checked the [about](/about/) page, which gives a very quick overview of why this place even exists in the first place.
 
-So I wanted to have a personal website. I've had the idea on my mind for a while, and mostly kept postponing it to avoid having to deal with the design-side of things. I've never been on the artistic side so the kind of things I can come up with on my own is quite limited, but after looking at some older software UIs for inspiration I decided to just get something out there so I could move on to actually writing content.
+So I wanted to have a personal website. I've had the idea on my mind for a while, and mostly kept postponing it to avoid having to deal with the design-side of things. I've never been on the artistic side so the kind of things I can come up with on my own is quite limited, but after looking at some older software UIs for inspiration I decided to just get something out there, so I could move on to actually writing content.
 
 ## html/css
 
@@ -19,7 +19,7 @@ A few decisions I made at this stage: 1/ No 3rd party resources, 2/ Don't do any
 
 Since I wanted to keep things as simple as possible, a "traditional" n-tier stack was absolutely out of the question. The alternative was to use a static site generator. After reviewing the most popular choices, I settled for [11ty](https://github.com/11ty/eleventy/) as it appeared to be the least opinionated one of the bunch, allowing me to start with an empty directory and slowly bring content and complexity in as needed. I followed my traditional approach of reading the entire docs to figure out what it can and cannot do before getting to adapting my static content to [nunjucks](https://mozilla.github.io/nunjucks/). I chose nunjucks simply because it was the default templating language used in the documentation.
 
-I decided to manually number content items by adopting the following naming convention: `###-desired-content-url.ext`, and to manually provide content dates via Front Matter data, rather than use the mechanisms provided by 11ty based on either filesystem or Git dates.
+Lastly, I decided to manually number content items by adopting the following naming convention: `###-desired-content-url.ext`, and to manually provide content dates via Front Matter data, rather than use the mechanisms provided by 11ty based on either file system or Git dates.
 
 ### Folder structure
 
@@ -44,7 +44,7 @@ website/
 
 ### Sass
 
-I migrated all the styles from CSS to SCSS, since writing plain CSS is extremeky repetitive. I'm using the [eleventy-sass](https://github.com/kentaroi/eleventy-sass) plugin with no further configuration. Setting the `ELEVENTY_ENV` [environment variable](/text/002-environment-variables/) to a non-production value will generate uncompressed CSS with source maps, which is nice.
+I migrated all the styles from CSS to SCSS, since writing plain CSS is extremely repetitive. I'm using the [eleventy-sass](https://github.com/kentaroi/eleventy-sass) plugin with no further configuration. Setting the `ELEVENTY_ENV` [environment variable](/text/002-environment-variables/) to a non-production value will generate uncompressed CSS with source maps, which is nice.
 
 ### Custom collections
 
@@ -72,9 +72,9 @@ module.exports = function(eleventyConfig) {
 
 This code is fragile: 1/ It depends on the collection being sorted by creation date in ascending order (before we reverse it). 2/ It depends on traversal order as specified by ECMAScript. But since I'm in full control of the environment where this code runs (either my laptop or the CD environment), I'm ok with this. The alternative would be to group by a key that is sortable, sort the resulting array by this key, then map this key back to a human-readable value. No reason to make things more complex than they need to be.
 
-### Exif data
+### EXIF data
 
-The next thing I wanted to do was automatically extract information like shutter speed, focal length, etc. from photos automatically from their [Exif data](https://en.wikipedia.org/wiki/Exif). Lucky for me, 11ty's documentation on [custom data file formats](https://www.11ty.dev/docs/data-custom/) describes this exact use-case. I picked a more up-to-date Exif library, and used lodash again to help me get the data I needed. I also had to do some tweaking along the way to get things just right for me. Here's the final result:
+The next thing I wanted to do was automatically extract information like shutter speed, focal length, etc. from photos automatically from their [EXIF data](https://en.wikipedia.org/wiki/Exif). Lucky for me, 11ty's documentation on [custom data file formats](https://www.11ty.dev/docs/data-custom/) describes this exact use-case. I picked a more up-to-date EXIF library, and used lodash again to help me get the data I needed. I also had to do some tweaking along the way to get things just right for me. Here's the final result:
 
 ```js
 const ExifReader = require("exifreader");
@@ -270,7 +270,7 @@ module.exports = function(eleventyConfig) {
 
 I'm using this opportunity to conditionally set feature flags (at the moment just one, the `experimental` flag). Just like `_drafts` lets me work on content without publishing it, the `experimental` flag lets me work on entire features without publishing them:
 
-{% raw%}
+{% raw %}
 ```handlebars
 {%- if experimental %}
 <h1>my next amazing feature</h1>
@@ -278,17 +278,17 @@ I'm using this opportunity to conditionally set feature flags (at the moment jus
 ```
 {% endraw %}
 
-This way I can be in the middle of working on a new feature, and still be able to publish a hotfix to production without having to create a new brach or stash my work in progress.
+This way I can be in the middle of working on a new feature, and still be able to publish a hotfix to production without having to create a new branch or stash my work in progress.
 
-### Syntax Highlgihting
+### Syntax Highlighting
 
 As I was writing this, I needed to add some syntax highlighting support for the code samples. I tried the [official plugin](https://www.11ty.dev/docs/plugins/syntaxhighlight/) which uses [PrismJS](https://prismjs.com/). It worked, but it needed its CSS to be loaded externally. PrismJS itself felt clunky and outdated, and I could not find a theme I liked, so I started looking for alternatives.
 
 Luckily for me, things in 11ty are relatively straightforward. Markdown itself is processed by [markdown-it](https://github.com/markdown-it/markdown-it), and this component can be [easily enhanced and/or reconfigured](https://www.11ty.dev/docs/languages/markdown/) if needed.
 
-With that in mind, I settled for [Shiki](https://shiki.style/) as a better alternative. This highlighter comes with its own [markdown-it plugin](https://shiki.style/packages/markdown-it), and has a [nice API](https://shiki.style/guide/transformers) for further ehnancing the generated output.
+With that in mind, I settled for [Shiki](https://shiki.style/) as a better alternative. This highlighter comes with its own [markdown-it plugin](https://shiki.style/packages/markdown-it), and has a [nice API](https://shiki.style/guide/transformers) for further enhancing the generated output.
 
-There are a couple of things to consider though: I've been working with CommonJS modules thus far, because I'm an old fart, but Shiki ship as an ECMAScript module only. That means using the [dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) syntax, which loads the module asyncrhonously and returns a `Promise` that resolves to the module. This is not a problem, except 11ty does not support async funcrions as arguments for `eleventyConfig.amendLibrary`. The [current workaround](https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/32#issuecomment-1410641845), until 11ty V3 releases with support for async configuration functions, is to use the `eleventy.before` event, as event handlers can be async.
+There are a couple of things to consider though: I've been working with CommonJS modules thus far, because I'm an old fart, but Shiki ship as an ECMAScript module only. That means using the [dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) syntax, which loads the module asynchronously and returns a `Promise` that resolves to the module. This is not a problem, except 11ty does not support async functions as arguments for `eleventyConfig.amendLibrary`. The [current workaround](https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/32#issuecomment-1410641845), until 11ty V3 releases with support for async configuration functions, is to use the `eleventy.before` event, as event handlers can be async.
 
 ```js
 const _Shiki = import("@shikijs/markdown-it");
@@ -332,7 +332,7 @@ module.exports = function(eleventyConfig) {
 };
 ```
 
-I took the liberty of providing a basic transformer that removes the `tabindex` property from the `<pre>` tag (Is there a reason to want to make these available to tab navigation that I'm not getting?), as well as allowing additional classes and attributes to be defined by adding them next to the codeblock fence, like so:
+I took the liberty of providing a basic transformer that removes the `tabindex` property from the `<pre>` tag (Is there a reason to want to make these available to tab navigation that I'm not getting?), as well as allowing additional classes and attributes to be defined by adding them next to the code block fence, like so:
 
 ````md [class="line-numbers diff" start-line=53]
 ```js [class="line-numbers diff" start-line=53]
@@ -340,11 +340,11 @@ I took the liberty of providing a basic transformer that removes the `tabindex` 
 ```
 ````
 
-You can inspect the source of this page and see this working for the codeblock above.
+You can inspect the source of this page and see this working for the code block above.
 
 ### Better Indent
 
-I've been using Nunjuck's [indent](https://mozilla.github.io/nunjucks/templating.html#indent) filter to ensure that content included in layouts has the right indentation in the overall generated HTML. Sadly, I had to make an exception for codeblocks, as `<pre>` render their content including whitespace.
+I've been using Nunjuck's [indent](https://mozilla.github.io/nunjucks/templating.html#indent) filter to ensure that content included in layouts has the right indentation in the overall generated HTML. Sadly, I had to make an exception for code blocks, as `<pre>` render their content including whitespace.
 
 Anyway, I wrote my own indent filter that skips `<pre>` blocks:
 
@@ -449,7 +449,7 @@ module.exports = {
 };
 ```
 
-Ideally I would be able to configure `markdown-it` to perform plain-text rendering with some additional tweaking such as completely ignoring codeblocks. I tried going through the documentation but could not find a suitable example to use as a starting point, I guess I'll need to look at some plugins or similar and see if I can figure it out. For the time-being this will have to do.
+Ideally I would be able to configure `markdown-it` to perform plain-text rendering with some additional tweaking such as completely ignoring code blocks. I tried going through the documentation but could not find a suitable example to use as a starting point, I guess I'll need to look at some plugins or similar and see if I can figure it out. For the time-being this will have to do.
 
 ## Continuous Deployment
 
@@ -482,7 +482,7 @@ jobs:
 
 We can use the event data provided by GitHub actions at `github.event.head_commit` to reuse the information from the latest commit of this repo when pushing to the deployment repository. Also, we want the `git commit` step to tolerate errors: This step will fail when the working tree is empty (e.g., when there's nothing to commit). This just means that whatever we changed had no effect on the generated content. This is not an error, and we do not want the workflow to fail and get paged.
 
-So, why am I deploying to a different repository just to use GitGub Pages over there and not here? Because I really did not want to use `docs/` for GitHub Pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repostory just for the static content.
+So, why am I deploying to a different repository just to use GitHub Pages over there and not here? Because I really did not want to use `docs/` for GitHub Pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repository just for the static content.
 
 Overall I'm happy with this approach, and from the point of view of this repository, we're 100% agnostic of GitHub Pages which makes it easier for me to change hosting providers in the future.
 
@@ -492,4 +492,4 @@ Well, I now have a personal website. The first priority will be to keep it fresh
 
 I'll try to keep to one text and one photo per week, and see how I feel with that rhythm.
 
-Meanwhile, I've also a [backlog of website features](https://github.com/causti-co/website/blob/main/docs/todo.md) to work on whenever I get the urge to ship something before my next publishing date comes up. Lets see. So far, I've been having a blast. I hope you stay along for the ride.
+Meanwhile, I've also a [backlog of website features](https://github.com/causti-co/website/blob/main/docs/todo.md) to work on whenever I get the urge to ship something before my next publishing date comes up. Let's see. So far, I've been having a blast. I hope you stay along for the ride.
