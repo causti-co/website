@@ -9,6 +9,6 @@ exif:
   focalLength: 80 mm
   iso: 400
 ---
-Kodak Tri-X ISO 400.
-Kodak HC-110 (1:31), 3 min, 23°C.
-Canon EOS 450D como fotómetro y para fotografiar el negativo.
+Kodak Tri-X.
+Kodak HC-110 (1:31), 3 min, 23 °C.
+Canon EOS 450D used as light meter and to digitize the negative.
