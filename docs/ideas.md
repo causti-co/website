@@ -170,6 +170,8 @@ silence
 remove yourself from the discussion, avoid dunks, you do not need to take part of the latest discourse/debate
 mobile-first killed the internet
   all websites look the same
+you can't afford platform engineering
+  so stop building platforms
 
 https://twitter.com/search?q=from%3Amvaldesdeleon%20until%3A2023-06-22&src=typed_query&f=live
 
