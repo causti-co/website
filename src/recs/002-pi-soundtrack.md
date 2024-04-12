@@ -1,6 +1,6 @@
 ---
 date: 2024-04-05
-title: 'π – Music For The Motion Picture'
+title: 'π — Music For The Motion Picture'
 url: https://www.youtube.com/watch?v=4UuCgIi3Dgk
 ---
 This was the first CD that I ever bought.
