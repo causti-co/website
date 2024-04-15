@@ -9,7 +9,7 @@ STUFF THAT I CAN WORK ON RIGHT NOW
     A way to build a list of important resources from the links spread throughout the article.
     This would basically be a "references" section, I guess. But I think I want to either selectively put links there, or at least be able to highlight some from the others.
 
-  IMAGES IN ARTICLES
+  0. IMAGES IN ARTICLES
     Multiple things to consider...
     1. We need to skip them as data objects
     2. Ideally we don't have to write `/assets/text/` in the markdown files
@@ -51,3 +51,11 @@ STUFF THAT CAN WAIT UNTIL I HAVE MORE CONTENT
 
 STUFF THAT I MIGHT WANT TO CONSIDER EVENTUALLY
   hosting somewhere else so i can get some non-cookie-requiring statistics?
+
+
+
+TO CLASSIFY
+  inner links
+    in recs, to specific recs
+    in recs, to specific months
+    in texts, to specific months

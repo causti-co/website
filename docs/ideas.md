@@ -172,6 +172,11 @@ mobile-first killed the internet
   all websites look the same
 you can't afford platform engineering
   so stop building platforms
+write the code you want to write first, then make it work 
+  api design
+
+a screensaver/blank page URL 
+also do some computer art, come the fuck on
 
 https://twitter.com/search?q=from%3Amvaldesdeleon%20until%3A2023-06-22&src=typed_query&f=live
 
