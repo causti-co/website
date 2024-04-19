@@ -174,6 +174,7 @@ you can't afford platform engineering
   so stop building platforms
 write the code you want to write first, then make it work 
   api design
+stop writing bugs, write correct code instead
 
 a screensaver/blank page URL 
 also do some computer art, come the fuck on
