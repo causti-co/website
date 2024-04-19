@@ -2,6 +2,12 @@
 date: 2024-04-19
 title: How does this website work
 keywords: [development, web, devops]
+description: >-
+  it's the personal website bottle episode!
+  but i'll try to keep it interesting.
+  maybe you learn something.
+  maybe you get inspired.
+  we need more personal websites.
 ---
 It's the obligatory "how does this website work" blog post!
 
