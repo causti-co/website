@@ -13,7 +13,7 @@ Static content will be generated in `dist/`, to be deployed at the domain root, 
 npm run build
 ```
 
-For a smooth development/authoring experience, you can launch a local server that watches for filesystem changes:
+For a smooth development/authoring experience, you can launch a local server that watches for file system changes:
 ```sh
 npm run serve
 ```
@@ -26,11 +26,11 @@ By default, content inside the `src/**/_drafts/` folders will be ignored. If you
 
 The `build-and-deploy` workflow handles continuous deployment to GitHub Pages, with a twist: The repository that hosts the actual GitHub Pages is not this repository, it's [causti-co/causti-co.github.io](https://github.com/causti-co/causti-co.github.io). So the deploy step is actually just pushing the latest static content into this repository, using [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys).
 
-Why? Because I really did not want to use `docs/` for GitHub Pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repostory just for the static content. But overall I'm happy with this approach, and from the point of view of this repository, we're 100% agnostic of GitHub Pages which makes it easier for me to change hosting providers in the future.
+Why? Because I really did not want to use `docs/` for GitHub Pages, and the only way I'd be happy with the static content sitting at the root of a repository is by having a dedicated repository just for the static content. But overall I'm happy with this approach, and from the point of view of this repository, we're 100% agnostic of GitHub Pages which makes it easier for me to change hosting providers in the future.
 
 ### Learn more
 
-For the moment you'll have to take a look around and figure how things work. I'll be working on an article describing how I put this together and what are my motivations soon, and will link to it once it's published.
+I wrote an article that describes how this site is put together, and what are my guiding principles. [Read more about it here](https://causti.co/text/005-website-stack/).
 
 ### Legal
 
