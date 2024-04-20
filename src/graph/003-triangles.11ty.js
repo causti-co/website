@@ -11,8 +11,8 @@ module.exports = {
     date: "2024-04-20",
     title: "triangles",
     properties: {
-      width: 640,
-      height: 640,
+      width: 512,
+      height: 512,
       steps: 256,
       substeps: 8
     }
