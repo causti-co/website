@@ -62,6 +62,24 @@ module.exports = function(eleventyConfig) {
     });
     eleventyConfig.amendLibrary("md", mdLib => mdLib.use(syntaxHighlighter));
   });
+  eleventyConfig.on("eleventy.after", async ({results}) => {
+    for (let item of results) {
+      if (item.url.includes("/graph/") && item.url.endsWith(".svg")) {
+        const stats = await Image(item.outputPath, { // might need "./" in front
+          widths: ["auto"],
+          formats: ["gif"],
+          urlPath: "/graph/",
+          outputDir: "./dist/graph/",
+          filenameFormat: (id, src, width, format) => {
+            const extension = path.extname(src);
+            const name = path.basename(src, extension);
+
+            return `${name}.${format}`;
+          }
+        });
+      }
+    }
+  });
 
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.addPlugin(eleventyRss);
