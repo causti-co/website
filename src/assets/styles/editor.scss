@@ -69,8 +69,6 @@ main {
     flex-flow: row nowrap;
 
     > section {
-      flex-grow: 1;
-      flex-basis: 50vw;
       position: relative;
 
       > h2 {
@@ -118,9 +116,10 @@ main {
 
     > #graph-input {
       padding: 24px;
+      flex: 1 1 auto;
 
       .code-editor {
-        height: 50vh;
+        height: 512px;
         position: relative;
         background-color: $synthwave-background-color;
         @include border($color: $accent-dark);
@@ -160,6 +159,7 @@ main {
 
     > #graph-output {
       padding: 24px;
+      flex: 0 0 512px;
 
       @include border($color: $accent-dark);
       border: {
@@ -171,6 +171,8 @@ main {
       #canvas {
           display: block;
           margin: 0 auto 16px;
+          width: 512px;
+          height: 512px;
           @include border($color: $accent-dark);
       }
     }
