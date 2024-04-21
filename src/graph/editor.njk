@@ -49,9 +49,14 @@ override:tags: []
             <textarea spellcheck="false" id="code-input">
 const substeps = 4;
 
+// REQUIRED: Declare a function called "step", to be called at each point
+// First two arguments are the position, 0 .. `steps` - 1
+// Third argument has `steps`, and canvas `width` and `height`
 function step(x, y, {steps}) {
   const yy = Math.floor(y * substeps / steps) * substeps;
   const xx = Math.floor(x * substeps / steps);
+
+  // Return truthy for black and falsy for orange
   return (x | y) % (xx + yy);
 }</textarea>
           </div>
