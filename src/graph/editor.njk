@@ -26,13 +26,12 @@ override:tags: []
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
     {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
     {#- To support using the last photo as og.image, we make it the default here. #}
-    {%- set photo = collections.photo | last -%}
-    {%- set largest = photo.data.responsive | last %}
-    <meta property="og:image" content="https://causti.co{{ og.image.url or largest.url }}" />
-    <meta property="og:image:type" content="{{ og.image.type or largest.sourceType }}" />
-    <meta property="og:image:width" content="{{ og.image.width or largest.width }}" />
-    <meta property="og:image:height" content="{{ og.image.height or largest.height }}" />
-    <meta property="og:image:alt" content="{{ og.image.alt or photo.data.alt }}" />
+    {%- set graph = collections.graph | first | log -%}
+    <meta property="og:image" content="https://causti.co{{ graph.data.page.filePathStem }}.gif" />
+    <meta property="og:image:type" content="image/gif" />
+    <meta property="og:image:width" content="{{ graph.data.properties.width }}" />
+    <meta property="og:image:height" content="{{ graph.data.properties.height }}" />
+    <meta property="og:image:alt" content="{{ graph.data.alt }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mvaldesdeleon" />
     <meta name="twitter:creator" content="@mvaldesdeleon" />

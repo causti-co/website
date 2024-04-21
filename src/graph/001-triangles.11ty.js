@@ -10,6 +10,7 @@ module.exports = {
   data: {
     date: "2024-04-20",
     title: "triangles",
+    alt: "computer generated art",
     properties: {
       width: 512,
       height: 512,
