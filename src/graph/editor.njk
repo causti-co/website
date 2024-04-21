@@ -56,27 +56,33 @@ function step(x, y, {steps}) {
 }</textarea>
           </div>
           <div class="buttons">
+            <div id="render-status"></div>
             <button id="render">render</button>
           </div>
         </section>
         <section id="graph-output">
           <h2>output</h2>
-          <svg id="canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"></svg>
+          <svg id="canvas" xmlns="http://www.w3.org/2000/svg" width="512" height="512"></svg>
           <div class="buttons">
-            <button id="downloadSVG">download svg</button>
-            <button id="downloadPNG">download png</button>
+            <button id="downloadSVG">svg ↘</button>
+            <button id="downloadPNG">png ↘</button>
           </div>
         </section>
       </article>
       <script type="module">
-        // be sure to specify the exact version
-        import { codeToHtml } from 'https://esm.sh/shiki@1.3.0'
-        // or
-        // import { codeToHtml } from 'https://esm.run/shiki@1.3.0'
+        import { codeToHtml } from "https://esm.sh/shiki@1.3.0";
+
+        const RENDER_ON_ERROR = true;
+        const ABORT_ON_ERROR = true;
+        const SVGNS = "http://www.w3.org/2000/svg";
+        const WIDTH = 512;
+        const HEIGHT = 512;
+        const STEPS = 256;
 
         const $input = document.getElementById("code-input");
         const $output = document.getElementById("code-output");
         const $render = document.getElementById("render");
+        const $renderStatus = document.getElementById("render-status");
         const $canvas = document.getElementById("canvas");
         const $downloadSVG = document.getElementById("downloadSVG");
         const $downloadPNG = document.getElementById("downloadPNG");
@@ -110,51 +116,59 @@ function step(x, y, {steps}) {
           const code = $input.value;
           const step = new Function("x", "y", "props", `"use strict";${code};return step(x, y, props);`);
 
-          const props = {
-            width: 512,
-            height: 512,
-            steps: 256
-          };
-
-          // Clear status messages from previous render
-          
-          // Clear previous render
+          $renderStatus.innerHTML = "";
           while ($canvas.firstChild) {
             $canvas.removeChild($canvas.firstChild);
           }
 
-          const $group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          const $group = document.createElementNS(SVGNS, "g");
           $group.setAttribute("stroke", "none");
           $group.setAttribute("fill", "none");
 
-          const hsize = props.width / props.steps;
-          const vsize = props.height / props.steps;
+          const hsize = WIDTH / STEPS;
+          const vsize = HEIGHT / STEPS;
 
-          outter: for (let y = 0; y < props.steps; y++) {
-            for (let x = 0; x < props.steps; x++) {
-              const $rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          let errors = [];
+
+          outter: for (let y = 0; y < STEPS; y++) {
+            for (let x = 0; x < STEPS; x++) {
+              const $rect = document.createElementNS(SVGNS, "rect");
               $rect.setAttribute("x", x * hsize);
               $rect.setAttribute("y", y * vsize);
               $rect.setAttribute("width", hsize);
               $rect.setAttribute("height", vsize);
-              
+
               try {
-                const value = step(x, y, props);
-                
+                const value = step(x, y, {
+                  width: WIDTH,
+                  height: HEIGHT,
+                  steps: STEPS
+                });
+
                 $rect.setAttribute("fill", value ? "black" : "darkorange");
               } catch (exception) {
-                console.log(exception)
-                // Show error status
-                break outter;
+                errors.push({x, y, exception});
+
+                if (ABORT_ON_ERROR) {
+                  break outter;
+                }
               }
 
               $group.appendChild($rect);
             }
           }
 
-          $canvas.appendChild($group);
+          if (errors.length === 0 || RENDER_ON_ERROR) {
+            $canvas.appendChild($group);
+          }
 
-          // Show success status
+          if (errors.length === 0) {
+            $renderStatus.innerHTML = ";; success";
+          } else {
+            $renderStatus.innerHTML = errors.map(({x, y, exception}) =>
+            `;; error <-- { x: ${x}, y: ${y} }\n\n${exception}`
+            ).join("\n\n");
+          }
         }
 
         function downloadSVG() {
@@ -179,16 +193,16 @@ function step(x, y, {steps}) {
           const svg = $canvas.outerHTML;
           const blob = new Blob([`<?xml version="1.0" encoding="utf-8"?>\n${svg}`], { type: "image/svg+xml;charset=utf-8" });
           const url = URL.createObjectURL(blob);
-          const image = new Image(512, 512);
+          const image = new Image(WIDTH, HEIGHT);
           image.src = url;
 
           const $png = document.createElement("canvas");
-          $png.width = 512;
-          $png.height = 512;
+          $png.width = WIDTH;
+          $png.height = HEIGHT;
           const context = $png.getContext("2d");
 
           image.addEventListener("load", () => {
-            context.drawImage(image, 0, 0, 512, 512);
+            context.drawImage(image, 0, 0, WIDTH, HEIGHT);
             $png.toBlob(blob => {
               const url = URL.createObjectURL(blob);
               const $a = document.createElement("a");
@@ -210,6 +224,7 @@ function step(x, y, {steps}) {
         $downloadSVG.addEventListener("click", downloadSVG);
         $downloadPNG.addEventListener("click", downloadPNG);
 
+        $canvas.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
         update();
       </script>
     </main>
