@@ -91,6 +91,7 @@ main {
       text-align: right;
       writing-mode: vertical-rl;
       transform: rotate(-180deg);
+      height: max-content;
 
       > span {
         display: block;
