@@ -42,6 +42,8 @@ main > article.recs-list > .content .month {
       }
 
       > .rec {
+        flex-grow: 1;
+
         h3 {
           margin: 0 {
             bottom: 4px;
