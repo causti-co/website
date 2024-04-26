@@ -3,10 +3,10 @@ date: 2024-04-26
 title: Thoughts on teaching
 keywords: [education, debugging, solution architecture]
 description: >-
-  i would be so happy.
+  i would be so happy,
   if i were a teacher.
   but i'd be broke.
-  somehow what i do now is more important.
+  somehow what i do now is more important
   to society.
 ---
 I guess most people don't know, but a for a few years before moving to Germany I was a member of the [Argentinean Socialist Party](https://www.partidosocialista.org.ar/). There's some fun stories of _light political vandalism_ to be told, but I'll save those for another time. The main thing I did as a party member was provide [remedial education](https://en.wikipedia.org/wiki/Remedial_education) to whomever would show up at the local party office every Saturday afternoon, which would be a mixture of children currently at elementary or high school, as well as older people going through [adult education](https://en.wikipedia.org/wiki/Adult_education), mostly high-school.
