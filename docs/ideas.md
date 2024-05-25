@@ -103,6 +103,7 @@ the old internet and the new real life
 the current internet is no the same we had before
   our experience was unique, and not driven by social media or adtech
   that internet is gone
+a new internet
 i've a headache
 flirting, romance, seduction, incels
 motherfucking TLS
@@ -116,7 +117,6 @@ invent your own techniques/methods
 set your phone on mute, own your distractions, fuck notifications
   if he dies he dies
 loneliness, sadness, depression
-teaching and learning
 models are not real
 wash bottles, glass scrubbers
 life is just moving electrons around
@@ -178,6 +178,12 @@ stop writing bugs, write correct code instead
 
 a screensaver/blank page URL 
 also do some computer art, come the fuck on
+
+
+THINK
+
+cursed by my own efficiency
+  i always know how long i takes me to do something
 
 https://twitter.com/search?q=from%3Amvaldesdeleon%20until%3A2023-06-22&src=typed_query&f=live
 
