@@ -179,6 +179,10 @@ stop writing bugs, write correct code instead
 a screensaver/blank page URL 
 also do some computer art, come the fuck on
 
+engineering tasks as a task to solve, vs as a learning opportunity
+
+it only takes a few months to read all the books in any undergrad programme, probably even less if you're good at it
+
 
 THINK
 
