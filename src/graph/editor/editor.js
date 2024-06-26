@@ -1,5 +1,6 @@
 import { codeToHtml } from "https://esm.sh/shiki@1.3.0";
 
+const HASH_LABEL = "#code=";
 const RENDER_ON_ERROR = true;
 const ABORT_ON_ERROR = true;
 const SVGNS = "http://www.w3.org/2000/svg";
@@ -12,6 +13,7 @@ const $output = document.getElementById("code-output");
 const $render = document.getElementById("render");
 const $renderStatus = document.getElementById("render-status");
 const $canvas = document.getElementById("canvas");
+const $share = document.getElementById("share");
 const $downloadSVG = document.getElementById("downloadSVG");
 const $downloadPNG = document.getElementById("downloadPNG");
 
@@ -99,6 +101,28 @@ function render() {
   }
 }
 
+function loadFromURL() {
+  const hash = location.hash;
+
+  if (hash.startsWith(HASH_LABEL)) {
+    const lzCode = hash.slice(HASH_LABEL.length);
+
+    $input.value = LZString.decompressFromEncodedURIComponent(lzCode);
+
+    $renderStatus.innerHTML = ";; loaded code from clipboard";
+  }
+}
+
+function share() {
+  const code = $input.value;
+  const lzCode = LZString.compressToEncodedURIComponent(code);
+
+  location.hash = `${HASH_LABEL}${lzCode}`;
+  navigator.clipboard.writeText(location.href);
+
+  $renderStatus.innerHTML = ";; url copied to clipboard";
+}
+
 function downloadSVG() {
   $downloadSVG.blur();
 
@@ -149,8 +173,10 @@ function downloadPNG() {
 $input.addEventListener("input", update);
 $input.addEventListener("scroll", syncScroll);
 $render.addEventListener("click", render);
+$share.addEventListener("click", share);
 $downloadSVG.addEventListener("click", downloadSVG);
 $downloadPNG.addEventListener("click", downloadPNG);
 
 $canvas.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
+loadFromURL();
 update();
