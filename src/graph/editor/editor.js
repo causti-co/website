@@ -109,6 +109,8 @@ function loadFromURL() {
 
     $input.value = LZString.decompressFromEncodedURIComponent(lzCode);
 
+    render();
+
     $renderStatus.innerHTML = ";; loaded code from clipboard";
   }
 }
