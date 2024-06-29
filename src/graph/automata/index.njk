@@ -1,0 +1,133 @@
+---
+siteName: causti • co
+title: automata editor
+description: automata editor
+eleventyExcludeFromCollections: true
+override:tags: []
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>{{ siteName }}{% if title %} — {{ title }}{% endif %}</title>
+    <link rel="stylesheet" href="/assets/styles/automata.css" />
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
+    <link rel="canonical" href="https://causti.co{{ page.url }}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta property="og:site_name" content="{{ siteName }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://causti.co{{ page.url }}" />
+    {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
+    {#- To support using the last photo as og.image, we make it the default here. #}
+    {%- set graph = collections.graph | first | log -%}
+    <meta property="og:image" content="https://causti.co{{ graph.data.page.filePathStem }}.gif" />
+    <meta property="og:image:type" content="image/gif" />
+    <meta property="og:image:width" content="{{ graph.data.properties.width }}" />
+    <meta property="og:image:height" content="{{ graph.data.properties.height }}" />
+    <meta property="og:image:alt" content="{{ graph.data.alt }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mvaldesdeleon" />
+    <meta name="twitter:creator" content="@mvaldesdeleon" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="{{ page.url }}" tabindex="-1">causti </a><a href="{{ page.url }}" tabindex="-1"><img class="dot" src="/assets/images/causti.co.pink.svg" alt="·" width="640" height="640" /></a><a href="{{ page.url }}" tabindex="-1"> co</a></h1>
+    </header>
+    <main>
+      <article>
+        <section id="graph-input">
+          <h2>input</h2>
+          <div class="code-editor">
+            <div id="code-output"></div>
+            <textarea spellcheck="false" id="code-input">
+// Press "render", then click to toggle cells,
+// and double-click to start/stop the simulation
+
+const CANVAS_SIZE = 512;
+
+const SPACE_SIZE = 64;
+const CELL_SIZE = CANVAS_SIZE / SPACE_SIZE;
+
+let running = false;
+let space = Array.from(Array(SPACE_SIZE), () => Array(SPACE_SIZE).fill(0));
+let safe = (i, j) => {
+  i = (i + SPACE_SIZE) % SPACE_SIZE;
+  j = (j + SPACE_SIZE) % SPACE_SIZE;
+  return space[i][j];
+}
+
+p.setup = () => {
+  p.createCanvas(CANVAS_SIZE, CANVAS_SIZE);
+  p.fill('hotpink');
+  p.stroke('black');
+  p.frameRate(10);
+}
+
+p.mousePressed = () => {
+  if (0 <= p.mouseX && p.mouseX <= CANVAS_SIZE && 0 <= p.mouseY && p.mouseY <= CANVAS_SIZE) {
+    let i = Math.floor(p.mouseX / CELL_SIZE);
+    let j = Math.floor(p.mouseY / CELL_SIZE);
+
+    space[i][j] = Math.abs(space[i][j] - 1);
+  }
+}
+
+p.doubleClicked = () => {
+  running = !running;
+}
+
+p.draw = () => {
+  if (running) {
+    for (let i = 0; i < SPACE_SIZE; i++) {
+      for (let j = 0; j < SPACE_SIZE; j++) {
+        let neighbors = safe(i - 1, j - 1) + safe(i - 1, j) + safe(i - 1, j + 1) + safe(i, j - 1) + safe(i, j + 1) + safe(i + 1, j - 1) + safe(i + 1, j) + safe(i + 1, j + 1);
+        
+        if (space[i][j] === 1 && neighbors !== 2 && neighbors !== 3) {
+          space[i][j] = 0;
+        } else if (space[i][j] === 0 && neighbors === 3) {
+          space[i][j] = 1;
+        }
+      }
+    }
+  }
+
+  p.clear();
+  for (let i = 0; i < SPACE_SIZE; i++) {
+    for (let j = 0; j < SPACE_SIZE; j++) {
+      if (space[i][j] === 1) {
+        p.square(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE);
+      }
+    }
+  }
+}</textarea>
+          </div>
+          <div class="buttons">
+            <div id="render-status"></div>
+            <button id="share">share ↗</button>
+            <button id="render">render</button>
+          </div>
+        </section>
+        <section id="graph-output">
+          <h2>output</h2>
+        </section>
+      </article>
+      <script type="module" src="/graph/automata/p5.min.js"></script>
+      <script type="module" src="/graph/automata/lz-string.min.js"></script>
+      <script type="module" src="/graph/automata/automata.js"></script>
+    </main>
+    <footer>
+      <div class="content">
+        <p class="cc" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+          <a property="dct:title" rel="cc:attributionURL" href="https://causti.co/">{{ siteName }}</a> © 2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://twitter.com/mvaldesdeleon">Martín Valdés de León</a>, is licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<span class="icons"><img class="icon" src="/assets/images/cc/cc.pink.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.pink.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.pink.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.pink.svg" alt="ND" width="64" height="64" /></span><span class="alt-icons"><img class="icon" src="/assets/images/cc/cc.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.svg" alt="ND" width="64" height="64" /></span></a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

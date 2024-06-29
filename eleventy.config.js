@@ -85,6 +85,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");
   eleventyConfig.addPassthroughCopy("src/assets/images/**");
   eleventyConfig.addPassthroughCopy("src/graph/editor/*.js");
+  eleventyConfig.addPassthroughCopy("src/graph/automata/*.js");
 
   // Copy non-optimized content images
   // Fold _drafts back into their respective top-level folder
