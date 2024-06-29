@@ -55,12 +55,23 @@ const CANVAS_SIZE = 512;
 const SPACE_SIZE = 64;
 const CELL_SIZE = CANVAS_SIZE / SPACE_SIZE;
 
+const mappedArray = (s, f) => Array.from(Array(s), f);
+const filledArray = (s, v) => Array(s).fill(v);
+const clone = o => JSON.parse(JSON.stringify(o));
+
 let running = false;
-let space = Array.from(Array(SPACE_SIZE), () => Array(SPACE_SIZE).fill(0));
-let safe = (i, j) => {
-  i = (i + SPACE_SIZE) % SPACE_SIZE;
-  j = (j + SPACE_SIZE) % SPACE_SIZE;
-  return space[i][j];
+let space = mappedArray(SPACE_SIZE, () => filledArray(SPACE_SIZE, 0));
+
+let snapshotAccess = (space) => {
+  space = clone(space);
+
+  const safe = (i, j) => {
+    i = (i + SPACE_SIZE) % SPACE_SIZE;
+    j = (j + SPACE_SIZE) % SPACE_SIZE;
+    return space[i][j];
+  }
+
+  return (i, j) => safe(i - 1, j - 1) + safe(i - 1, j) + safe(i - 1, j + 1) + safe(i, j - 1) + safe(i, j + 1) + safe(i + 1, j - 1) + safe(i + 1, j) + safe(i + 1, j + 1);
 }
 
 p.setup = () => {
@@ -85,13 +96,15 @@ p.doubleClicked = () => {
 
 p.draw = () => {
   if (running) {
+    const neighbors = snapshotAccess(space);
+
     for (let i = 0; i < SPACE_SIZE; i++) {
       for (let j = 0; j < SPACE_SIZE; j++) {
-        let neighbors = safe(i - 1, j - 1) + safe(i - 1, j) + safe(i - 1, j + 1) + safe(i, j - 1) + safe(i, j + 1) + safe(i + 1, j - 1) + safe(i + 1, j) + safe(i + 1, j + 1);
+        let count = neighbors(i, j);
         
-        if (space[i][j] === 1 && neighbors !== 2 && neighbors !== 3) {
+        if (space[i][j] === 1 && count !== 2 && count !== 3) {
           space[i][j] = 0;
-        } else if (space[i][j] === 0 && neighbors === 3) {
+        } else if (space[i][j] === 0 && count === 3) {
           space[i][j] = 1;
         }
       }
