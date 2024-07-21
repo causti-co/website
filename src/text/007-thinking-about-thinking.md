@@ -27,11 +27,11 @@ The first trivial example would be the following graph that represents evaluatin
 
 Here all the nodes are trivial bearing entities that represent the expressions or values themselves. And our directed edges represent the application of a given mathematical operator, which allow us to transform a given expression into a different but equivalent expression.
 
-But this is just an uncool, plain-old graph. There's nothing "hyper" about it. Let's introduce the requirement of a hypergraph with a [slightly more elaborate](https://en.wikipedia.org/wiki/Rolle%27s_theorem) example:
+But this is just an uncool, plain-old graph. There's nothing _hyper_ about it. Let's introduce the requirement of a hypergraph with a [slightly more elaborate](https://en.wikipedia.org/wiki/Rolle%27s_theorem) example:
 
 ![](/assets/text/007-thinking-about-thinking-2.png)
 
-We need a hypergraph to capture the requirement that some of our edges express a relation between multiple statements on one side, and potentially multiple statements on the other. This is nothing more than adding the capability to express [logical conjunction](https://en.wikipedia.org/wiki/Logical_conjunction) to our model. And before you ask, [Logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction) is already trivially there. Can you see it? It's easier than you think, `(A | B) -> C` is equivalent to `A -> C` and `B -> C`. Easy.
+We need a hypergraph to capture the requirement that some of our edges express a relation between multiple statements on one side, and potentially multiple statements on the other. This is nothing more than adding the capability to express [logical conjunction](https://en.wikipedia.org/wiki/Logical_conjunction) to our model. And before you ask, [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction) is already trivially there. Can you see it? It's easier than you think, `(A | B) -> C` is equivalent to `A -> C` and `B -> C`. Easy.
 
 I hope this is enough to paint the picture, because I don't want to do more examples. Rather, let's start thinking with it.
 
@@ -43,17 +43,17 @@ To do so, we have a toolkit of edges at our disposal which we can constantly gro
 
 ![](/assets/text/007-thinking-about-thinking-3.png)
 
-In Type A thinking we start from a set of "assumption" statements and the goal is to start building the graph forwards to see to which new "conclusion" statements it leads us. Ideally, we have some kind of goal or direction in which we want to go. Something we're trying to achieve. But this could also be a purely exploratory exercise, which is why I've chosen to call it this way.
+In Type A thinking we start from a set of _assumption_ statements and the goal is to start building the graph forwards to see to which new _conclusion_ statements it leads us. Ideally, we have some kind of goal or direction in which we want to go. Something we're trying to achieve. But this could also be a purely exploratory exercise, which is why I've chosen to call it this way.
 
-We've seen an example of this already: evaluating a mathematical expression. Here the goal is to operate on our single "assumption" statement that represents an initial expression, until we reach a statement that represents an equivalent expression which we consider to be "irreducible", [whatever that means for us](https://en.wikipedia.org/wiki/Irreducibility_(mathematics)).
+We've seen an example of this already: evaluating a mathematical expression. Here the goal is to operate on our single _assumption_ statement that represents an initial expression, until we reach a statement that represents an equivalent expression which we consider to be "irreducible", [whatever that means for us](https://en.wikipedia.org/wiki/Irreducibility_(mathematics)).
 
 ### Type B, or "Backward exploration"
 
 ![](/assets/text/007-thinking-about-thinking-4.png)
 
-Unsurprisingly, in Type B thinking we start from a set of "conclusion" statements and the goal is to start building the graph backwards to see to which new "assumption" statements it leads us.
+Unsurprisingly, in Type B thinking we start from a set of _conclusion_ statements and the goal is to start building the graph backwards to see to which new _assumption_ statements it leads us.
 
-A typical example would be working backwards from a desired outcome such as moving to a different country. We start from the set of "conclusion" statements that represent our desired outcome, and we can work backwards until we have a list of "assumption" statements that we now need to go and fulfil, as well as a plan to achieve the desired outcome.
+A typical example would be working backwards from a desired outcome such as moving to a different country. We start from the set of _conclusion_ statements that represent our desired outcome, and we can work backwards until we have a list of _assumption_ statements that we now need to go and fulfil, as well as a plan to achieve the desired outcome.
 
 Before we move to the last type, I want to note that in both Type A and Type B, we are allowed to go in the "opposite" direction, if that is of interest. We are, after all exploring. But we are trying to move in one particular direction, relative to our set of starting statements. In Type A, we will want to "start" from them, which is why I've been calling them "assumptions", without bothering to define what this means. Similarly, in Type B we will want to "arrive" at them, which is why I've been calling them "conclusions", without bothering to define what this means.
 
@@ -63,27 +63,27 @@ Ok, lets move on.
 
 ![](/assets/text/007-thinking-about-thinking-5.png)
 
-We've seen what we can do with a set of "assumption" statements, and what we can do with a set of "conclusion" statements. So the obvious question is: What can we do if we have both? We can do Type C thinking.
+We've seen what we can do with a set of _assumption_ statements, and what we can do with a set of _conclusion_ statements. So the obvious question is: What can we do if we have both? We can do Type C thinking.
 
-In Type C thinking we have both a set of "assumption" statements and a set of "conclusion" statements, and the goal is to start building the graph between them until we can build a path that connects them. Or is it? We can define two different subtypes for Type C thinking.
+In Type C thinking we have both a set of _assumption_ statements and a set of _conclusion_ statements, and the goal is to start building the graph between them until we can build a path that connects them. Or is it? We can define two different subtypes for Type C thinking.
 
 #### Subtype C+
 
-The first subtype is where the goal is to build this path. Usually there's no prescribed way to proceed, we could choose to start from the "assumption" statements and work our way forwards Type A style, we could start from the "conclusion" statements and work our way backwards Type B style, or do both and aim at meeting somewhere in the middle. The precise choice will depend on the specific statements, and the edges available in our toolbox. Instinct/gut feeling plays a big role here. Sometimes you just "know" in which direction to start exploring. It's hard to describe. All I know is that I remember not having this ability, and then having it. All I did in between was just practice.
+The first subtype is where the goal is to build this path. Usually there's no prescribed way to proceed, we could choose to start from the _assumption_ statements and work our way forwards Type A style, we could start from the _conclusion_ statements and work our way backwards Type B style, or do both and aim at meeting somewhere in the middle. The precise choice will depend on the specific statements, and the edges available in our toolbox. Instinct/gut feeling plays a big role here. Sometimes _you just know_ in which direction to start exploring. It's hard to describe. All I know is that I remember not having this ability, and then having it. All I did in between was just practice.
 
 ![](/assets/text/007-thinking-about-thinking-6.png)
 
-A common strategy, in which this instinct/gut feeling plays a facilitating role, is to identify "good" intermediate statements. Statements that are not trivially equivalent to the source or destination statements, but for which you have a very good confidence that you can build a path to either. So you might as well try to build a path from this intermediate state and see if the way to the other side becomes clearer.
+A common strategy, in which this instinct/gut feeling plays a facilitating role, is to identify _good_ intermediate statements. Statements that are not trivially equivalent to the source or destination statements, but for which you have a very good confidence that you can build a path to either. So you might as well try to build a path from this intermediate state and see if the way to the other side becomes clearer.
 
 #### Subtype C-
 
-The second subtype is where the goal is not to build a path between our "assumption" and "conclusion" statements, but rather to show that it is impossible to build such a path, no matter how much we were to try.
+The second subtype is where the goal is not to build a path between our _assumption_ and _conclusion_ statements, but rather to show that it is impossible to build such a path, no matter how much we were to try.
 
 This is not as easy as it might seem. If we only had a very limited toolbox of edges, we could somehow "try them all" in all possible combinations and show that the statements are impossible to connect. But when the toolbox of edges is potentially infinite, and even worse, when we cannot afford to restrict our claims to apply only to the edges that we already know... how could we ever be certain that it's impossible to connect them, and not that we've simply yet to learn the one edge that will solve all of our problems?
 
-Well... What if we could build a path between the "assumption" statements and a statement that contradicts the "conclusion" statements? Or perhaps the other way around, between the "conclusion" statements and a statement that contradicts the "assumption" statements? Then it kinda works, right? Never mind that I've not defined what "contradicts" means, just vibe with it. Because if we can show that this path exists, then either the "assumption" or the "conclusion" statements cannot must not hold if the other does. Thus, there cannot be any paths. Or more accurately: were such a path to exist, our entire model of the world would lose consistency. And this cannot be allowed to happen.
+Well... What if we could build a path between the _assumption_ statements and a statement that contradicts the _conclusion_ statements? Or perhaps the other way around, between the _conclusion_ statements and a statement that contradicts the _assumption_ statements? Then it kinda works, right? Never mind that I've not defined what "contradicts" means, just vibe with it. Because if we can show that this path exists, then either the _assumption_ or the _conclusion_ statements cannot must not hold if the other does. Thus, there cannot be any paths. Or more accurately: were such a path to exist, our entire model of the world would lose consistency. And this cannot be allowed to happen.
 
-You may notice that this technique also works for the Subtype C+: If we want to build a path between "assumption" and "conclusion" statements, we could show that it is possible to build a path between the opposite of the "conclusion" statement and a statement that contradicts the "assumption" statements. That also kinda works, right? Never mind that I've not defined what "opposite" means, just vibe with it. Since we know the source statements to be true, then the "destination" statements must also hold to avoid the contradiction.
+You may notice that this technique also works for the Subtype C+: If we want to build a path between _assumption_ and _conclusion_ statements, we could show that it is possible to build a path between the opposite of the _conclusion_ statement and a statement that contradicts the _assumption_ statements. That also kinda works, right? Never mind that I've not defined what "opposite" means, just vibe with it. Since we know the _assumption_ statements to be true, then the _conclusion_ statements must also hold to avoid this contradiction.
 
 ## So what?
 
