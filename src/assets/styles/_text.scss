@@ -184,6 +184,14 @@ main > article.text > .content {
       margin: 1rem 0;
     }
   }
+
+  img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    @include border();
+    @include box-shadow($size: 2 * $default-box-shadow-size, $color: $accent-secondary);
+  }
 }
 
 @media (width <= 800px) {
