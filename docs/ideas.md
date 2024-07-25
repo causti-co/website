@@ -183,6 +183,9 @@ engineering tasks as a task to solve, vs as a learning opportunity
 
 it only takes a few months to read all the books in any undergrad programme, probably even less if you're good at it
 
+tricking myself into believing you're real
+  if the neurochemicals get released, what's the difference?
+
 
 THINK
 
