@@ -1,3 +1,7 @@
+BUG REPORT
+  Photo 016 does not load ISO correctly, renders as `[Object object]` on the list view.
+  Set a manual override via Markdown, delete to reproduce.
+
 STUFF THAT I CAN WORK ON RIGHT NOW
   Global Content Statistics
     % in Header Action
