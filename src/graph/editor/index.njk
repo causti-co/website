@@ -26,7 +26,7 @@ override:tags: []
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
     {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
     {#- To support using the last photo as og.image, we make it the default here. #}
-    {%- set graph = collections.graph | first | log -%}
+    {%- set graph = collections.graph | first -%}
     <meta property="og:image" content="https://causti.co{{ graph.data.page.filePathStem }}.gif" />
     <meta property="og:image:type" content="image/gif" />
     <meta property="og:image:width" content="{{ graph.data.properties.width }}" />
