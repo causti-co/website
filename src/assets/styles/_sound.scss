@@ -1,0 +1,108 @@
+@use "sass:math";
+@use "settings" as *;
+
+// Module Dimensions
+$image-max-size: 240px;
+
+main > article.sound-list > .content {
+  font-size: 1.2rem;
+}
+
+main > article.sound-list > .content .month {
+  > h2 {
+    margin-bottom: 8px;
+    font-size: 1.25em;
+  }
+
+  &:first-child {
+    > h2 {
+      margin-top: 0;
+    }
+  }
+  
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      display: flex;
+      margin-bottom: 16px;
+      flex-flow: row nowrap;
+      align-items: baseline;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      > .number {
+        margin-right: 8px;
+        font-size: 0.75em;
+        font-weight: bold;
+      }
+
+      > .sound {
+        flex-grow: 1;
+
+        h3 {
+          margin: 0 {
+            bottom: 4px;
+          }
+          
+          .date-and-stats {
+            color: $gray-70;
+            font-size: 0.7em;
+          }
+        }
+  
+        audio {
+          display: inline-block;
+          vertical-align: middle;
+          height: 1.5em;
+          margin: 0 {
+            top: 8px;
+          }
+        }
+
+        .loud {
+          display: inline-block;
+          margin: 0;
+          padding: 0 4px;
+          font-weight: bold;
+          vertical-align: middle;
+          background-color: $accent-secondary;
+          color: $white;
+          transform: rotate(-3deg);
+          @include border();
+          @include box-shadow();
+        }
+  
+        p {
+          margin: 0 {
+            top: 8px;
+            bottom: 16px;
+          }
+          line-height: 1.5em;
+  
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 800px) {
+  main > article.sound-list > .content .month {
+    > ul > li {
+      flex-direction: column;
+
+      .sound {
+        h3 .date-and-stats {
+          display: block;
+        }
+      }
+    }
+  }
+}

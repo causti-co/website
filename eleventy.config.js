@@ -7,6 +7,10 @@ const eleventyRss = require("@11ty/eleventy-plugin-rss");
 const eleventySass = require("eleventy-sass");
 const markdownItAttrs = require("markdown-it-attrs");
 const _Shiki = import("@shikijs/markdown-it");
+const NodeID3 = require("node-id3").Promise;
+const fs = require("node:fs/promises");
+const getMP3Duration = require("get-mp3-duration");
+const { filesize } = require("filesize");
 
 const pad = length => number => ("0".repeat(length) + number.toString()).slice(-length);
 
@@ -95,6 +99,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"src/text/**/*.jpg": "assets/text"});
   eleventyConfig.addPassthroughCopy({"src/text/**/*.png": "assets/text"});
 
+  // Copy sounds
+  eleventyConfig.addPassthroughCopy({"src/sound/*.mp3": "assets/sound"});
+
   // Get exif data from jpg files
   eleventyConfig.addDataExtension("jpg", {
     parser: async file => {
@@ -170,6 +177,44 @@ module.exports = function(eleventyConfig) {
     // Pass file path to `parser` rather than file contents
     read: false
   });
+
+  eleventyConfig.addDataExtension("mp3", {
+    parser: async file => {
+      let id3 = {};
+      let duration = undefined;
+      let size = undefined;
+
+      try {
+        let stats = await fs.stat(file);
+
+        size = stats.size;
+      } catch (exception) {
+        // No size for us
+      }
+
+      try {
+        const buffer = await fs.readFile(file);
+        duration = getMP3Duration(buffer);
+      } catch (exception) {
+        // No duration for us
+      }
+
+      try {
+        const tags = await NodeID3.read(file);
+        if (tags.title) id3.title = tags.title;
+        if (tags.artist) id3.artist = tags.artist;
+      } catch (exception) {
+        // No ID3 tags for us
+      }
+
+      return {
+        size,
+        duration,
+        id3
+      };
+    },
+    read: false
+  });
   
   eleventyConfig.addFilter("shortDate", value => {
     const pad2 = pad(2);
@@ -222,6 +267,26 @@ module.exports = function(eleventyConfig) {
     return newValue.trimEnd();
   });
 
+  eleventyConfig.addFilter("time", value => {
+    const pad2 = pad(2);
+
+    value = Math.floor(value / 1000);
+    let seconds = value % 60;
+    let newValue = `${pad2(seconds)}`;
+    value = Math.floor(value / 60);
+    let minutes = value % 60;
+    if (value) newValue = `${pad2(minutes)}:${newValue}`;
+    value = Math.floor(value / 60);
+    let hours = value;
+    if (value) newValue = `${pad2(hours)}:${newValue}`;
+
+    return newValue;
+  });
+
+  eleventyConfig.addFilter("filesize", value => {
+    return filesize(value, {base: 2});
+  });
+
   eleventyConfig.addShortcode("image", (responsive, alt, sizes) => {
     const largest = responsive[responsive.length - 1];
     const srcset = responsive.map(size => size.srcset).join(", ");
@@ -230,9 +295,10 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("textByMonth", groupByMonth("text"));
+  eleventyConfig.addCollection("soundByMonth", groupByMonth("sound"));
   eleventyConfig.addCollection("recsByMonth", groupByMonth("recs"));
   eleventyConfig.addCollection("allContent", collectionApi => {
-    const tags = ["text", "photo", "recs"];
+    const tags = ["text", "photo", "sound", "recs"];
 
     const allContent = tags.flatMap(tag => collectionApi.getFilteredByTag(tag));
 
@@ -244,9 +310,9 @@ module.exports = function(eleventyConfig) {
         }
       }
 
-      if (item.data.category === "recs") {
-        // Individual recs have no url, lets provide one
-        item.page.url = "/recs/";
+      if (item.data.category === "recs" || item.data.category === "sound") {
+        // Individual recs/sounds have no url, lets provide one
+        item.page.url = `/${item.data.category}/`;
       }
 
       return item;

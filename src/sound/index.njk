@@ -1,0 +1,40 @@
+---
+layout: index.njk
+eleventyExcludeFromCollections: true
+title: sound
+override:tags: []
+feedUrl: /sound/feed.xml
+description: >-
+  sounds.
+  i'm bad at this but i want to get better.
+  so bare with me for now.
+  i promise it sounds better in my head.
+---
+<article class="sound-list">
+  <h1><span class="offset">sou</span><span>nd</span></h1>
+  <section class="content">
+  {%- for month, sounds in collections.soundByMonth %}
+    <section class="month">
+      <h2>{{ month }}</h2>
+      <ul>
+      {%- for sound in sounds %}
+        <li>
+          <span class="number">{{ sound.data.number | shortNumber }}</span>
+          <article class="sound">
+            <h3>
+              <a href="{{ sound.data.fileUrl }}" download="{{ sound.page.fileSlug }}.mp3" target="_blank" rel="noopener noreferrer">{{ sound.data.title }}</a>
+              <span class="date-and-stats">;;&nbsp;{{ sound.page.date | shortDate }};&nbsp;{{ sound.data.size | filesize }};&nbsp;{{ sound.data.duration | time }}</span>
+            </h3>
+            <audio controls>
+              <source type="audio/mpeg" src="{{ sound.data.fileUrl }}" />
+            </audio>
+            {% if sound.data.loud %}<span class="loud">!! LOUD !!</span>{% endif %}
+            {{ sound.content | safeLinks | safe }}
+          </article>
+        </li>
+      {%- endfor %}
+      </ul>
+    </section>
+  {%- endfor %}
+  </section>
+</article>

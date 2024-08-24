@@ -1,11 +1,11 @@
 ---
-permalink: feed.xml
+permalink: sound/feed.xml
 eleventyExcludeFromCollections: true
 title: causti • co
-subtitle: all content
+subtitle: sound
 baseUrl: https://causti.co
 ---
-{%- set contentCollection = collections.allContent -%}
+{%- set contentCollection = collections.sound | reverse -%}
 {%- set newestContent = contentCollection | first -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ baseUrl }}/" xml:lang="en">
@@ -21,38 +21,20 @@ baseUrl: https://causti.co
   <generator>{{ eleventy.generator }}</generator>
   <icon>{{ baseUrl }}/assets/icons/favicon.png</icon>
   <rights>causti • co © 2024 by Martín Valdés de León, is licensed under CC BY-NC-ND 4.0</rights>
+  <category term="sound" />
   {%- for content in contentCollection.slice(0, 20) %}
   {%- set contentUrl = baseUrl + content.page.url %}
   <entry>
-    <category term="{{ content.data.category }}" />
     <title>{{ content.data.title }}</title>
     <link href="{{ contentUrl }}" />
     <link rel="alternate" type="text/html" href="{{ contentUrl }}" />
-    {%- if content.data.responsive %}
-    {%- set largest = content.data.responsive | last %}
-    <link rel="alternate" type="{{ largest.sourceType }}" href="{{ baseUrl }}{{ largest.url }}" />
-    {%- endif %}
-    {%- if content.data.url %}
-    <link rel="related" type="text/html" href="{{ content.data.url }}" />
-    {%- endif %}
-    {%- if content.data.imageUrl %}
-    <link rel="alternate" type="image/jpeg" href="{{ baseUrl }}{{ content.data.imageUrl }}" />
-    {%- endif %}
-    {%- if content.data.fileUrl %}
     <link rel="alternate" type="audio/mpeg" href="{{ baseUrl }}{{ content.data.fileUrl }}" />
-    {%- endif %}
     <id>{{ contentUrl }}</id>
     <updated>{{ content.page.date | dateToRfc3339 }}</updated>
     <published>{{ content.page.date | dateToRfc3339 }}</published>
-    <summary>{{ content.data.description or content.data.alt or content.data.title }}</summary>
+    <summary>{{ content.data.alt }}</summary>
     <content type="html">
-      {%- if content.data.category === "photo" %}
-      {%- filter htmlToAbsoluteUrls(baseUrl) %}
-      {% image content.data.responsive, content.data.alt, "100vw" %}
-      {%- endfilter %}
-      {%- else %}
       {{ content.templateContent | htmlToAbsoluteUrls(baseUrl) }}
-      {%- endif %}
     </content>
   </entry>
   {%- endfor %}
