@@ -39,6 +39,7 @@ $void-duration: string.length($void-message) * 0.3s;
         right: $palette-color-size * 2 + 8px;
         display: none;
         content: attr(class);
+        font-size: 1rem;
       }
 
       &:not(.void):hover::after {
