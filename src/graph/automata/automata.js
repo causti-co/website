@@ -11,6 +11,7 @@ const $canvasContainer = document.getElementById("canvas-container");
 const $share = document.getElementById("share");
 const $inputSection = document.getElementById("graph-input");
 const $inputLabel = document.querySelector("#graph-input > h2");
+const $outputLabel = document.querySelector("#graph-output > h2");
 
 async function update() {
   let code = $input.value;
@@ -98,6 +99,7 @@ $input.addEventListener("scroll", syncScroll);
 $render.addEventListener("click", render);
 $share.addEventListener("click", share);
 $inputLabel.addEventListener("click", toggleInput);
+$outputLabel.addEventListener("click", downloadPNG); // Surprise!
 window.addEventListener("unhandledrejection", error);
 window.addEventListener("error", error);
 
