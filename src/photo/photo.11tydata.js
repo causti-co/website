@@ -12,6 +12,8 @@ module.exports = {
     og: data => {
       let og = {};
 
+      og.type = data.page.fileSlug !== "photo" ? "article" : "website";
+
       if (data.responsive) {
         const largest = data.responsive[data.responsive.length - 1];
 
