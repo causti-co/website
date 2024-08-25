@@ -3,11 +3,9 @@
 // Drag to rotate, left-click to pan and wheel to zoom.
 
 const DEBUG = false;
-const CANVAS_SIZE = 512;
-const ORIGIN_2D = 0;
-const ORIGIN_3D = -CANVAS_SIZE/2;
+const TEXTURE_SIZE = 512;
 const SPACE_SIZE = 64;
-const CELL_SIZE = CANVAS_SIZE / SPACE_SIZE;
+const CELL_SIZE = TEXTURE_SIZE / SPACE_SIZE;
 const FRAME_RATE = 60;
 const SIMULATION_RATE = 10;
 const FRAMES_PER_TICK = FRAME_RATE / SIMULATION_RATE;
@@ -103,7 +101,7 @@ p.draw = () => {
     p.setCamera(camera);
     p.resetMatrix();
     p.clear();
-    p.translate(-CANVAS_SIZE / 2, -150, -clientHeight / 2);
+    p.translate(-TEXTURE_SIZE / 2, -150, -clientHeight / 2);
     p.push();
     for (let i = 0; i < SPACE_SIZE; i++) {
       p.push();
