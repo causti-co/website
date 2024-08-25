@@ -32,6 +32,7 @@
   "dependencies": {
     "filesize": "^10.1.4",
     "get-mp3-duration": "^1.0.0",
+    "image-size": "^1.1.1",
     "mp3tag.js": "^3.11.0",
     "node-id3": "^0.2.6"
   }

@@ -110,9 +110,6 @@ function loadFromURL() {
     const lzCode = hash.slice(HASH_LABEL.length);
 
     $input.value = LZString.decompressFromEncodedURIComponent(lzCode);
-
-    render();
-
     $renderStatus.innerHTML = ";; loaded code from clipboard";
   }
 }
@@ -189,3 +186,4 @@ $inputLabel.addEventListener("click", toggleInput);
 $canvas.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
 loadFromURL();
 update();
+render();

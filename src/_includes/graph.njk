@@ -1,10 +1,8 @@
 ---
 siteName: causti • co
-title: graph editor
-description: graph editor
-eleventyExcludeFromCollections: true
-override:tags: []
-layout:
+generalDescription: graph editor
+og:
+  type: website
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -18,24 +16,33 @@ layout:
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="Martín Valdés de León" />
     <meta name="generator" content="{{ eleventy.generator }}" />
-    <meta name="description" content="{{ description }}" />
+    <meta name="description" content="{{ description or generalDescription }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta property="og:site_name" content="{{ siteName }}" />
     <meta property="og:title" content="{{ title }}" />
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:type" content="website" />
+    <meta property="og:description" content="{{ description or generalDescription }}" />
+    <meta property="og:type" content="{{ og.type }}" />
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
     {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
     {#- To support using the last photo as og.image, we make it the default here. #}
-    {%- set graph = collections.graph | first -%}
-    <meta property="og:image" content="https://causti.co{{ graph.data.page.filePathStem }}.gif" />
-    <meta property="og:image:type" content="image/gif" />
-    <meta property="og:image:width" content="{{ graph.data.properties.width }}" />
-    <meta property="og:image:height" content="{{ graph.data.properties.height }}" />
-    <meta property="og:image:alt" content="{{ graph.data.alt }}" />
+    {%- set graph = collections.graph | last -%}
+    <meta property="og:image" content="https://causti.co{{ og.image.url or graph.data.og.image.url }}" />
+    <meta property="og:image:type" content="{{ og.image.type or graph.data.og.image.type }}" />
+    <meta property="og:image:width" content="{{ og.image.width or graph.data.og.image.width }}" />
+    <meta property="og:image:height" content="{{ og.image.height or graph.data.og.image.height }}" />
+    <meta property="og:image:alt" content="{{ og.image.alt or graph.data.og.image.alt }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mvaldesdeleon" />
     <meta name="twitter:creator" content="@mvaldesdeleon" />
+    {%- if og.type === "article" %}
+    <meta name="article:published_time" content="{{ date.toISOString() }}" />
+    {#- <meta name="article:modified_time" content="{{ date.toISOString() }}" /> #}
+    <meta name="article:author" content="Martín Valdés de León" />
+    {#- <meta name="article:section" content="text" /> #}
+    {%- for keyword in keywords %}
+    <meta name="article:tag" content="{{ keyword }}" />
+    {%- endfor %}
+    {%- endif %}
   </head>
   <body>
     <header>
@@ -48,18 +55,7 @@ layout:
           <div class="code-editor">
             <div id="code-output"></div>
             <textarea spellcheck="false" id="code-input">
-const substeps = 4;
-
-// REQUIRED: Declare a function called "step", to be called at each point
-// First two arguments are the position, 0 .. `steps` - 1
-// Third argument has `steps`, and canvas `width` and `height`
-function step(x, y, {steps}) {
-  const yy = Math.floor(y * substeps / steps) * substeps;
-  const xx = Math.floor(x * substeps / steps);
-
-  // Return truthy for black and falsy for orange
-  return (x | y) % (xx + yy);
-}</textarea>
+{{ rawCode | safe }}</textarea>
           </div>
           <div class="buttons">
             <div id="render-status"></div>
