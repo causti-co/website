@@ -1,0 +1,120 @@
+@use "settings" as *;
+
+// Module Dimensions
+$card-width: 240px;
+$full-screen-button-size: 32px;
+
+main > article.graph-list {
+  padding-bottom: $default-padding-size;
+}
+
+main > article.graph-list,
+main > article.graph {
+  > .content > .graph .card {
+    height: 100%;
+
+    > .card-content {
+      display: flex;
+      flex-flow: column nowrap;
+      position: relative;
+      height: 100%;
+      background-color: $gray-05;
+      @include border();
+      @include box-shadow();
+      box-sizing: border-box;
+      text-decoration: none;
+
+      > img {
+        display: block;
+        width: 100%;
+        background-color: $gray-05;
+        object-fit: cover;
+        flex: {
+          shrink: 0;
+          basis: auto;
+        }
+      }
+
+      > h3 {
+        margin: 0;
+        padding: 0 4px;
+        border-top: (3 * $default-border-width) double $default-border-color;
+        flex-shrink: 0;
+        text-decoration: underline $accent-dark;
+      }
+
+      > h3, > p {
+        word-break: break-word;
+      }
+
+      > .details {
+        flex: 0 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: $default-padding-size;
+        padding: 0 4px 4px;
+
+        .number, .camera {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+main > article.graph-list > .content {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+
+  > .graph .card {
+    > .card-content {
+      > img {
+        height: $card-width;
+        flex-grow: 0;
+      }
+
+      > h3 {
+        flex-grow: 1;
+      }
+
+      &:focus {
+        background-color: $accent-light;
+
+        > h3 {
+          text-decoration-color: $white;
+        }
+      }
+    }
+
+    > .card-content:active, &:hover > .card-content:active {
+      top: 0;
+      left: 0;
+      background-color: $accent-dark;
+      @include box-shadow();
+    }
+
+    &:hover > .card-content {
+      top: -2 * $default-box-shadow-size;
+      left: -2 * $default-box-shadow-size;
+      @include box-shadow(3 * $default-box-shadow-size);
+    }
+  }
+}
+
+@media (width <= 800px) {
+  main:has(> article.graph-list) {
+    padding-right: $default-padding-size;
+  }
+
+  main > article.graph-list {
+    padding-bottom: $default-box-shadow-size;
+  }
+
+  main > article.graph-list > .content {
+    gap: $default-padding-size;
+  }
+
+}

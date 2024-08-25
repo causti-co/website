@@ -103,6 +103,10 @@ module.exports = function(eleventyConfig) {
   // Copy non-optimized content images
   eleventyConfig.addPassthroughCopy({[`src/text/${glob}*.jpg`]: "assets/text"});
   eleventyConfig.addPassthroughCopy({[`src/text/${glob}*.png`]: "assets/text"});
+  eleventyConfig.addPassthroughCopy({[`src/graph/${glob}*.jpg`]: "assets/graph"});
+  eleventyConfig.addPassthroughCopy({[`src/graph/${glob}*.png`]: "assets/graph"});
+  eleventyConfig.addPassthroughCopy({[`src/graph/${glob}*.svg`]: "assets/graph"});
+  eleventyConfig.addPassthroughCopy({[`src/graph/${glob}*.webp`]: "assets/graph"});
   eleventyConfig.addPassthroughCopy({[`src/recs/${glob}*.jpg`]: "assets/recs"});
   eleventyConfig.addPassthroughCopy({[`src/recs/${glob}*.png`]: "assets/recs"});
 

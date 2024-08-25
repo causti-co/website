@@ -1,0 +1,28 @@
+---
+layout: index.njk
+eleventyExcludeFromCollections: true
+title: graph
+override:tags: []
+feedUrl: /graph/feed.xml
+description: >-
+  generative art.
+---
+<article class="graph-list">
+  <h1><span>gra</span><span class="offset-2">ph</span></h1>
+  <section class="content">
+  {%- for graph in collections.graph | reverse %}
+    <article class="graph">
+      <div class="card">
+        <a class="card-content" href="{{ graph.page.url }}">
+          <img src="{{ graph.data.imageUrl }}" alt="{{ graph.data.alt or graph.data.description }}" />
+          <h3>{{ graph.data.title }}</h3>
+          <div class="details">
+            <span class="number">{{ graph.data.number | shortNumber }}</span>
+            <span class="date">{{ graph.page.date | shortDate }}</span>
+          </div>
+        </a>
+      </div>
+    </article>
+  {%- endfor %}
+  </section>
+</article>
