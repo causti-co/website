@@ -30,7 +30,7 @@ module.exports = {
 
         og.image = {
           url: data.imageUrl,
-          type: mimeTypes[extension],
+          type: mimeTypes[extension.slice(1)],
           width: size.width,
           height: size.height,
           alt: data.alt
