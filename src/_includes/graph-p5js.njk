@@ -1,0 +1,84 @@
+---
+siteName: causti • co
+generalDescription: automata editor
+og:
+  type: website
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>{{ siteName }}{% if title %} — {{ title }}{% endif %}</title>
+    <link rel="stylesheet" href="/assets/styles/automata.css" />
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
+    <link rel="canonical" href="https://causti.co{{ page.url }}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="description" content="{{ description or generalDescription }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta property="og:site_name" content="{{ siteName }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description or generalDescription }}" />
+    <meta property="og:type" content="{{ og.type }}" />
+    <meta property="og:url" content="https://causti.co{{ page.url }}" />
+    {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
+    {#- To support using the last photo as og.image, we make it the default here. #}
+    {%- set graph = collections.graph | last -%}
+    <meta property="og:image" content="https://causti.co{{ og.image.url or graph.data.og.image.url }}" />
+    <meta property="og:image:type" content="{{ og.image.type or graph.data.og.image.type }}" />
+    <meta property="og:image:width" content="{{ og.image.width or graph.data.og.image.width }}" />
+    <meta property="og:image:height" content="{{ og.image.height or graph.data.og.image.height }}" />
+    <meta property="og:image:alt" content="{{ og.image.alt or graph.data.og.image.alt }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mvaldesdeleon" />
+    <meta name="twitter:creator" content="@mvaldesdeleon" />
+    {%- if og.type === "article" %}
+    <meta name="article:published_time" content="{{ date.toISOString() }}" />
+    {#- <meta name="article:modified_time" content="{{ date.toISOString() }}" /> #}
+    <meta name="article:author" content="Martín Valdés de León" />
+    {#- <meta name="article:section" content="text" /> #}
+    {%- for keyword in keywords %}
+    <meta name="article:tag" content="{{ keyword }}" />
+    {%- endfor %}
+    {%- endif %}
+  </head>
+  <body>
+    <header>
+      <h1><a href="{{ page.url }}" tabindex="-1">causti </a><a href="{{ page.url }}" tabindex="-1"><img class="dot" src="/assets/images/causti.co.pink.svg" alt="·" width="640" height="640" /></a><a href="{{ page.url }}" tabindex="-1"> co</a></h1>
+    </header>
+    <main>
+      <article>
+        <section id="graph-input" class="closed">
+          <h2>input</h2>
+          <div class="code-editor">
+            <div id="code-output"></div>
+            <textarea spellcheck="false" id="code-input">
+{{ rawCode | safe }}</textarea>
+          </div>
+          <div class="buttons">
+            <div id="render-status"></div>
+            <button id="share">share ↗</button>
+            <button id="render">render</button>
+          </div>
+        </section>
+        <section id="graph-output">
+          <h2>output</h2>
+          <div id="canvas-container"></div>
+        </section>
+      </article>
+      <script type="module" src="/graph/automata/p5.min.js"></script>
+      <script type="module" src="/graph/automata/p5.sound.min.js"></script>
+      <script type="module" src="/graph/automata/lz-string.min.js"></script>
+      <script type="module" src="/graph/automata/automata.js"></script>
+    </main>
+    <footer>
+      <div class="content">
+        <p class="cc" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+          <a property="dct:title" rel="cc:attributionURL" href="https://causti.co/">{{ siteName }}</a> © 2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://twitter.com/mvaldesdeleon">Martín Valdés de León</a>, is licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<span class="icons"><img class="icon" src="/assets/images/cc/cc.pink.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.pink.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.pink.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.pink.svg" alt="ND" width="64" height="64" /></span><span class="alt-icons"><img class="icon" src="/assets/images/cc/cc.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.svg" alt="ND" width="64" height="64" /></span></a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
