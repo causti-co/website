@@ -380,7 +380,7 @@ p.draw = () => {
     tree.y += vy
 
     if (tree.ttl < 0) {
-      forest[i] = Tree.makeTree({g: tree.g + 1, rate: random(0.002, 0.002)});
+      forest[i] = Tree.makeTree({g: tree.g + 1, rate: p.random(0.002, 0.002)});
     } else if (tree.x > clientWidth + TREE_SPAWN_OFFSET) {
       forest[i] = Tree.makeTree({age: tree.age, x: -TREE_SPAWN_OFFSET});
       forest[i].y -= TREE_SPAWN_OFFSET/2;
