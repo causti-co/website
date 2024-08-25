@@ -119,6 +119,26 @@ main {
       padding: 24px;
       flex: 1 1 auto;
 
+      @include border($color: $accent-secondary);
+      border: {
+        top-width: 0;
+        bottom-width: 0;
+        left-width: 0;
+      }
+
+      > h2 {
+        cursor: pointer;
+        padding-bottom: 1.5em;
+
+        &::after {
+          bottom: 4px;
+          right: -1px;
+          position: absolute;
+          display: block;
+          content: '↑';
+        }
+      }
+
       .code-editor {
         height: 512px;
         position: relative;
@@ -163,25 +183,43 @@ main {
         font-weight: bold;
         white-space: pre;
       }
+
+      &.closed {
+        padding: 0;
+        width: 0;
+        flex: 0 0 0;
+        border: 0;
+        z-index: 1;
+
+        > h2 {
+          &::after {
+            content: '↓';
+          }
+        }
+
+        > div {
+          display: none;
+        }
+
+        & + #graph-output {
+          flex-grow: 1;
+        }
+      }
     }
 
     > #graph-output {
       padding: 24px;
       flex: 0 0 512px;
 
-      @include border($color: $accent-secondary);
-      border: {
-        top-width: 0;
-        bottom-width: 0;
-        right-width: 0;
+      > h2 {
+        top: 96px;
       }
 
-      #canvas {
+      canvas {
           display: block;
           margin: 0 auto 16px;
           width: 512px;
           height: 512px;
-          @include border($color: $accent-secondary);
       }
     }
   }

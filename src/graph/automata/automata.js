@@ -8,6 +8,8 @@ const $render = document.getElementById("render");
 const $renderStatus = document.getElementById("render-status");
 const $canvasParent = document.getElementById("graph-output");
 const $share = document.getElementById("share");
+const $inputSection = document.getElementById("graph-input");
+const $inputLabel = document.querySelector("#graph-input > h2");
 
 async function update() {
   let code = $input.value;
@@ -65,8 +67,6 @@ function loadFromURL() {
 
     $input.value = LZString.decompressFromEncodedURIComponent(lzCode);
 
-    render();
-
     $renderStatus.innerHTML = ";; loaded code from clipboard";
   }
 }
@@ -81,12 +81,18 @@ function share() {
   $renderStatus.innerHTML = ";; url copied to clipboard";
 }
 
+function toggleInput() {
+  $inputSection.classList.toggle("closed");
+}
+
 $input.addEventListener("input", update);
 $input.addEventListener("scroll", syncScroll);
 $render.addEventListener("click", render);
 $share.addEventListener("click", share);
+$inputLabel.addEventListener("click", toggleInput);
 window.addEventListener("unhandledrejection", error);
 window.addEventListener("error", error);
 
 loadFromURL();
 update();
+render();
