@@ -8,7 +8,6 @@ const $render = document.getElementById("render");
 const $renderStatus = document.getElementById("render-status");
 const $canvasParent = document.getElementById("canvas-container");
 const $share = document.getElementById("share");
-const $downloadPNG = document.getElementById("downloadPNG");
 const $inputSection = document.getElementById("graph-input");
 const $inputLabel = document.querySelector("#graph-input > h2");
 
@@ -94,7 +93,6 @@ $input.addEventListener("input", update);
 $input.addEventListener("scroll", syncScroll);
 $render.addEventListener("click", render);
 $share.addEventListener("click", share);
-$downloadPNG.addEventListener("click", downloadPNG);
 $inputLabel.addEventListener("click", toggleInput);
 window.addEventListener("unhandledrejection", error);
 window.addEventListener("error", error);
