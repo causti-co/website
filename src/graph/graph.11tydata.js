@@ -9,7 +9,6 @@ const mimeTypes = {"jpg": "image/jpeg", "png": "image/png", "svg": "image/svg+xm
 const basepath = inputPath => inputPath.slice(0, -extname(inputPath).length);
 
 module.exports = {
-  layout: "graph.njk",
   tags: ["graph"],
   eleventyComputed: {
     number: data => parseInt(data.page.fileSlug.split("-")[0]),
@@ -17,6 +16,14 @@ module.exports = {
       if (data.page.filePathStem.includes("/_drafts/")) {
         return `${data.page.filePathStem.replace("/_drafts/", "/")}/`;
       }
+    },
+    layout: data => {
+      if (data.editor === "legacy") {
+        return "graph-legacy.njk";
+      } else if (data.editor === "p5js") {
+        return "graph-p5js.njk";
+      }
+      return data.layout;
     },
     og: data => {
       let og = {};
