@@ -31,12 +31,13 @@ baseUrl: https://causti.co
     {%- if content.data.responsive %}
     {%- set largest = content.data.responsive | last %}
     <link rel="alternate" type="{{ largest.sourceType }}" href="{{ baseUrl }}{{ largest.url }}" />
+    {%- else %}
+    {%- if content.data.og.image.url %}
+    <link rel="alternate" type="{{ content.data.og.image.type }}" href="{{ baseUrl }}{{ content.data.og.image.url}}" />
+    {%- endif %}
     {%- endif %}
     {%- if content.data.url %}
     <link rel="related" type="text/html" href="{{ content.data.url }}" />
-    {%- endif %}
-    {%- if content.data.imageUrl %}
-    <link rel="alternate" type="image/jpeg" href="{{ baseUrl }}{{ content.data.imageUrl }}" />
     {%- endif %}
     {%- if content.data.fileUrl %}
     <link rel="alternate" type="audio/mpeg" href="{{ baseUrl }}{{ content.data.fileUrl }}" />
@@ -49,6 +50,10 @@ baseUrl: https://causti.co
       {%- if content.data.category === "photo" %}
       {%- filter htmlToAbsoluteUrls(baseUrl) %}
       {% image content.data.responsive, content.data.alt, "100vw" %}
+      {%- endfilter %}
+      {%- elif content.data.category === "graph" %}
+      {%- filter htmlToAbsoluteUrls(baseUrl) %}
+      <img src="{{ content.data.imageUrl }}" alt="{{ content.data.alt or content.data.description }}" width="{{ content.data.og.image.width }}" height="{{ content.data.og.image.height }}" />
       {%- endfilter %}
       {%- else %}
       {{ content.templateContent | htmlToAbsoluteUrls(baseUrl) }}

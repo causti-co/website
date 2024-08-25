@@ -309,7 +309,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("soundByMonth", groupByMonth("sound"));
   eleventyConfig.addCollection("recsByMonth", groupByMonth("recs"));
   eleventyConfig.addCollection("allContent", collectionApi => {
-    const tags = ["text", "photo", "sound", "recs"];
+    const tags = ["text", "photo", "sound", "graph", "recs"];
 
     const allContent = tags.flatMap(tag => collectionApi.getFilteredByTag(tag));
 
