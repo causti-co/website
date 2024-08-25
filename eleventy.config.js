@@ -73,14 +73,17 @@ module.exports = function(eleventyConfig) {
 
   // Environment-sensitive configuration
   const { ELEVENTY_ENV } = process.env;
-  
   // Use same logic as `eleventy-sass` for now
-  if (ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV)) {
-    // Ignore `_drafts`
-    eleventyConfig.ignores.add("**/_drafts/**");
-  } else {
+  const IS_PRODUCTION = ELEVENTY_ENV === undefined || "production".startsWith(ELEVENTY_ENV);
+
+  if (!IS_PRODUCTION) {
     // Feature-flag for experimental features
     eleventyConfig.addGlobalData("experimental", true);
+  }
+
+  if (IS_PRODUCTION) {
+    // Ignore `_drafts`
+    eleventyConfig.ignores.add("**/_drafts/**");
   }
 
   // Copy static assets
@@ -92,15 +95,19 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/graph/editor/*.js");
   eleventyConfig.addPassthroughCopy("src/graph/automata/*.js");
 
+  let glob = "";
+  if (!IS_PRODUCTION) {
+    // Fold _drafts back into their respective top-level folder
+    glob = "**/";
+  }
   // Copy non-optimized content images
-  // Fold _drafts back into their respective top-level folder
-  eleventyConfig.addPassthroughCopy({"src/recs/**/*.jpg": "assets/recs"});
-  eleventyConfig.addPassthroughCopy({"src/recs/**/*.png": "assets/recs"});
-  eleventyConfig.addPassthroughCopy({"src/text/**/*.jpg": "assets/text"});
-  eleventyConfig.addPassthroughCopy({"src/text/**/*.png": "assets/text"});
+  eleventyConfig.addPassthroughCopy({[`src/text/${glob}*.jpg`]: "assets/text"});
+  eleventyConfig.addPassthroughCopy({[`src/text/${glob}*.png`]: "assets/text"});
+  eleventyConfig.addPassthroughCopy({[`src/recs/${glob}*.jpg`]: "assets/recs"});
+  eleventyConfig.addPassthroughCopy({[`src/recs/${glob}*.png`]: "assets/recs"});
 
   // Copy sounds
-  eleventyConfig.addPassthroughCopy({"src/sound/*.mp3": "assets/sound"});
+  eleventyConfig.addPassthroughCopy({[`src/sound/${glob}*.mp3`]: "assets/sound"});
 
   // Get exif data from jpg files
   eleventyConfig.addDataExtension("jpg", {
