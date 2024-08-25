@@ -17,14 +17,6 @@ module.exports = {
         return `${data.page.filePathStem.replace("/_drafts/", "/")}/`;
       }
     },
-    layout: data => {
-      if (data.editor === "legacy") {
-        return "graph-legacy.njk";
-      } else if (data.editor === "p5js") {
-        return "graph-p5js.njk";
-      }
-      return data.layout;
-    },
     og: data => {
       let og = {};
 
