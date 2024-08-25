@@ -286,6 +286,7 @@ p.draw = (skipText) => {
 }
 
 p.mouseClicked = () => {
+  if (p.width === 0 || p.height === 0) return;
   if (showPreview) return;
 
   if (p.mouseX < p.width * 0.5) {
@@ -309,7 +310,7 @@ p.keyPressed = () => {
     case 'R':
     case 'r':
       SCALE = 1.0;
-      DrA = 0.86, DrB = 0.35, Fr = 0.0418, Kr = 0.0596;
+      DrA = 0.86; DrB = 0.35; Fr = 0.0418; Kr = 0.0596;
       resize();
       init();
       break;
