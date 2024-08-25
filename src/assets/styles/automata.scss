@@ -215,6 +215,10 @@ main {
         top: 96px;
       }
 
+      > #canvas-container {
+        min-height: calc(512px + 16px);
+      }
+
       canvas {
           display: block;
           margin: 0 auto 16px;
