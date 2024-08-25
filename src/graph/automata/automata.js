@@ -92,6 +92,7 @@ function downloadPNG() {
 
 function toggleInput() {
   $inputSection.classList.toggle("closed");
+  render();
 }
 
 $input.addEventListener("input", update);
