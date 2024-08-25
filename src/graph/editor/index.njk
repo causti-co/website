@@ -27,11 +27,11 @@ layout:
     <meta property="og:url" content="https://causti.co{{ page.url }}" />
     {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
     {#- To support using the last photo as og.image, we make it the default here. #}
-    {%- set graph = collections.graph | first -%}
-    <meta property="og:image" content="https://causti.co{{ graph.data.page.filePathStem }}.gif" />
-    <meta property="og:image:type" content="image/gif" />
-    <meta property="og:image:width" content="{{ graph.data.properties.width }}" />
-    <meta property="og:image:height" content="{{ graph.data.properties.height }}" />
+    {%- set graph = collections.graph | last -%}
+    <meta property="og:image" content="https://causti.co{{ graph.data.og.image.url }}" />
+    <meta property="og:image:type" content="{{ graph.data.og.image.type }}" />
+    <meta property="og:image:width" content="{{ graph.data.og.image.width }}" />
+    <meta property="og:image:height" content="{{ graph.data.og.image.height }}" />
     <meta property="og:image:alt" content="{{ graph.data.alt }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mvaldesdeleon" />
