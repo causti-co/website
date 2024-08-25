@@ -86,7 +86,6 @@ main {
         background: $black;
         @include border($color: $accent-dark);
         @include box-shadow($size: -1 * $default-box-shadow-size, $color: $accent-dark);
-        cursor: pointer;
       }
 
       .buttons {
@@ -125,6 +124,19 @@ main {
         top-width: 0;
         bottom-width: 0;
         left-width: 0;
+      }
+
+      > h2 {
+        cursor: pointer;
+        padding-bottom: 1.5em;
+
+        &::after {
+          bottom: 4px;
+          right: -1px;
+          position: absolute;
+          display: block;
+          content: '↑';
+        }
       }
 
       .code-editor {
@@ -179,8 +191,18 @@ main {
         border: 0;
         z-index: 1;
 
+        > h2 {
+          &::after {
+            content: '↓';
+          }
+        }
+
         > div {
           display: none;
+        }
+
+        & + #graph-output {
+          flex-grow: 1;
         }
       }
     }
@@ -190,7 +212,7 @@ main {
       flex: 0 0 512px;
 
       > h2 {
-        top: 80px;
+        top: 96px;
       }
 
       #canvas {
