@@ -6,7 +6,7 @@ const $input = document.getElementById("code-input");
 const $output = document.getElementById("code-output");
 const $render = document.getElementById("render");
 const $renderStatus = document.getElementById("render-status");
-const $canvasParent = document.getElementById("canvas-container");
+const $canvasContainer = document.getElementById("canvas-container");
 const $share = document.getElementById("share");
 const $inputSection = document.getElementById("graph-input");
 const $inputLabel = document.querySelector("#graph-input > h2");
@@ -45,7 +45,7 @@ function render() {
   $renderStatus.innerHTML = "";
 
   if (p5instance) p5instance.remove();
-  p5instance = new p5(sketch, $canvasParent);
+  p5instance = new p5(sketch, $canvasContainer);
 
   $renderStatus.innerHTML = ";; success";
 }
