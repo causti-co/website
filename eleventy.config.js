@@ -226,7 +226,7 @@ module.exports = function(eleventyConfig) {
     },
     read: false
   });
-  
+
   eleventyConfig.addFilter("shortDate", value => {
     const pad2 = pad(2);
 
