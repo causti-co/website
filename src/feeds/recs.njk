@@ -29,8 +29,8 @@ baseUrl: https://causti.co
     <link href="{{ contentUrl }}" />
     <link rel="alternate" type="text/html" href="{{ contentUrl }}" />
     <link rel="related" type="text/html" href="{{ content.data.url }}" />
-    {%- if content.data.imageUrl %}
-    <link rel="alternate" type="image/jpeg" href="{{ baseUrl }}{{ content.data.imageUrl }}" />
+    {%- if content.data.og.image.url %}
+    <link rel="alternate" type="{{ content.data.og.image.type }}" href="{{ baseUrl }}{{ content.data.og.image.url }}" />
     {%- endif %}
     <id>{{ contentUrl }}</id>
     <updated>{{ content.page.date | dateToRfc3339 }}</updated>
