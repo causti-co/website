@@ -1,3 +1,13 @@
+WORKING ON RIGHT NOW
+  review passthrough copy and shit for graph
+    i dont think we will need this unless we decide to delete/rename legacy stuff
+  add general menu to editor/detail view?
+    for the moment we added backlink to /graphs/ in the logo
+
+  add <audio> to sound feed and in all feed for sound items?
+  extend legacy editor so i can migrate the other 6 legacy graphs?
+
+
 BUG REPORT
   Photo 016 does not load ISO correctly, renders as `[Object object]` on the list view.
   Set a manual override via Markdown, delete to reproduce.
@@ -12,11 +22,6 @@ STUFF THAT I CAN WORK ON RIGHT NOW
   TEXT
     A way to build a list of important resources from the links spread throughout the article.
     This would basically be a "references" section, I guess. But I think I want to either selectively put links there, or at least be able to highlight some from the others.
-
-  0. IMAGES IN ARTICLES
-    Multiple things to consider...
-    1. We need to skip them as data objects
-    2. Ideally we don't have to write `/assets/text/` in the markdown files
 
 STUFF THAT CAN WAIT UNTIL I HAVE MORE CONTENT
   HOME
