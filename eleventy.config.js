@@ -298,7 +298,7 @@ module.exports = function(eleventyConfig) {
     const largest = responsive[responsive.length - 1];
     const srcset = responsive.map(size => size.srcset).join(", ");
 
-    return `<img src="${largest.url}" srcset="${srcset}" sizes="${sizes}" width="${largest.width}" height="${largest.height}" alt="${alt}" loading="lazy" decoding="async">`;
+    return `<img src="${largest.url}" srcset="${srcset}" sizes="${sizes}" width="${largest.width}" height="${largest.height}" alt="${alt}" loading="lazy" decoding="async" />`;
   });
 
   eleventyConfig.addCollection("textByMonth", groupByMonth("text"));
