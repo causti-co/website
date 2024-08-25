@@ -6,6 +6,7 @@ const $input = document.getElementById("code-input");
 const $output = document.getElementById("code-output");
 const $render = document.getElementById("render");
 const $renderStatus = document.getElementById("render-status");
+const $outputContainer = document.getElementById("graph-output");
 const $canvasContainer = document.getElementById("canvas-container");
 const $share = document.getElementById("share");
 const $inputSection = document.getElementById("graph-input");
@@ -39,8 +40,11 @@ let p5instance;
 function render() {
   $render.blur();
 
+  const computedStyle = getComputedStyle($outputContainer);
+  const clientWidth = $outputContainer.clientWidth;
+  const clientHeight = $outputContainer.clientHeight - 24;
   const code = $input.value;
-  const sketch = new Function("p", `"use strict";${code};`);
+  const sketch = new Function("p", `"use strict";const clientWidth=${clientWidth};const clientHeight=${clientHeight};${code};`);
 
   $renderStatus.innerHTML = "";
 
