@@ -16,6 +16,9 @@ const $canvas = document.getElementById("canvas");
 const $share = document.getElementById("share");
 const $downloadSVG = document.getElementById("downloadSVG");
 const $downloadPNG = document.getElementById("downloadPNG");
+const $inputSection = document.getElementById("graph-input");
+const $inputLabel = document.querySelector("#graph-input > h2");
+const $outputLabel = document.querySelector("#graph-output > h2");
 
 async function update() {
   let code = $input.value;
@@ -172,12 +175,18 @@ function downloadPNG() {
   });
 }
 
+function toggleInput() {
+  $inputSection.classList.toggle("closed");
+}
+
 $input.addEventListener("input", update);
 $input.addEventListener("scroll", syncScroll);
 $render.addEventListener("click", render);
 $share.addEventListener("click", share);
 $downloadSVG.addEventListener("click", downloadSVG);
 $downloadPNG.addEventListener("click", downloadPNG);
+$inputLabel.addEventListener("click", toggleInput);
+$outputLabel.addEventListener("click", toggleInput);
 
 $canvas.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
 loadFromURL();
