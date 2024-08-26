@@ -311,7 +311,7 @@ p.keyPressed = () => {
     case 'r':
       SCALE = 1.0;
       DrA = 0.86; DrB = 0.35; Fr = 0.0418; Kr = 0.0596;
-      resize();
+      p.resize();
       init();
       break;
     case 'S':
