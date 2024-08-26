@@ -330,12 +330,12 @@ p.keyPressed = () => {
       p.saveCanvas('reaction-difussion', 'png');
       break;
     case '-':
-      SCALE = constrain(SCALE - 0.1, 0.5, 10.0);
+      SCALE = p.constrain(SCALE - 0.1, 0.5, 10.0);
       resize();
       init();
       break;
     case '+':
-      SCALE = constrain(SCALE + 0.1, 0.5, 10.0);
+      SCALE = p.constrain(SCALE + 0.1, 0.5, 10.0);
       resize();
       init();
       break;
