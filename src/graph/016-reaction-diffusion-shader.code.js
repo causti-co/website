@@ -331,22 +331,22 @@ p.keyPressed = () => {
       break;
     case '-':
       SCALE = p.constrain(SCALE - 0.1, 0.5, 10.0);
-      resize();
+      p.resize();
       init();
       break;
     case '+':
       SCALE = p.constrain(SCALE + 0.1, 0.5, 10.0);
-      resize();
+      p.resize();
       init();
       break;
   }
 }
 
-// p.resize = () => {
-//   rdKillFeed.resize(p.width * 0.5 / SCALE, p.height / SCALE);
-//   rdDiffusion.resize(p.width * 0.5 / SCALE, p.height / SCALE);
-//   rdPreview.resize(p.width / SCALE, p.height / SCALE);
-// }
+p.resize = () => {
+  rdKillFeed.resize(p.width * 0.5 / SCALE, p.height / SCALE);
+  rdDiffusion.resize(p.width * 0.5 / SCALE, p.height / SCALE);
+  rdPreview.resize(p.width / SCALE, p.height / SCALE);
+}
 
 function init() {
   if (showPreview) {
