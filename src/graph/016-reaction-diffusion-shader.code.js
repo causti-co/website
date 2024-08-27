@@ -133,7 +133,7 @@ class ReactionDifussion {
   constructor(width, height, rateGradient = ReactionDifussion.GRADIENT_NONE, wrapAround = true) {
     let bufferOptions = {
       antialias: false,
-      textureFiltering: p.NEAREST
+      textureFiltering: p.LINEAR
     };
     if (width) bufferOptions.width = width;
     if (height) bufferOptions.height = height;
@@ -178,7 +178,7 @@ class ReactionDifussion {
     ReactionDifussion.rdRenderShader.setUniform('uBufferTexture', this.bufferA.color);
     ReactionDifussion.rdRenderShader.setUniform('uFrameCount', p.frameCount);
     p.noStroke();
-    p.plane(this.width, this.height);
+    p.plane(this.width * SCALE, this.height * SCALE);
     p.resetShader();
   }
   
@@ -221,7 +221,6 @@ p.draw = (skipText) => {
     rdPreview.next();
 
     p.push();
-    p.scale(SCALE);
     rdPreview.render();
     p.pop();
   } else {
@@ -230,12 +229,10 @@ p.draw = (skipText) => {
 
     p.push();
     p.translate(-p.width * 0.25, 0, 0);
-    p.scale(SCALE);
     rdKillFeed.render();
     p.pop();
     p.push();
     p.translate(p.width * 0.25, 0, 0);
-    p.scale(SCALE);
     rdDiffusion.render();
     p.pop();
   }
