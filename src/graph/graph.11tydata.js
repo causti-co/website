@@ -1,5 +1,5 @@
-const { extname } = require("path");
-const { access, readFile, constants } = require('node:fs/promises');
+const { extname, dirname } = require("path");
+const { access, readFile, copyFile, constants } = require('node:fs/promises');
 const imageSize = require("image-size")
 // XXX once/if we get rid of editor and automata pages, review this
 // make it look like text.11tydata.js
@@ -45,6 +45,20 @@ module.exports = {
         try {
           let code = await readFile(`${basePath}.code.js`, "utf8");
           return code;
+        } catch (exception) {
+          // No luck
+        }
+      }
+    },
+    codeUrl: async data => {
+      if (!pageSlugs.includes(data.page.fileSlug) && data.layout === "graph-cables" && data.page.outputPath !== "") {
+        let basePath = basepath(data.page.inputPath);
+        let outputPath = dirname(data.page.outputPath);
+
+        try {
+          await copyFile(`${basePath}.code.js`, `${outputPath}/patch.js`);
+          console.log(`[11ty] Writing ${outputPath}/patch.js from ${basePath}.code.js`);
+          return `${data.page.url}patch.js`;
         } catch (exception) {
           // No luck
         }

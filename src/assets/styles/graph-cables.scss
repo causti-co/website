@@ -1,0 +1,172 @@
+@use "fonts";
+@use "header";
+@use "footer";
+@use "sass:math";
+@use "_settings" as *;
+
+// Module Colors
+$margin-color: $black;
+$header-background-color: $black;
+$main-background-color: $black;
+$synthwave-background-color: #262335;
+// Module Dimensions
+
+:link, :visited {
+  color: inherit;
+  text-decoration-color: $editor-green;
+}
+
+:focus {
+  color: $black;
+  background-color: $editor-green;
+  text-decoration-color: $black;
+  outline: none;
+}
+
+html {
+  padding: $main-margin-size;
+  box-sizing: border-box;
+  font-family: "Berkeley Mono", monospace;
+  font-size: 16px;
+  background-color: $black;
+  color: $editor-green;
+}
+
+body {
+  margin: 0;
+  min-height: calc(100vh - 2 * $main-margin-size);
+  @include border($color: $editor-green);
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: $main-background-color;
+  overscroll-behavior: none;
+}
+
+header {
+  background-color: $header-background-color;
+  font-size: 1rem;
+  padding: math.div($default-padding-size, 4);
+
+  h1 .dot {
+    cursor: pointer;
+  }
+}
+
+main {
+  position: relative;
+  padding: 0;
+  @include border($color: $editor-green);
+  border: {
+    left-width: 0;
+    right-width: 0;
+  }
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  > article {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+
+    > section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      > h2 {
+        position: absolute;
+        top: 16px;
+        left: -8px;
+        height: max-content;
+        margin: 0;
+        padding: 4px 0;
+        font-size: 13px;
+        line-height: 1em;
+        text-align: right;
+        writing-mode: vertical-rl;
+        transform: rotate(-180deg);
+        background: $black;
+        @include border($color: $editor-green);
+        @include box-shadow($size: -1 * $default-box-shadow-size, $color: $editor-green);
+      }
+    }
+
+    > #graph-output {
+      padding: 0;
+      flex-grow: 1;
+
+      // > .input {
+      //   cursor: pointer;
+      // }
+
+      // > .output {
+      //   top: 104px;
+      // }
+
+      > #canvas-container {
+        height: 100%;
+        width: auto;
+
+        canvas {
+          display: block;
+          margin: 0 auto 16px;
+          width: calc(100vw - 2 * ($main-margin-size + $default-border-width));
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: $main-margin-size;
+  width: calc(100% - 2 * $main-margin-size);
+  background-color: $margin-color;
+
+  > .content {
+    border-color: $editor-green;
+    background-color: $black;
+
+    > .cc {
+      a {
+        .icons {
+          display: inline;
+        }
+
+        .alt-icons {
+          display: none;
+        }
+      }
+
+      a:focus {
+        .icons {
+          display: none;
+        }
+
+        .alt-icons {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 800px) {
+  footer {
+    position: relative;
+    width: auto;
+    left: 0;
+  }
+}
+
+@media (width <= 400px) {
+
+}

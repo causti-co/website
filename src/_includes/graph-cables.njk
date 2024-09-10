@@ -1,0 +1,101 @@
+---
+siteName: causti • co
+generalDescription: cables.gl patch
+og:
+  type: website
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>{{ siteName }}{% if title %} — {{ title }}{% endif %}</title>
+    <link rel="stylesheet" href="/assets/styles/graph-cables.css" />
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
+    <link rel="canonical" href="https://causti.co{{ page.url }}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="description" content="{{ description or generalDescription }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta property="og:site_name" content="{{ siteName }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description or generalDescription }}" />
+    <meta property="og:type" content="{{ og.type }}" />
+    <meta property="og:url" content="https://causti.co{{ page.url }}" />
+    {#- Ideally og.image is driven by the data cascade. However, I did not find a way to set data based on `collections`. #}
+    {#- To support using the last photo as og.image, we make it the default here. #}
+    {%- set graph = collections.graph | last -%}
+    <meta property="og:image" content="https://causti.co{{ og.image.url or graph.data.og.image.url }}" />
+    <meta property="og:image:type" content="{{ og.image.type or graph.data.og.image.type }}" />
+    <meta property="og:image:width" content="{{ og.image.width or graph.data.og.image.width }}" />
+    <meta property="og:image:height" content="{{ og.image.height or graph.data.og.image.height }}" />
+    <meta property="og:image:alt" content="{{ og.image.alt or graph.data.og.image.alt }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mvaldesdeleon" />
+    <meta name="twitter:creator" content="@mvaldesdeleon" />
+    {%- if og.type === "article" %}
+    <meta name="article:published_time" content="{{ date.toISOString() }}" />
+    {#- <meta name="article:modified_time" content="{{ date.toISOString() }}" /> #}
+    <meta name="article:author" content="Martín Valdés de León" />
+    {#- <meta name="article:section" content="text" /> #}
+    {%- for keyword in keywords %}
+    <meta name="article:tag" content="{{ keyword }}" />
+    {%- endfor %}
+    {%- endif %}
+  </head>
+  <body>
+    <header>
+      <h1><a href="/graph/" tabindex="-1">causti </a><a href="/graph/" tabindex="-1"><img class="dot" src="/assets/images/causti.co.green.svg" alt="·" width="640" height="640" /></a><a href="/graph/" tabindex="-1"> co</a></h1>
+    </header>
+    <main>
+      <article>
+        <section id="graph-output">
+          {# <h2 class="input"><a href="" target="_blank" rel="noopener noreferrer">cables ↘</a></h2> #}
+          <h2 class="output">output</h2>
+          <div id="canvas-container">
+            <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+          </div>
+        </section>
+      </article>
+      <script src="{{ codeUrl }}" async></script>
+      <script type="text/javascript">
+        function showError(errId, errMsg) {
+          console.error(errId, errMs);
+        }
+
+        function patchInitialized(patch) {
+          console.log('INIT', patch);
+        }
+
+        function patchFinishedLoading(patch) {
+          console.log('LOAD', patch);
+        }
+
+        document.addEventListener("CABLES.jsLoaded", function (event) {
+          CABLES.patch = new CABLES.Patch({
+            patch: CABLES.exportedPatch,
+            "prefixAssetPath": "",
+            "assetPath": "{{ page.url }}",
+            "jsPath": "{{ page.url }}",
+            "glCanvasId": "glcanvas",
+            "glCanvasResizeToWindow": false,
+            "onError": showError,
+            "onPatchLoaded": patchInitialized,
+            "onFinishedLoading": patchFinishedLoading,
+            "canvas": { "alpha": true, "premultipliedAlpha": true } // make canvas transparent
+          });
+        });
+        // disable rubberband effect on mobile devices
+        document.getElementById('glcanvas').addEventListener('touchmove', (e) => { e.preventDefault(); }, false);
+      </script>
+    </main>
+    <footer>
+      <div class="content">
+        <p class="cc" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+          <a property="dct:title" rel="cc:attributionURL" href="https://causti.co/">{{ siteName }}</a> © 2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://twitter.com/mvaldesdeleon">Martín Valdés de León</a>, is licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<span class="icons"><img class="icon" src="/assets/images/cc/cc.green.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.green.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.green.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.green.svg" alt="ND" width="64" height="64" /></span><span class="alt-icons"><img class="icon" src="/assets/images/cc/cc.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.svg" alt="ND" width="64" height="64" /></span></a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
