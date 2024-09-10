@@ -51,7 +51,9 @@ og:
     <main>
       <article>
         <section id="graph-output">
-          {# <h2 class="input"><a href="" target="_blank" rel="noopener noreferrer">cables ↘</a></h2> #}
+          {%- if cablesUrl %}
+          <h2 class="input"><a href="{{ cablesUrl }}" target="_blank" rel="noopener noreferrer">patch ↘</a></h2>
+          {%- endif %}
           <h2 class="output">output</h2>
           <div id="canvas-container">
             <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>

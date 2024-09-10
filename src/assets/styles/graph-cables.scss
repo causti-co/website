@@ -85,7 +85,7 @@ main {
         left: -8px;
         height: max-content;
         margin: 0;
-        padding: 4px 0;
+        padding: 0;
         font-size: 13px;
         line-height: 1em;
         text-align: right;
@@ -94,6 +94,10 @@ main {
         background: $black;
         @include border($color: $editor-green);
         @include box-shadow($size: -1 * $default-box-shadow-size, $color: $editor-green);
+
+        > a {
+          padding: 4px 0;
+        }
       }
     }
 
@@ -101,13 +105,13 @@ main {
       padding: 0;
       flex-grow: 1;
 
-      // > .input {
-      //   cursor: pointer;
-      // }
+      > .input {
+        cursor: pointer;
 
-      // > .output {
-      //   top: 104px;
-      // }
+        & + .output {
+          top: 104px;
+        }
+      }
 
       > #canvas-container {
         height: 100%;
