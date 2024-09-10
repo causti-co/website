@@ -1,5 +1,4 @@
 @use "fonts";
-@use "links";
 @use "header";
 @use "footer";
 @use "sass:math";
@@ -12,9 +11,14 @@ $main-background-color: $black;
 $synthwave-background-color: #262335;
 // Module Dimensions
 
+:link, :visited {
+  color: inherit;
+  text-decoration-color: $editor-pink;
+}
+
 :focus {
   color: $black;
-  background-color: $accent-secondary;
+  background-color: $editor-pink;
   text-decoration-color: $black;
   outline: none;
 }
@@ -25,13 +29,13 @@ html {
   font-family: "Berkeley Mono", monospace;
   font-size: 16px;
   background-color: $black;
-  color: $accent-secondary;
+  color: $editor-pink;
 }
 
 body {
   margin: 0;
   min-height: calc(100vh - 2 * $main-margin-size);
-  @include border($color: $accent-secondary);
+  @include border($color: $editor-pink);
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
@@ -52,7 +56,7 @@ header {
 main {
   position: relative;
   padding: 0;
-  @include border($color: $accent-secondary);
+  @include border($color: $editor-pink);
   border: {
     left-width: 0;
     right-width: 0;
@@ -84,8 +88,8 @@ main {
         writing-mode: vertical-rl;
         transform: rotate(-180deg);
         background: $black;
-        @include border($color: $accent-secondary);
-        @include box-shadow($size: -1 * $default-box-shadow-size, $color: $accent-secondary);
+        @include border($color: $editor-pink);
+        @include box-shadow($size: -1 * $default-box-shadow-size, $color: $editor-pink);
       }
 
       .buttons {
@@ -103,13 +107,13 @@ main {
         font-family: "Berkeley Mono", monospace;
         font-size: 16px;
         background-color: $black;
-        color: $accent-secondary;
-        @include border($color: $accent-secondary);
-        @include box-shadow($color: $accent-secondary);
+        color: $editor-pink;
+        @include border($color: $editor-pink);
+        @include box-shadow($color: $editor-pink);
         cursor: pointer;
 
         &:focus {
-          background-color: $accent-secondary;
+          background-color: $editor-pink;
           color: $black;
         }
       }
@@ -119,7 +123,7 @@ main {
       padding: 24px;
       flex: 1 1 auto;
 
-      @include border($color: $accent-secondary);
+      @include border($color: $editor-pink);
       border: {
         top-width: 0;
         bottom-width: 0;
@@ -143,7 +147,7 @@ main {
         height: 512px;
         position: relative;
         background-color: $synthwave-background-color;
-        @include border($color: $accent-secondary);
+        @include border($color: $editor-pink);
         margin-bottom: 16px;
 
         > #code-input, > #code-output {
@@ -244,7 +248,7 @@ footer {
   background-color: $margin-color;
 
   > .content {
-    border-color: $accent-secondary;
+    border-color: $editor-pink;
     background-color: $black;
 
     > .cc {
