@@ -95,6 +95,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/graph/editor/*.js");
   eleventyConfig.addPassthroughCopy("src/graph/automata/*.js");
 
+  eleventyConfig.addPassthroughCopy({"src/graph/assets/*": "assets/graph"});
+
   let glob = "";
   if (!IS_PRODUCTION) {
     // Fold _drafts back into their respective top-level folder

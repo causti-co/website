@@ -77,8 +77,8 @@ og:
         document.addEventListener("CABLES.jsLoaded", function (event) {
           CABLES.patch = new CABLES.Patch({
             patch: CABLES.exportedPatch,
-            "prefixAssetPath": "",
-            "assetPath": "{{ page.url }}",
+            "prefixAssetPath": "../../",
+            "assetPath": "/assets/graph/",
             "jsPath": "{{ page.url }}",
             "glCanvasId": "glcanvas",
             "glCanvasResizeToWindow": false,
