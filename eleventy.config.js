@@ -88,6 +88,7 @@ module.exports = function(eleventyConfig) {
 
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/ublock-twitter.txt");
   eleventyConfig.addPassthroughCopy("src/*.js");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**");
   eleventyConfig.addPassthroughCopy("src/assets/icons/**");

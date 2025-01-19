@@ -1,0 +1,33 @@
+! "What's Happening" sidebar
+x.com##div:has(> section > div[aria-label="Timeline: Trending now"])
+
+! Menu items
+x.com##a[aria-label="Jobs"], a[aria-label="Communities"], a[aria-label="Premium"], a[aria-label="Verified Orgs"], a[aria-label="Grok"]
+x.com##div:has(> a[href="/i/monetization"]), div:has(> a[href*="https://ads.x.com/"]), div:has(> a[href="/i/spaces/start"]), div:has(> a[href="/jobs"])
+
+! Can't remember
+x.com##div:has(> [aria-live="polite"][role="status"])
+
+! Premium promotions
+x.com##div:has(> div > [aria-label="Expiring soon!"])
+x.com##div:has(> div > [aria-label="Offer extended!"])
+x.com##div:has(> div > [aria-label="Ending today!"])
+x.com##div:has(> div > [aria-label="Subscribe to Premium"])
+x.com##div:has(> div > [aria-label="40% off Premium"])
+x.com##div:has(> div > [aria-label="Try Premium for free today"])
+
+! Can't remember
+x.com##div:has(> div > div > div > [data-testid*="suggested-video-card"])
+
+! Removes "Profile Summary button"
+x.com##[data-testid="HoverCard"] > div > div > div:last-child
+
+! Grok replies
+x.com##div:has(> [aria-label="Grok actions"])
+x.com##div:has(> [aria-label="Generate image"])
+x.com##div:has(> [data-testid="grokImgGen"])
+x.com##div:has(> [data-testid*="followups"])
+
+! Grok button
+x.com##div:has(> div > [data-testid="GrokDrawer"])
+
