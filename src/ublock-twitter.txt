@@ -2,7 +2,7 @@
 x.com##div:has(> section > div[aria-label="Timeline: Trending now"])
 
 ! Menu items
-x.com##a[aria-label="Jobs"], a[aria-label="Communities"], a[aria-label="Premium"], a[aria-label="Verified Orgs"], a[aria-label="Grok"]
+x.com##a[aria-label="Jobs"], a[aria-label="Communities"], a[aria-label="Premium"], a[aria-label="Verified Orgs"], a[aria-label="Grok"], a[aria-label="Business"]
 x.com##div:has(> a[href="/i/monetization"]), div:has(> a[href*="https://ads.x.com/"]), div:has(> a[href="/i/spaces/start"]), div:has(> a[href="/jobs"])
 
 ! Can't remember
