@@ -31,3 +31,8 @@ x.com##div:has(> [data-testid*="followups"])
 ! Grok button
 x.com##div:has(> div > [data-testid="GrokDrawer"])
 
+! Buttons I don't use
+x.com##div[role=presentation]:has(> [aria-label="Add a GIF"])
+x.com##div[role=presentation]:has(> div > [aria-label="Add emoji"])
+x.com##button[aria-label="Add a GIF"]
+x.com##div:has(> button[aria-label="Add emoji"])
