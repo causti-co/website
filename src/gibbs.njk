@@ -1,0 +1,55 @@
+---
+eleventyExcludeFromCollections: true
+title: causti • co
+description: 'Gibbs triangle-ternary plot generator'
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/assets/styles/gibbs.css" />
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/favicon.svg" sizes="any" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Martín Valdés de León" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="/" tabindex="-1">causti </a><a href="/" tabindex="-1"><img class="dot" src="/assets/images/causti.co.svg" alt="·" width="640" height="640" /></a><a href="/" tabindex="-1"> co</a></h1>
+    </header>
+    <main>
+      <article>
+        <section id="gibbs-input">
+          <h2>variables</h2>
+          <div class="settings">
+            <label for="variableA">variable a</label>
+            <input type="text" name="variableA" id="variableA" value="chaser">
+            <label for="variableB">variable b</label>
+            <input type="text" name="variableB" id="variableB" value="egg">
+            <label for="variableC">variable c</label>
+            <input type="text" name="variableC" id="variableC" value="grungler">
+            <button id="download" disabled>png ↘</button>
+          </div>
+        </section>
+        <section id="gibbs-output">
+          <div id="gibbs-container"></div>
+        </section>
+      </article>
+      <script type="module" src="/graph/automata/p5.min.js"></script>
+      <script type="module" src="/graph/automata/p5.sound.min.js"></script>
+      <script type="module" src="/graph/automata/lz-string.min.js"></script>
+      <script type="module" src="/gibbs.js"></script>
+    </main>
+    <footer>
+      <div class="content">
+        <p class="cc" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+          <a property="dct:title" rel="cc:attributionURL" href="https://causti.co/">{{ siteName }}</a> © 2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://twitter.com/mvaldesdeleon">Martín Valdés de León</a>, is licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<span class="icons"><img class="icon" src="/assets/images/cc/cc.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.svg" alt="ND" width="64" height="64" /></span><span class="alt-icons"><img class="icon" src="/assets/images/cc/cc.svg" alt="CC" width="64" height="64" /><img class="icon" src="/assets/images/cc/by.svg" alt="BY" width="64" height="64" /><img class="icon" src="/assets/images/cc/nc.svg" alt="NC" width="64" height="64" /><img class="icon" src="/assets/images/cc/nd.svg" alt="ND" width="64" height="64" /></span></a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
