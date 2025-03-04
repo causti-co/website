@@ -7,21 +7,32 @@ const $download = document.getElementById("download");
 const $variableA = document.getElementById("variableA");
 const $variableB = document.getElementById("variableB");
 const $variableC = document.getElementById("variableC");
+const $martin = document.getElementById("martin");
 let p5instance;
 let variableA = '', variableB = '', variableC = '';
 let selected = null;
+let martin = true;
 
 const sketch = (p) => {
   let x = 100;
   let y = 100;
   let font;
+  let pfp;
 
   p.preload = () => {
     font = p.loadFont('/assets/fonts/BerkeleyMono-Regular.otf');
+    pfp = p.loadImage('/assets/images/pfp.jpg');
   }
 
   p.setup = () => {
     p.createCanvas($outputContainer.clientWidth - 32, $outputContainer.clientHeight - 60);
+
+    let mask = p.createGraphics(pfp.width, pfp.height);
+    mask.clear();
+    p.fill('black');
+    p.noStroke();
+    mask.circle(pfp.width/2, pfp.height/2, pfp.width);
+    pfp.mask(mask);
   };
 
   p.draw = () => {
@@ -87,7 +98,12 @@ const sketch = (p) => {
     if (selected) {
       p.fill('red');
       p.noStroke();
-      p.circle(selected.x, selected.y, p.windowWidth > 1000 ? 20 : 10);
+      if (martin) {
+        let s = p.windowWidth > 1000 ? 50 : 20;
+        p.image(pfp, selected.x - 0.5 * s, selected.y - 0.5 * s, s, s);
+      } else {
+        p.circle(selected.x, selected.y, p.windowWidth > 1000 ? 20 : 10);
+      }
 
       let fA = Math.floor(selected.fA * 100);
       let fB = Math.floor(selected.fB * 100);
@@ -180,6 +196,7 @@ function updateVariables() {
   variableA = $variableA.value;
   variableB = $variableB.value;
   variableC = $variableC.value;
+  martin = $martin.checked;
 }
 
 function downloadPNG() {
@@ -190,6 +207,7 @@ function downloadPNG() {
 $variableA.addEventListener("change", updateVariables);
 $variableB.addEventListener("change", updateVariables);
 $variableC.addEventListener("change", updateVariables);
+$martin.addEventListener("change", updateVariables);
 $download.addEventListener("click", downloadPNG);
 
 updateVariables();
