@@ -1,23 +1,28 @@
+const HASH_LABEL = "#vars=";
+
 const SQRT3 = Math.sqrt(3);
 const SQRT3_2 = SQRT3 / 2;
 
 const $outputContainer = document.getElementById("gibbs-output");
 const $canvasContainer = document.getElementById("gibbs-container");
 const $download = document.getElementById("download");
+const $share = document.getElementById("share");
+const $custom = document.getElementById("custom");
+const $file = document.getElementById("file");
 const $variableA = document.getElementById("variableA");
 const $variableB = document.getElementById("variableB");
 const $variableC = document.getElementById("variableC");
-const $martin = document.getElementById("martin");
+const $pfp = document.getElementById("pfp");
 let p5instance;
 let variableA = '', variableB = '', variableC = '';
 let selected = null;
-let martin = true;
+let usePfp = true;
+let pfp;
 
 const sketch = (p) => {
   let x = 100;
   let y = 100;
   let font;
-  let pfp;
 
   p.preload = () => {
     font = p.loadFont('/assets/fonts/BerkeleyMono-Regular.otf');
@@ -26,13 +31,6 @@ const sketch = (p) => {
 
   p.setup = () => {
     p.createCanvas($outputContainer.clientWidth - 32, $outputContainer.clientHeight - 60);
-
-    let mask = p.createGraphics(pfp.width, pfp.height);
-    mask.clear();
-    p.fill('black');
-    p.noStroke();
-    mask.circle(pfp.width/2, pfp.height/2, pfp.width);
-    pfp.mask(mask);
   };
 
   p.draw = () => {
@@ -96,12 +94,23 @@ const sketch = (p) => {
     p.text(variableC, vC.x + 0.5 * textOffset, vC.y);
 
     if (selected) {
-      p.fill('red');
-      p.noStroke();
-      if (martin) {
+      
+      if (usePfp) {
+
+        let mask = p.createGraphics(pfp.width, pfp.height);
+        mask.clear();
+        p.fill('black');
+        p.noStroke();
+        let d = Math.min(pfp.width, pfp.height);
+        mask.circle(pfp.width/2, pfp.height/2, d);
+        pfp.mask(mask);
+
         let s = p.windowWidth > 1000 ? 50 : 20;
-        p.image(pfp, selected.x - 0.5 * s, selected.y - 0.5 * s, s, s);
+        p.imageMode(p.CENTER);
+        p.image(pfp, selected.x, selected.y, s, s, (pfp.width - d) / 2, (pfp.height - d) / 2, d, d);
       } else {
+        p.fill('red');
+        p.noStroke();
         p.circle(selected.x, selected.y, p.windowWidth > 1000 ? 20 : 10);
       }
 
@@ -113,6 +122,7 @@ const sketch = (p) => {
       else if (fB >= fA && fB >= fC) fB += delta;
       else fC += delta;
 
+      p.fill('red');
       p.strokeWeight(strokeWeight);
       p.textAlign(p.LEFT, p.BOTTOM);
       p.text(`${fA}%`, vA.x + p.lerp(0, lerp.x, 1.0 - selected.fA) + 10, vA.y + p.lerp(0, lerp.y, 1.0 - selected.fA));
@@ -196,7 +206,7 @@ function updateVariables() {
   variableA = $variableA.value;
   variableB = $variableB.value;
   variableC = $variableC.value;
-  martin = $martin.checked;
+  usePfp = $pfp.checked;
 }
 
 function downloadPNG() {
@@ -204,11 +214,50 @@ function downloadPNG() {
   p5instance.saveCanvas("instagibbs", "png");
 }
 
+function loadFromURL() {
+  const hash = location.hash;
+
+  if (hash.startsWith(HASH_LABEL)) {
+    const lzCode = hash.slice(HASH_LABEL.length);
+    const [vA, vB, vC] = JSON.parse(LZString.decompressFromEncodedURIComponent(lzCode));
+
+    $variableA.value = vA;
+    $variableB.value = vB;
+    $variableC.value = vC;
+  }
+}
+
+function share() {
+  $share.blur();
+  const vars = [$variableA.value, $variableB.value, $variableC.value];
+  const lzCode = LZString.compressToEncodedURIComponent(JSON.stringify(vars));
+
+  location.hash = `${HASH_LABEL}${lzCode}`;
+  navigator.clipboard.writeText(location.href);
+}
+
+function uploadFile() {
+  $custom.blur();
+  $file.click();
+}
+
+function setCustomPfp() {
+  const [file] = $file.files;
+
+  if (file) {
+    pfp = p5instance.loadImage(URL.createObjectURL(file));
+  }
+}
+
 $variableA.addEventListener("change", updateVariables);
 $variableB.addEventListener("change", updateVariables);
 $variableC.addEventListener("change", updateVariables);
-$martin.addEventListener("change", updateVariables);
+$pfp.addEventListener("change", updateVariables);
+$file.addEventListener("change", setCustomPfp);
 $download.addEventListener("click", downloadPNG);
+$share.addEventListener("click", share);
+$custom.addEventListener("click", uploadFile);
 
+loadFromURL();
 updateVariables();
 p5instance = new p5(sketch, $canvasContainer);
