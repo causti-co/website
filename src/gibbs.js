@@ -25,10 +25,17 @@ const sketch = (p) => {
   };
 
   p.draw = () => {
-    const size = Math.min(p.width, p.height);
+    const textSize = p.windowWidth > 1000 ? 24 : 16;
+    const strokeWeight = 0.5;
+    p.textSize(textSize);
+    p.strokeWeight(strokeWeight);
+    const textWidth = Math.max(p.textWidth(variableB), p.textWidth(variableC));
+    const effWidth = p.width - textWidth * 2;
+    const effHeight = p.height - textSize * 2;
+    const size = Math.min(effWidth, effHeight);
     const center = {
-      x: p.width / 2,
-      y: p.height * 2 / 3
+      x: effWidth / 2 + textWidth,
+      y: effHeight * 2 / 3 + textSize
     };
     const radius = size / 2;
     const vA = {
@@ -58,29 +65,31 @@ const sketch = (p) => {
         y: p.lerp(0, lerp.y, i/10),
         z: p.lerp(0, lerp.z, i/10)
       };
-      if (i == 10) p.strokeWeight(4);
+      if (i == 10) p.strokeWeight(p.windowWidth > 1000 ? 4 : 2);
       p.line(vA.x - offset.x, vA.y + offset.y, vA.x + offset.x, vA.y + offset.y);
       p.line(vB.x + offset.x, vB.y - offset.y, vB.x + offset.z, vB.y);
       p.line(vC.x - offset.x, vC.y - offset.y, vC.x - offset.z, vC.y);
     }
   
+    let textOffset = textSize * 2 / 3;
+
     p.fill('black');
     p.textFont(font);
-    p.textSize(36);
-    p.strokeWeight(1);
+    p.textSize(textSize);
+    p.strokeWeight(strokeWeight);
     p.textAlign(p.CENTER, p.BOTTOM);
-    p.text(variableA, vA.x, vA.y - 32);
+    p.text(variableA, vA.x, vA.y - textOffset);
     p.textAlign(p.RIGHT, p.TOP);
-    p.text(variableB, vB.x - 16, vB.y + 16);
+    p.text(variableB, vB.x - 0.5 * textOffset, vB.y);
     p.textAlign(p.LEFT, p.TOP);
-    p.text(variableC, vC.x + 16, vC.y + 16);
+    p.text(variableC, vC.x + 0.5 * textOffset, vC.y);
 
     if (selected) {
       p.fill('red');
       p.noStroke();
-      p.circle(selected.x, selected.y, 20);
+      p.circle(selected.x, selected.y, p.windowWidth > 1000 ? 20 : 10);
 
-      p.textSize(36);
+      p.strokeWeight(strokeWeight);
       p.textAlign(p.LEFT, p.BOTTOM);
       p.text(`${Math.floor(selected.fA * 100)}%`, vA.x + p.lerp(0, lerp.x, 1.0 - selected.fA) + 10, vA.y + p.lerp(0, lerp.y, 1.0 - selected.fA));
       p.textAlign(p.RIGHT, p.BOTTOM);
