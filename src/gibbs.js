@@ -89,25 +89,41 @@ const sketch = (p) => {
       p.noStroke();
       p.circle(selected.x, selected.y, p.windowWidth > 1000 ? 20 : 10);
 
+      let fA = Math.floor(selected.fA * 100);
+      let fB = Math.floor(selected.fB * 100);
+      let fC = Math.floor(selected.fC * 100);
+      let delta = 100 - fA - fB - fC;
+      if (fA >= fB && fA >= fC) fA += delta;
+      else if (fB >= fA && fB >= fC) fB += delta;
+      else fC += delta;
+
       p.strokeWeight(strokeWeight);
       p.textAlign(p.LEFT, p.BOTTOM);
-      p.text(`${Math.floor(selected.fA * 100)}%`, vA.x + p.lerp(0, lerp.x, 1.0 - selected.fA) + 10, vA.y + p.lerp(0, lerp.y, 1.0 - selected.fA));
+      p.text(`${fA}%`, vA.x + p.lerp(0, lerp.x, 1.0 - selected.fA) + 10, vA.y + p.lerp(0, lerp.y, 1.0 - selected.fA));
       p.textAlign(p.RIGHT, p.BOTTOM);
-      p.text(`${Math.floor(selected.fB * 100)}%`, vB.x + p.lerp(0, lerp.x, 1.0 - selected.fB) - 10, vB.y - p.lerp(0, lerp.y, 1.0 - selected.fB));
+      p.text(`${fB}%`, vB.x + p.lerp(0, lerp.x, 1.0 - selected.fB) - 10, vB.y - p.lerp(0, lerp.y, 1.0 - selected.fB));
       p.textAlign(p.CENTER, p.TOP);
-      p.text(`${Math.floor(selected.fC * 100)}%`, vC.x - p.lerp(0, lerp.z, 1.0 - selected.fC), vC.y + 10);
+      p.text(`${fC}%`, vC.x - p.lerp(0, lerp.z, 1.0 - selected.fC), vC.y + 10);
     }
   };
 
   p.windowResized = () => {
     p.resizeCanvas($outputContainer.clientWidth - 32, $outputContainer.clientHeight - 60);
+    selected = null;
   }
 
   p.mouseClicked = () => {
-    const size = Math.min(p.width, p.height);
+    const textSize = p.windowWidth > 1000 ? 24 : 16;
+    const strokeWeight = 0.5;
+    p.textSize(textSize);
+    p.strokeWeight(strokeWeight);
+    const textWidth = Math.max(p.textWidth(variableB), p.textWidth(variableC));
+    const effWidth = p.width - textWidth * 2;
+    const effHeight = p.height - textSize * 2;
+    const size = Math.min(effWidth, effHeight);
     const center = {
-      x: p.width / 2,
-      y: p.height * 2 / 3
+      x: effWidth / 2 + textWidth,
+      y: effHeight * 2 / 3 + textSize
     };
     const radius = size / 2;
     const vA = {
